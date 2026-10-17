@@ -45,7 +45,7 @@ pageScript: filters
     {%- for p in items %}
     {%- set pstatus = (intakes | intakeFor(p.data.slug)) | intakeStatus(build.today) %}
     <li class="card" data-filter-item data-field="{{ p.data.field }}" data-level="{{ p.data.level }}">
-      <div class="card-media" aria-hidden="true">{{ p.data.title | initials }}</div>
+      <div class="card-media" aria-hidden="true">{{ (p.data.short or p.data.title) | programMark }}</div>
       <div class="card-body">
         <h3><a href="/programs/{{ p.data.slug }}/">{{ p.data.title }}</a></h3>
         <p class="card-meta">{{ p.data.level }}</p>

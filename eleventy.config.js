@@ -77,6 +77,14 @@ export default function (eleventyConfig) {
     String(title).split(/[\s(-]+/).filter((w) => /^[A-Za-z]/.test(w)).slice(0, 2).map((w) => w[0].toUpperCase()).join(''),
   );
 
+  // Program card mark: an abbreviation such as "DPT" or "Pharm-D" as it is, otherwise the initials
+  // of the short name ("Business Studies" → "BS").
+  eleventyConfig.addFilter('programMark', (short) => {
+    const name = String(short).trim();
+    if (!/\s/.test(name) && /[A-Z]/.test(name.slice(1))) return name;
+    return name.split(/\s+/).slice(0, 3).map((w) => w[0].toUpperCase()).join('');
+  });
+
   // Visible placeholder for a fact that is not confirmed yet: [TO CONFIRM — what, OD-xx].
   eleventyConfig.addShortcode('tbc', (what, od) => `<span class="tbc">[TO CONFIRM — ${what}${od ? `, ${od}` : ''}]</span>`);
   eleventyConfig.addFilter('tbc', (value, what, od) =>
