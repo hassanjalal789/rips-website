@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "node scripts/dev.mjs",
     "build": "eleventy",
-    "test": "node --test tests/",
+    "test": "node --test \"tests/**/*.test.js\"",
     "check": "npm run build && node scripts/check.mjs",
     "check:html": "node scripts/check-html.mjs",
     "check:links": "node scripts/check-links.mjs",
