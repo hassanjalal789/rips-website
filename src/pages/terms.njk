@@ -1,0 +1,24 @@
+---
+layout: page.njk
+permalink: /terms/
+title: Terms of use
+crumb: Terms
+crumbs: []
+description: "Terms for using the RIPS Sheikhupura website."
+noindex: true
+last_updated: 2026-10-17
+---
+{#- Terms (Doc 05 Q04 Must; Q24: not indexed). DRAFT by the developer for legal review (OD-15). #}
+<h1>Terms of use</h1>
+<p class="alert alert-warning"><strong>Draft.</strong> {% tbc "legal review of these terms", "OD-15" %}</p>
+<div class="prose">
+  <h2>Official information</h2>
+  <p>The official RIPS website is {{ settings.url | replace("https://", "") }}. Notices and merit lists are official when they are published here as PDF files. If anything on this website differs from what the admissions office tells you, ask the admissions office to confirm.</p>
+  <h2>Fees</h2>
+  <p>RIPS never asks for fees to be paid into a personal account. Fees are listed on the <a href="/admissions/fees/">fee structure</a> page and may change; the page shows when it was last updated.</p>
+  <h2>Other websites</h2>
+  <p>Links to other websites are for your convenience. RIPS is not responsible for their content.</p>
+  <h2>Privacy</h2>
+  <p>How we use the details you send is explained in the <a href="/privacy/">privacy policy</a>.</p>
+</div>
+<p class="last-updated">Last updated {{ last_updated | displayDate }}</p>

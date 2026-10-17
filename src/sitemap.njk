@@ -1,0 +1,16 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+{#- Only indexable pages (Doc 05 Q24): no merit lists, Thank-you, 404, Terms or removed notices. A staging
+    build lists nothing (SRS S-02). -#}
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- if not build.staging %}
+{%- for p in collections.all %}
+{%- if not p.data.noindex and p.url and p.url.endsWith("/") %}
+  <url><loc>{{ settings.url }}{{ p.url }}</loc>{% if p.data.last_updated %}<lastmod>{{ p.data.last_updated | isoDate }}</lastmod>{% endif %}</url>
+{%- endif %}
+{%- endfor %}
+{%- endif %}
+</urlset>

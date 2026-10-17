@@ -1,0 +1,8 @@
+# Downloadable documents (Doc 05 Q04, Doc 04 J2: prospectus and fee structure PDFs).
+# The prospectus file is a SAMPLE PDF until admissions supplies the approved one (OD-07).
+prospectus:
+  file: /files/downloads/prospectus-sample.pdf
+  sample: true
+fee_structure:
+  file: null            # approved fee structure PDF, once the fees are confirmed (OD-07)
+  sample: true

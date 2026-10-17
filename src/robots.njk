@@ -1,0 +1,16 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+{%- if build.staging -%}
+# Staging: not for search engines (SRS S-02).
+User-agent: *
+Disallow: /
+{%- else -%}
+# Merit-list PDFs carry an X-Robots-Tag: noindex header instead of a Disallow line, so search
+# engines can read it (Doc 07 Q18). Their pages carry a noindex meta tag (Doc 05 Q24).
+User-agent: *
+Allow: /
+
+Sitemap: {{ settings.url }}/sitemap.xml
+{%- endif %}

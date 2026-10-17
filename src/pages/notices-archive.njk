@@ -1,0 +1,28 @@
+---
+layout: page.njk
+permalink: /notices/archive/
+title: Notice archive
+crumb: Archive
+crumbs: [{ label: Notices, url: /notices/ }]
+description: "Older notices and merit lists from RIPS Sheikhupura, by session, newest first."
+---
+{#- Archive (Doc 05: find older notices). Notices move here on their archive date and leave the site
+    two years later (Doc 08 Notice; SRS M-05). #}
+<h1>Notice archive</h1>
+<p class="lead">Notices from past intakes, newest first. For current notices, see the <a href="/notices/">notice board</a>.</p>
+{%- set archived = collections.notices | archivedNotices(build.today) %}
+{%- if archived.length %}
+{%- for session, items in archived | groupby("data.session") %}
+<section aria-labelledby="session-{{ loop.index }}">
+  <h2 id="session-{{ loop.index }}">Session {{ session }}</h2>
+  <ul class="notice-list">
+    {%- for n in items %}
+    {%- set headingTag = "h3" %}
+    {% include "partials/notice-row.njk" %}
+    {%- endfor %}
+  </ul>
+</section>
+{%- endfor %}
+{%- else %}
+<div class="empty-state"><p>Nothing in the archive yet.</p></div>
+{%- endif %}

@@ -1,0 +1,10 @@
+# City dropdown for the enquiry form (SRS F-02: "list of nearby cities + Other").
+# Proposed list; admissions to confirm. Keep "Other" last.
+- Sheikhupura
+- Lahore
+- Gujranwala
+- Faisalabad
+- Nankana Sahib
+- Muridke
+- Ferozewala
+- Other

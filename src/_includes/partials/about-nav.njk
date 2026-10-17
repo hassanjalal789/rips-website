@@ -1,0 +1,8 @@
+{#- About sub-menu (Doc 05 Q08 local navigation). Campus and Careers are "Could" pages, not built yet. #}
+<nav class="local-nav" aria-label="About RIPS">
+  <ul>
+    {%- for item in nav.about %}
+    <li><a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+    {%- endfor %}
+  </ul>
+</nav>

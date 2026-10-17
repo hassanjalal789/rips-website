@@ -1,0 +1,45 @@
+---
+layout: page.njk
+permalink: /contact/
+title: Contact
+crumbs: []
+description: "Contact RIPS Sheikhupura admissions: phone, WhatsApp, email, office hours, address and directions."
+pageScript: enquiry
+---
+{#- Contact (SRS D-04: address, phone, WhatsApp, email, office hours, map → call, WhatsApp, directions,
+    form; Doc 06 Q06). Every contact detail waits for OD-14 (email OD-04); the form is the enquiry form
+    (Doc 05 Q01 refinement of SRS D-01). External apps are labelled (Doc 06 Q20). #}
+<h1>Contact</h1>
+<p class="lead">Call, WhatsApp or visit the admissions office.</p>
+<div class="contact-cards">
+  <section class="panel" aria-labelledby="c-call">
+    <h2 id="c-call" class="h3">Call</h2>
+    <p>{{ settings.phone | tbc("admissions phone", "OD-14") | safe }}</p>
+    <p><a class="btn btn-secondary" href="tel:{{ settings.phone_link }}"{% if not settings.phone %} data-placeholder="OD-14"{% endif %}>Call admissions</a></p>
+  </section>
+  <section class="panel" aria-labelledby="c-whatsapp" id="whatsapp">
+    <h2 id="c-whatsapp" class="h3">WhatsApp</h2>
+    <p>{{ settings.whatsapp | tbc("WhatsApp number", "OD-14") | safe }}</p>
+    <p><a class="btn btn-whatsapp" href="https://wa.me/{{ settings.whatsapp_link }}?text={{ settings.whatsapp_message | urlencode }}" rel="noopener"{% if not settings.whatsapp %} data-placeholder="OD-14"{% endif %}>WhatsApp admissions <span class="small">(opens WhatsApp)</span></a></p>
+  </section>
+  <section class="panel" aria-labelledby="c-visit">
+    <h2 id="c-visit" class="h3">Visit</h2>
+    <p>{{ settings.address | tbc("verified address", "OD-14") | safe }}</p>
+    <p>Office hours: {{ settings.office_hours | tbc("office hours", "OD-14") | safe }}</p>
+    {%- if settings.map_link %}
+    <p><a class="btn btn-secondary" href="{{ settings.map_link }}" rel="noopener">Get directions <span class="small">(opens Google Maps)</span></a></p>
+    {%- else %}
+    <p>Directions: {% tbc "Google Maps link", "OD-14" %}</p>
+    {%- endif %}
+  </section>
+  <section class="panel" aria-labelledby="c-email">
+    <h2 id="c-email" class="h3">Email</h2>
+    <p>{% if settings.email %}<a href="mailto:{{ settings.email }}">{{ settings.email }}</a>{% else %}{% tbc "admissions email", "OD-04" %}{% endif %}</p>
+  </section>
+</div>
+
+<section class="contact-form" aria-labelledby="form-title">
+  <h2 id="form-title">Send an enquiry</h2>
+  <p>Takes under a minute. The admissions office will call you back.</p>
+  {% include "partials/enquiry-form.njk" %}
+</section>

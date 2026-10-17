@@ -1,0 +1,18 @@
+# Header navigation (Doc 05 Q03, Q08). Labels match page titles.
+main:
+  - { label: Programs, url: /programs/ }
+  - { label: Admissions, url: /admissions/ }
+  - { label: Notices, url: /notices/ }
+  - { label: About, url: /about/ }
+  - { label: News & Events, url: /news/ }
+  - { label: Contact, url: /contact/ }
+about:
+  - { label: Overview, url: /about/ }
+  - { label: Affiliation & approvals, url: /about/affiliation/ }
+  - { label: Faculty, url: /faculty/ }
+admissions:
+  - { label: How to apply, url: "/admissions/#how-to-apply" }
+  - { label: Fees, url: /admissions/fees/ }
+  - { label: Dates, url: "/admissions/#dates" }
+  - { label: Documents, url: "/admissions/#documents" }
+  - { label: FAQ, url: "/admissions/#faq" }

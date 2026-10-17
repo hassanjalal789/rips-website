@@ -1,0 +1,72 @@
+---
+layout: page.njk
+permalink: /notices/
+title: Notices & merit lists
+crumb: Notices
+crumbs: []
+description: "Admission notices, merit lists and exam schedules from RIPS Sheikhupura, newest first."
+pageScript: filters
+---
+{#- Notices list (Doc 06 Notices checklist: title → filters → list → pagination → Archive link;
+    IS-02: filter by program, type and session, kept in the address, count announced). Without
+    JavaScript the full list shows. #}
+<h1>Notices &amp; merit lists</h1>
+{%- set notices = collections.notices | currentNotices(build.today) %}
+{%- set programs = collections.programs | activePrograms %}
+{%- if notices.length %}
+<form class="notice-filters" action="/notices/" method="get" data-filters="notice" data-page-size="10">
+  <fieldset class="filters">
+    <legend>Filter notices</legend>
+    <div class="field">
+      <label for="f-program">Program</label>
+      <select id="f-program" name="program">
+        <option value="">All programs</option>
+        {%- for p in programs %}
+        <option value="{{ p.data.slug }}">{{ p.data.short }}</option>
+        {%- endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-type">Type</label>
+      <select id="f-type" name="type">
+        <option value="">All types</option>
+        {%- for t in ["Admission", "Merit list", "Exam", "General"] %}
+        <option>{{ t }}</option>
+        {%- endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-session">Session</label>
+      <select id="f-session" name="session">
+        <option value="">All sessions</option>
+        {%- for s, items in notices | groupby("data.session") %}
+        <option>{{ s }}</option>
+        {%- endfor %}
+      </select>
+    </div>
+    <div class="filter-actions">
+      <button class="btn btn-secondary" type="submit" data-filter-submit>Show notices</button>
+      <button class="btn btn-text" type="button" data-filter-clear>Clear filters</button>
+    </div>
+  </fieldset>
+</form>
+<p class="filter-count" role="status" data-filter-count>{{ notices.length }} notice{% if notices.length != 1 %}s{% endif %} shown</p>
+<ul class="notice-list" data-filter-list>
+  {%- for n in notices %}
+  {%- set headingTag = "h2" %}
+  {% include "partials/notice-row.njk" %}
+  {%- endfor %}
+</ul>
+<div class="empty-state" data-filter-empty hidden>
+  <p>No notices match these filters.</p>
+  <p><button class="btn btn-secondary" type="button" data-filter-clear>Clear filters</button></p>
+  <p>Looking for something else? <a href="/contact/">Contact admissions</a>.</p>
+</div>
+<nav class="notice-pages" aria-label="Notice pages" data-pagination hidden></nav>
+{%- else %}
+<div class="empty-state">
+  <p>Nothing posted yet.</p>
+  <p><a href="/notices/archive/">See the archive</a></p>
+</div>
+{%- endif %}
+<p><a href="/notices/archive/">Older notices: see the archive <span aria-hidden="true">→</span></a></p>

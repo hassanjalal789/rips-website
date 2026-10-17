@@ -1,0 +1,20 @@
+---
+layout: page.njk
+crumbs: [{ label: News & Events, url: /news/ }]
+---
+{#- News post (Doc 05 Q20: 3 latest posts below). #}
+<h1>{{ title }}</h1>
+<p class="muted"><time datetime="{{ date | isoDate }}">{{ date | displayDate }}</time>{% if sample %} · <span class="sample-tag">SAMPLE</span>{% endif %}</p>
+<div class="prose">{{ content | safe }}</div>
+{%- set latest = collections.news | latestExcept(page.url, 3) %}
+{%- if latest.length %}
+<section class="related" aria-labelledby="latest-news">
+  <h2 id="latest-news">Latest news</h2>
+  <ul class="related-list">
+    {%- for n in latest %}
+    <li><a href="{{ n.url }}">{{ n.data.title }}</a> <span class="muted">· {{ n.data.date | displayDate }}</span></li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+<p><a href="/news/">All news <span aria-hidden="true">→</span></a></p>

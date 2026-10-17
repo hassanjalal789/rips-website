@@ -1,0 +1,17 @@
+---
+layout: page.njk
+pagination:
+  data: removedNotices
+  size: 1
+  alias: removed
+permalink: "/notices/{{ removed.slug }}/"
+title: This notice is no longer available
+crumbs: [{ label: Notices, url: /notices/ }]
+noindex: true
+description: "This notice has been taken off the RIPS website."
+eleventyExcludeFromCollections: true
+---
+{#- Old links to notices whose files were removed keep working (SRS D-06). Listed in src/_data/removedNotices.yaml. #}
+<h1>This notice is no longer available</h1>
+<p class="lead">“{{ removed.title }}” has been taken off the website.</p>
+<p><a class="btn btn-secondary" href="/notices/">See current notices</a></p>

@@ -1,0 +1,16 @@
+{
+  "_source": "SRS F-07. Wording lives here only; the form maps each error code from the function to this text (Doc 08 Q26).",
+  "full_name_required": "Please enter your full name.",
+  "full_name_chars": "Please use letters only in your name.",
+  "mobile_format": "Please enter a mobile number like 0300 1234567.",
+  "email_format": "Please check your email address, e.g. name@gmail.com.",
+  "program_required": "Please choose a program, or “Not sure yet”.",
+  "city_required": "Please choose your city.",
+  "marks_range": "Marks must be between 0 and 100.",
+  "message_length": "Please keep your message under 500 characters.",
+  "consent_required": "Please tick the box so we can contact you.",
+  "qualification_invalid": "Please choose your last qualification from the list.",
+  "form_level": "Please fix the highlighted fields.",
+  "failure": "We couldn’t send your enquiry. Please try again, or WhatsApp us at {whatsapp}.",
+  "rate_limited": "Too many attempts. Please WhatsApp us at {whatsapp}."
+}

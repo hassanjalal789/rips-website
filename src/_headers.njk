@@ -1,0 +1,34 @@
+---
+permalink: /_headers
+eleventyExcludeFromCollections: true
+---
+# Security and cache headers (SRS O-06, O-07; Doc 07 Q18, Q24, Q27; NFR-SEC-02). The format is the
+# _headers file read by Netlify and Cloudflare Pages; translate it if the chosen host (OD-03) uses
+# another format. The script hash is computed from src/_data/inlineScripts.js at build time.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' '{{ inlineScripts.js | cspHash }}'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin
+{%- if build.staging %}
+  X-Robots-Tag: noindex
+{%- endif %}
+
+/assets/js/chunks/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=86400
+
+/files/merit-lists/*
+  X-Robots-Tag: noindex
+
+/files/*
+  Cache-Control: public, max-age=3600
+  X-Content-Type-Options: nosniff

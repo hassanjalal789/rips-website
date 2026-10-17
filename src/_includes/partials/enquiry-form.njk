@@ -1,0 +1,114 @@
+{#- Enquiry form (SRS F-02 field order, F-03 limits, F-04 conditions, F-07 messages, O-08 consent;
+    Doc 06 Enquiry checklist and IS-01). Used on /enquire/ and on Contact (Doc 05 Q01). It posts JSON
+    to the enquiry function, which checks everything again (Doc 08 Q12). Spam check: OD-06. #}
+{%- set programs = collections.programs | activePrograms %}
+<form class="form enquiry-form" id="enquiry-form" action="/api/v1/enquiry" method="post" novalidate data-enquiry>
+  <div class="error-summary alert alert-error" tabindex="-1" role="alert" data-error-summary hidden>
+    <p class="alert-title" data-error-title>{{ enquiryMessages.form_level }}</p>
+    <ul data-error-list></ul>
+  </div>
+  <div class="alert alert-error" role="alert" data-form-failure hidden>
+    <p class="alert-title" data-failure-text></p>
+    <p class="btn-row">
+      <a class="btn btn-whatsapp" href="https://wa.me/{{ settings.whatsapp_link }}?text={{ settings.whatsapp_message | urlencode }}" rel="noopener">WhatsApp admissions <span class="small">(opens WhatsApp)</span></a>
+      <a class="btn btn-secondary" href="tel:{{ settings.phone_link }}">Call admissions</a>
+    </p>
+  </div>
+
+  <p class="required-note"><span class="req" aria-hidden="true">*</span> required</p>
+
+  <div class="field">
+    <label for="enq-name">Full name <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+    <input id="enq-name" name="full_name" type="text" autocomplete="name" required minlength="3" maxlength="60" aria-describedby="enq-name-error">
+    <p class="field-error" id="enq-name-error" hidden></p>
+  </div>
+
+  <div class="field">
+    <label for="enq-mobile">Mobile or WhatsApp number <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+    <span class="hint" id="enq-mobile-hint">Enter like 0300 1234567</span>
+    <input id="enq-mobile" name="mobile" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20" aria-describedby="enq-mobile-hint enq-mobile-error">
+    <p class="field-error" id="enq-mobile-error" hidden></p>
+  </div>
+
+  <div class="field">
+    <label for="enq-email">Email <span class="opt">(optional)</span></label>
+    <input id="enq-email" name="email" type="email" autocomplete="email" maxlength="100" aria-describedby="enq-email-error">
+    <p class="field-error" id="enq-email-error" hidden></p>
+  </div>
+
+  <div class="field">
+    <label for="enq-program">Program <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+    <select id="enq-program" name="program_code" required aria-describedby="enq-program-error">
+      <option value="">Choose a program</option>
+      {%- for p in programs %}
+      <option value="{{ p.data.slug }}">{{ p.data.title }}</option>
+      {%- endfor %}
+      <option value="not-sure">Not sure yet</option>
+    </select>
+    <p class="field-error" id="enq-program-error" hidden></p>
+  </div>
+
+  <div class="field">
+    <label for="enq-city">City <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+    <select id="enq-city" name="city" required aria-describedby="enq-city-error">
+      {%- for c in cities %}
+      <option{% if loop.first %} selected{% endif %}>{{ c }}</option>
+      {%- endfor %}
+    </select>
+    <p class="field-error" id="enq-city-error" hidden></p>
+  </div>
+  <div class="field" data-show-when="city=Other">
+    <label for="enq-city-other">Your city <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+    <input id="enq-city-other" name="city_other" type="text" autocomplete="address-level2" maxlength="40" aria-describedby="enq-city_other-error">
+    <p class="field-error" id="enq-city_other-error" hidden></p>
+  </div>
+
+  <div class="field">
+    <label for="enq-qualification">Last qualification <span class="opt">(optional)</span></label>
+    <select id="enq-qualification" name="qualification" aria-describedby="enq-qualification-error">
+      <option value="">Choose</option>
+      {%- for q in qualifications %}
+      <option>{{ q }}</option>
+      {%- endfor %}
+    </select>
+    <p class="field-error" id="enq-qualification-error" hidden></p>
+  </div>
+  <div class="field" data-show-when="qualification">
+    <label for="enq-marks">Marks (%) <span class="opt">(optional)</span></label>
+    <span class="hint" id="enq-marks-hint">Helps us tell you about eligibility.</span>
+    <input id="enq-marks" name="marks_percent" type="text" inputmode="decimal" maxlength="5" aria-describedby="enq-marks-hint enq-marks_percent-error">
+    <p class="field-error" id="enq-marks_percent-error" hidden></p>
+  </div>
+
+  <div class="field">
+    <label for="enq-message">Message <span class="opt">(optional)</span></label>
+    <textarea id="enq-message" name="message" rows="4" maxlength="600" aria-describedby="enq-message-count enq-message-error"></textarea>
+    <p class="counter" id="enq-message-count" data-counter-for="enq-message">Up to 500 characters</p>
+    <p class="field-error" id="enq-message-error" hidden></p>
+  </div>
+
+  <div class="field">
+    <div class="check">
+      <input id="enq-consent" name="consent" type="checkbox" required data-label="Consent" aria-describedby="enq-consent-error">
+      <label for="enq-consent">I agree that RIPS may contact me about admissions by phone, WhatsApp or email. See the <a href="/privacy/">privacy policy</a>. <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
+    </div>
+    <p class="field-error" id="enq-consent-error" hidden></p>
+  </div>
+
+  <div class="honeypot" aria-hidden="true">
+    <label for="enq-website">Leave this empty</label>
+    <input id="enq-website" name="website" type="text" tabindex="-1" autocomplete="off">
+  </div>
+
+  <noscript><p class="alert alert-warning">This form needs JavaScript. You can WhatsApp or call admissions instead.</p></noscript>
+  <p><button class="btn btn-primary btn-lg" type="submit" data-submit><span class="spinner" aria-hidden="true" hidden></span><span data-submit-label>Send enquiry</span></button></p>
+  <p class="sr-status visually-hidden" role="status" data-status></p>
+  <p>Or <a href="https://wa.me/{{ settings.whatsapp_link }}?text={{ settings.whatsapp_message | urlencode }}" rel="noopener">WhatsApp us <span class="small">(opens WhatsApp)</span></a>.</p>
+  <p class="small muted">We use your details only to answer your enquiry. Only our admissions team sees them. <a href="/privacy/">Privacy policy</a></p>
+</form>
+<script type="application/json" id="enquiry-config">{{ {
+  messages: enquiryMessages,
+  whatsapp: settings.whatsapp or "[TO CONFIRM — WhatsApp number, OD-14]",
+  programCodes: programs | pluck("data.slug"),
+  cities: cities
+} | json | safe }}</script>

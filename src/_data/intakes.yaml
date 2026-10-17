@@ -1,0 +1,7 @@
+# Intakes (Doc 08 "Intake"): admission windows. Status badges are calculated from these dates (SRS E-07).
+# SAMPLE: real dates are not confirmed (OD-07). Replace and set sample: false.
+- session: "2026–27"
+  sample: true
+  opens_on: 2026-10-01
+  closes_on: 2026-11-30
+  programs: [pharm-d, dpt, nursing, allied-health-sciences, computer-science, business-studies]

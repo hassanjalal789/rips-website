@@ -1,0 +1,7 @@
+{#- One notice row (Doc 06 Notices checklist: title, date, program, file size; merit-list rows show the
+    session clearly). Expects `n` (a notice page) and `headingTag`. data-* attributes feed the filters. #}
+{%- set prog = collections.programs | programBySlug(n.data.program) %}
+<li class="notice-row" data-filter-item data-program="{{ n.data.program }}" data-type="{{ n.data.type }}" data-session="{{ n.data.session }}">
+  <{{ headingTag or "h3" }}><a href="{{ n.url }}">{{ n.data.title }}</a></{{ headingTag or "h3" }}>
+  <p><span class="notice-type">{{ n.data.type }}</span><time datetime="{{ n.data.publish_at | isoDate }}">{{ n.data.publish_at | displayDate }}</time><span>{{ prog.data.short if prog else "All programs" }}</span><span>Session {{ n.data.session }}</span>{% if n.data.file %}<span>PDF {{ n.data.file | fileSize }}</span>{% endif %}</p>
+</li>
