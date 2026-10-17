@@ -1,0 +1,28 @@
+---
+layout: page.njk
+crumbs: [{ label: Programs, url: /programs/ }]
+---
+{#- Program page (Doc 06 Program checklist): name and status → key facts → Enquire → overview → last updated. #}
+{%- set intake = intakes | intakeFor(slug) -%}
+{%- set status = intake | intakeStatus(build.today) -%}
+<h1>{{ title }}</h1>
+<p class="program-status">
+  {%- if status %}<span class="badge badge-{{ status.key }}">{{ status.label }}</span>{% endif %}
+  {%- if not confirmed %} <span class="sample-tag">SAMPLE, OD-07</span>{% endif %}
+</p>
+<section class="key-facts" aria-labelledby="key-facts">
+  <h2 id="key-facts">Key facts</h2>
+  <dl>
+    <dt>Duration</dt><dd>{{ duration | tbc("duration", "OD-07") | safe }}</dd>
+    <dt>Eligibility</dt><dd>{{ eligibility | tbc("eligibility", "OD-07") | safe }}</dd>
+    <dt>Fee per year</dt><dd>{% if fee_per_year_pkr %}{{ fee_per_year_pkr | pkr }}{% else %}Contact admissions for current fees{% endif %}</dd>
+    <dt>Affiliation</dt><dd>{{ affiliation | tbc("affiliating university", "OD-08") | safe }}</dd>
+    <dt>Intake</dt><dd>{% if intake %}{{ intake.session }}: {{ intake.opens_on | displayDate }} to {{ intake.closes_on | displayDate }}{% if intake.sample %} <span class="sample-tag">SAMPLE</span>{% endif %}{% else %}{% tbc "intake dates", "OD-07" %}{% endif %}</dd>
+  </dl>
+</section>
+<p><a class="btn btn-primary" href="/enquire/?program={{ slug }}">Enquire about {{ short or title }}</a></p>
+<div class="prose">
+  <h2>Overview</h2>
+  {{ content | safe }}
+</div>
+<p class="last-updated">Last updated {{ last_updated | displayDate }}</p>

@@ -1,0 +1,10 @@
+---
+layout: page.njk
+crumbs: [{ label: Notices, url: /notices/ }]
+---
+<h1>{{ title }}</h1>
+<p class="muted">{{ type }} · <time datetime="{{ publish_at | isoDate }}">{{ publish_at | displayDate }}</time>{% if sample %} · <span class="sample-tag">SAMPLE</span>{% endif %}</p>
+{%- if file %}
+<p><a class="btn btn-secondary" href="{{ file }}">Open the PDF ({{ file | fileSize }})</a></p>
+{%- endif %}
+<div class="prose">{{ content | safe }}</div>

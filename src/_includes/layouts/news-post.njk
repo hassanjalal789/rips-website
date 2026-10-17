@@ -1,0 +1,7 @@
+---
+layout: page.njk
+crumbs: [{ label: News & Events, url: /news/ }]
+---
+<h1>{{ title }}</h1>
+<p class="muted"><time datetime="{{ date | isoDate }}">{{ date | displayDate }}</time>{% if sample %} · <span class="sample-tag">SAMPLE</span>{% endif %}</p>
+<div class="prose">{{ content | safe }}</div>

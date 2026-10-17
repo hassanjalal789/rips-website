@@ -1,0 +1,181 @@
+---
+# Home (Doc 05 page inventory; Doc 06 Home checklist and wireframe; motion storyboard S1–S4).
+# Content order: header → headline → Programs / Admissions / Enquire → admissions status →
+# "Your path at RIPS" → program cards (max 6) → latest notices (max 5) → why RIPS (verified only)
+# → contact strip → footer. The hero's buttons stay on the first screen of a 360 × 640 phone.
+layout: base.njk
+permalink: /
+title: Health-science, computing and business degrees in Sheikhupura
+description: "Radiant Institute of Professional Studies (RIPS), Sheikhupura: health-science, computing and business programs, admissions, notices and how to enquire."
+bodyClass: home
+pageScript: home
+preload:
+  - { href: /assets/img/study/stop-0-wide.webp, media: "(min-aspect-ratio: 11/10)" }
+  - { href: /assets/img/study/stop-0-tall.webp, media: "(max-aspect-ratio: 11/10)" }
+chapters:
+  - title: Find your program
+    text: Start with what you want to do. Every program page puts the duration, eligibility, fee and intake in one place.
+    link: { label: Browse programs, url: /programs/ }
+  - title: Learn in class
+    text: Learn from your teachers in the classroom, then take your notes further on your own and with your class.
+    link: { label: How admissions work, url: /admissions/ }
+  - title: Practise in the lab
+    text: The campus has medical and science labs and a computer lab, so practical work sits next to the theory.
+    link: { label: See the campus, url: "#campus" }
+  - title: Study together
+    text: The library and the student lounge give you room to read, revise and work through problems with friends.
+    link: { label: Latest notices, url: /notices/ }
+  - title: Graduate ready for what is next
+    text: Finish your program with the knowledge and the practice to take your next step.
+    link: { label: Enquire about admissions, url: /enquire/ }
+---
+{%- set intake = intakes[0] -%}
+{%- set status = intake | intakeStatus(build.today) -%}
+{%- set programs = collections.programs | activePrograms -%}
+{%- set notices = collections.notices | currentNotices(build.today) -%}
+
+<div class="journey on-dark" data-journey>
+  {#- One sticky stage behind the hero and the chapters. The 3D scene replaces the posters on capable
+      devices (src/scripts/home.js); the posters are stills of the same scene. #}
+  <div class="journey-stage" aria-hidden="true" data-posters="/assets/img/study/stop-{stop}-{crop}.webp">
+    <picture class="poster is-shown" data-poster>
+      <source media="(max-aspect-ratio: 11/10)" srcset="/assets/img/study/stop-0-tall.webp" width="720" height="1400">
+      <img src="/assets/img/study/stop-0-wide.webp" alt="" width="1600" height="1000" fetchpriority="high">
+    </picture>
+    <canvas class="stage-canvas"></canvas>
+  </div>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-inner">
+      <p class="eyebrow hero-in hero-in-0">{{ settings.name }}</p>
+      <h1 id="hero-title">Health-science, computing and business degrees <em>in&nbsp;{{ settings.place }}</em></h1>
+      <p class="hero-lead hero-in hero-in-1">{{ settings.tagline }}.</p>
+      <div class="btn-row hero-in hero-in-2">
+        <a class="btn btn-primary btn-lg" href="/enquire/">Enquire</a>
+        <a class="btn btn-ghost btn-lg" href="/programs/">Programs</a>
+        <a class="btn btn-link" href="/admissions/">Admissions <span aria-hidden="true">→</span></a>
+      </div>
+      {%- if status %}
+      <p class="hero-status hero-in hero-in-3">
+        <span class="badge badge-{{ status.key }}">Admissions {{ status.label | lower }}</span>
+        <span>{{ intake.session }} · closes {{ intake.closes_on | displayDate }}</span>
+        {%- if intake.sample %} <span class="sample-tag">SAMPLE dates, OD-07</span>{% endif %}
+      </p>
+      {%- endif %}
+    </div>
+    <a class="scroll-cue" href="#path"><span>Your path at RIPS</span></a>
+  </section>
+
+  <section id="path" class="chapters" aria-labelledby="path-title">
+    <h2 id="path-title" class="visually-hidden">Your path at RIPS</h2>
+    {%- for c in chapters %}
+    <article class="chapter" aria-labelledby="chapter-{{ loop.index }}">
+      <div class="wrap">
+        <div class="chapter-card" data-reveal>
+          <p class="chapter-num"><span class="chapter-kicker">Your path at RIPS</span> <span>{{ "0" + loop.index }}</span><span class="chapter-of">/ 0{{ chapters.length }}</span></p>
+          <h3 id="chapter-{{ loop.index }}">{{ c.title }}</h3>
+          <p>{{ c.text }}</p>
+          <a class="chapter-link" href="{{ c.link.url }}">{{ c.link.label }} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </article>
+    {%- endfor %}
+  </section>
+</div>
+
+<section class="band band-light" aria-labelledby="programs-title">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div>
+        <p class="eyebrow">Programs</p>
+        <h2 id="programs-title">Choose your program</h2>
+      </div>
+      <a class="see-all" href="/programs/">See all programs <span aria-hidden="true">→</span></a>
+    </div>
+    <ol class="program-grid" data-reveal-stagger>
+      {%- for p in programs.slice(0, 6) %}
+      {%- set pstatus = (intakes | intakeFor(p.data.slug)) | intakeStatus(build.today) %}
+      <li>
+        <article class="program-card" data-tilt>
+          <p class="program-num" aria-hidden="true">{{ "0" + loop.index }}</p>
+          <h3><a href="/programs/{{ p.data.slug }}/">{{ p.data.title }}</a></h3>
+          <p class="card-meta">{{ p.data.field }} · {{ p.data.level }}</p>
+          <p class="program-foot">
+            {%- if pstatus %}<span class="badge badge-{{ pstatus.key }}">{{ pstatus.label }}</span>{% endif %}
+            {%- if not p.data.confirmed %} <span class="sample-tag">SAMPLE, OD-07</span>{% endif %}
+            <span class="program-go" aria-hidden="true">→</span>
+          </p>
+        </article>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="notices-title">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div>
+        <p class="eyebrow">Notice board</p>
+        <h2 id="notices-title">Latest notices</h2>
+      </div>
+      <a class="see-all" href="/notices/">All notices <span aria-hidden="true">→</span></a>
+    </div>
+    {%- if notices.length %}
+    <ul class="notice-list" data-reveal-stagger>
+      {%- for n in notices.slice(0, 5) %}
+      <li class="notice-row">
+        <h3><a href="{{ n.url }}">{{ n.data.title }}</a></h3>
+        <p><span class="notice-type">{{ n.data.type }}</span><time datetime="{{ n.data.publish_at | isoDate }}">{{ n.data.publish_at | displayDate }}</time>{% if n.data.file %}<span>PDF {{ n.data.file | fileSize }}</span>{% endif %}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- else %}
+    <p class="empty-state">There are no current notices. <a href="/notices/archive/">See the archive</a>.</p>
+    {%- endif %}
+  </div>
+</section>
+
+{#- Why RIPS: verified facts only (Doc 06 Home checklist). The facilities are the ones the RIPS campus
+    tour video shows; affiliation waits for OD-08. #}
+<section id="campus" class="band band-navy on-dark" aria-labelledby="campus-title">
+  <div class="wrap campus-grid">
+    <div data-reveal>
+      <p class="eyebrow">On campus</p>
+      <h2 id="campus-title">Labs, classrooms and a library <em>under one roof</em></h2>
+      <p>The RIPS campus tour shows the main building and its facilities:</p>
+      <ul class="facility-list">
+        <li>Medical and science labs</li>
+        <li>Classrooms and a computer lab</li>
+        <li>A library</li>
+        <li>A student lounge</li>
+        <li>A separate Admission Office</li>
+      </ul>
+      <p>Affiliation: {% tbc "affiliating university and approvals", "OD-08" %}</p>
+      <p><a class="btn btn-ghost" href="https://www.youtube.com/watch?v=ccsk4uAyFLM" rel="noopener">Watch the campus tour <span class="small">(opens YouTube)</span></a></p>
+    </div>
+    <figure class="campus-photo" data-reveal>
+      <img src="/assets/img/campus/front-aerial-720.webp" srcset="/assets/img/campus/front-aerial-720.webp 720w, /assets/img/campus/front-aerial-1200.webp 1200w" sizes="(min-width: 1024px) 40rem, 100vw" width="1200" height="580" alt="The RIPS main building from the air: a white portico with the institute's sign, a small dome, red-brick bays and a large green-grey roof." loading="lazy">
+      <figcaption>From the RIPS campus tour video. {% tbc "commissioned photography", "OD-12" %}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="contact-strip" aria-labelledby="contact-title">
+  <div class="wrap">
+    <h2 id="contact-title" class="visually-hidden">Contact admissions</h2>
+    <ul>
+      <li><strong>Call</strong><br>{{ settings.phone | tbc("admissions phone", "OD-14") | safe }}</li>
+      <li><strong>WhatsApp</strong><br>{{ settings.whatsapp | tbc("WhatsApp number", "OD-14") | safe }}</li>
+      <li><strong>Visit</strong><br>{{ settings.address | tbc("verified address and map link", "OD-14") | safe }}</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta-band" aria-labelledby="cta-title">
+  <div class="wrap cta-inner" data-reveal>
+    <h2 id="cta-title">Questions about admissions?</h2>
+    <p>Send a short enquiry and the admissions office will call you back.</p>
+    <a class="btn btn-navy btn-lg" href="/enquire/">Enquire</a>
+  </div>
+</section>

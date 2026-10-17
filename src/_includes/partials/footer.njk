@@ -1,0 +1,45 @@
+<footer class="site-footer on-dark">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <img src="/assets/img/crest.webp" alt="" width="44" height="43" loading="lazy">
+          <span class="brand-name"><strong>RIPS</strong><span>{{ settings.name }}</span></span>
+        </a>
+        <p class="footer-tagline">{{ settings.tagline }}</p>
+        <p>{{ settings.address | tbc("verified address", "OD-14") | safe }}</p>
+      </div>
+      <div>
+        <h2>Study</h2>
+        <ul>
+          <li><a href="/programs/">Programs</a></li>
+          <li><a href="/admissions/">Admissions</a></li>
+          <li><a href="/admissions/fees/">Fees</a></li>
+          <li><a href="/notices/">Notices</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>About</h2>
+        <ul>
+          {%- for item in nav.about %}
+          <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+          {%- endfor %}
+          <li><a href="/news/">News &amp; Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li>Phone: {{ settings.phone | tbc("admissions phone", "OD-14") | safe }}</li>
+          <li>WhatsApp: {{ settings.whatsapp | tbc("WhatsApp number", "OD-14") | safe }}</li>
+          <li>Email: {{ settings.email | tbc("admissions email", "OD-04") | safe }}</li>
+          <li>Office hours: {{ settings.office_hours | tbc("office hours", "OD-14") | safe }}</li>
+          <li><a href="/contact/">Contact page</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>© {{ build.year }} {{ settings.name }}, {{ settings.place }}. <a href="/privacy/">Privacy</a></p>
+    </div>
+  </div>
+</footer>

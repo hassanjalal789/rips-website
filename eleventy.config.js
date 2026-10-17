@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
+import * as esbuild from 'esbuild';
 import { intakeStatus, noticeState, validateContent } from './lib/content-rules.js';
 
 export default function (eleventyConfig) {
@@ -15,6 +16,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'functions/lib/validate.js': 'assets/js/validate.js' });
   eleventyConfig.addWatchTarget('./functions/lib/');
   eleventyConfig.addWatchTarget('./lib/');
+  eleventyConfig.addWatchTarget('./src/scripts/');
 
   // ----- Collections ---------------------------------------------------------------------------
   const byOrder = (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99) || a.data.title.localeCompare(b.data.title);
@@ -78,8 +80,23 @@ export default function (eleventyConfig) {
 
   // ----- Build hooks ---------------------------------------------------------------------------
   // Fail the build on missing required fields or unknown program codes (Doc 08 Q12, Q16).
-  eleventyConfig.on('eleventy.before', () => {
+  eleventyConfig.on('eleventy.before', async () => {
     validateContent('src');
+    // Browser scripts (src/scripts) are bundled and minified once. home.js loads the 3D chunk
+    // (three.js and the scene) itself, only on capable devices (CR-01).
+    fs.rmSync('_site/assets/js/chunks', { recursive: true, force: true }); // no stale hashed chunks
+    await esbuild.build({
+      entryPoints: { site: 'src/scripts/site.js', home: 'src/scripts/home.js' },
+      outdir: '_site/assets/js',
+      bundle: true,
+      splitting: true,
+      format: 'esm',
+      target: 'es2020',
+      minify: true,
+      chunkNames: 'chunks/[name]-[hash]',
+      legalComments: 'none',
+      logLevel: 'warning',
+    });
   });
 
   // Give the enquiry function the current program codes and city list.

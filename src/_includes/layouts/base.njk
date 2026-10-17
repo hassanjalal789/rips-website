@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="{{ settings.lang }}" dir="{{ settings.dir }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.url == "/" %}{{ settings.name }}, {{ settings.place }}{% else %}{{ title }} | RIPS {{ settings.place }}{% endif %}</title>
+<meta name="description" content="{{ description }}">
+{%- if noindex %}
+<meta name="robots" content="noindex">
+{%- endif %}
+<link rel="canonical" href="{{ settings.url }}{{ page.url }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ settings.url }}{{ page.url }}">
+<meta property="og:image" content="{{ settings.url }}/assets/img/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d2740">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+{%- for p in preload %}
+<link rel="preload" as="image" href="{{ p.href }}"{% if p.media %} media="{{ p.media }}"{% endif %} fetchpriority="high">
+{%- endfor %}
+<link rel="stylesheet" href="/assets/css/main.css">
+<script>document.documentElement.classList.add('js')</script>
+<script type="module" src="/assets/js/site.js"></script>
+{%- if pageScript %}
+<script type="module" src="/assets/js/{{ pageScript }}.js"></script>
+{%- endif %}
+</head>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+<a class="skip-link" href="#main">Skip to content</a>
+{% include "partials/header.njk" %}
+<main id="main" tabindex="-1">
+{{ content | safe }}
+</main>
+{% include "partials/footer.njk" %}
+</body>
+</html>
