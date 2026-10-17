@@ -38,5 +38,7 @@ node docs/3d/campus-to-glb.mjs docs/3d/campus-sketchup-export.json src/assets/3d
 | `campus-placeholder.glb` | ~55 KB | ≤ ~1 MB compressed |
 | `hero-scene.js` (needs three.js, bundled once with the explorer) | ~8 KB source | loaded after first paint, capable devices only |
 
-Hotspots live in `src/assets/3d/campus-hotspots.json`; each `summary` is a visible
+Hotspots live in `src/assets/3d/campus-hotspots.json`. Their labels follow the facilities named in
+the RIPS campus tour video (YouTube, 1 Nov 2025; `facts_source` in the file), which also gives the
+site as 12 kanal (about 6,000 m²). Where each facility sits is unknown, so each `summary` is a visible
 `[TO CONFIRM — …]` placeholder.

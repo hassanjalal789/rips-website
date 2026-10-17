@@ -1,37 +1,53 @@
 {
   "placeholder": true,
-  "note": "PLACEHOLDER. The model is simple massing made to show how the Campus Explorer works. Building positions, sizes and uses are not the real RIPS campus and must be replaced before launch.",
+  "note": "PLACEHOLDER. The buildings are simple massing, not the real RIPS campus. The video below says the campus is 12 kanal (about 6,000 m²) and names its facilities; where each one sits is not known yet.",
   "model": "/assets/3d/campus-placeholder.glb",
   "units": "metres, Y up, site centre at the origin",
-  "camera": { "position": [62, 46, 78], "target": [0, 3, 2] },
+  "camera": {
+    "position": [62, 46, 78],
+    "target": [0, 3, 2]
+  },
   "hotspots": [
     {
       "id": "labs",
-      "label": "Labs",
+      "label": "Medical and science labs",
       "building": "Main_Block_Labs",
-      "summary": "[TO CONFIRM — which labs RIPS has and where they are]",
-      "position": [-2, 11, -0.4]
+      "summary": "[TO CONFIRM — where the labs are on campus]",
+      "position": [-2, 11, -0.4],
+      "named_in_tour": true
     },
     {
       "id": "library",
       "label": "Library",
       "building": "Library_Wing",
-      "summary": "[TO CONFIRM — library location, size and opening hours]",
-      "position": [22, 7, 5.6]
+      "summary": "[TO CONFIRM — whether RIPS has a library and where; the campus tour does not mention one]",
+      "position": [22, 7, 5.6],
+      "named_in_tour": false
     },
     {
       "id": "classrooms",
-      "label": "Classrooms",
+      "label": "Classrooms and multimedia labs",
       "building": "Classroom_Block",
-      "summary": "[TO CONFIRM — classroom block and what is taught there]",
-      "position": [-20, 6, 21.6]
+      "summary": "[TO CONFIRM — where the classrooms are on campus]",
+      "position": [-20, 6, 21.6],
+      "named_in_tour": true
     },
     {
       "id": "admissions",
       "label": "Admissions office",
       "building": "Admissions_Entrance",
       "summary": "[TO CONFIRM — admissions office location and hours, OD-14]",
-      "position": [-12, 5.4, 7.4]
+      "position": [-12, 5.4, 7.4],
+      "named_in_tour": false
+    },
+    {
+      "id": "lounge",
+      "label": "Student lounge",
+      "building": "Main_Block_Labs",
+      "summary": "[TO CONFIRM — where the student lounge is on campus]",
+      "named_in_tour": true,
+      "position": [4, 3, -0.4]
     }
-  ]
+  ],
+  "facts_source": "RIPS campus tour video, Radiant University Sheikhupura YouTube channel, 1 Nov 2025 (https://www.youtube.com/watch?v=ccsk4uAyFLM)"
 }
