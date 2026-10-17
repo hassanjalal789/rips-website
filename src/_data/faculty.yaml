@@ -1,0 +1,15 @@
+# Faculty members (Doc 08 "Faculty member"). SAMPLE entries only until the content editor adds approved profiles.
+- name: "SAMPLE — Faculty member name"
+  designation: "[TO CONFIRM — designation]"
+  qualification: "[TO CONFIRM — qualification]"
+  department: Pharmacy
+  photo: null
+  order: 1
+  sample: true
+- name: "SAMPLE — Faculty member name"
+  designation: "[TO CONFIRM — designation]"
+  qualification: "[TO CONFIRM — qualification]"
+  department: Physical therapy
+  photo: null
+  order: 2
+  sample: true

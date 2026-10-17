@@ -1,0 +1,27 @@
+# Site settings (Doc 08 "Site settings"): used on every page and in auto-replies. Edit once, shown everywhere.
+# Values in [TO CONFIRM …] form are placeholders; replace them before launch.
+name: Radiant Institute of Professional Studies   # official spelling pending OD-09
+short_name: RIPS
+place: Sheikhupura
+tagline: Empowering you to thrive                  # from the logo artwork
+url: https://rips.edu.pk
+lang: en
+dir: ltr                                           # rtl for Urdu pages later (OD-11)
+
+# Contact details (OD-14: admissions WhatsApp number, phone and office hours).
+# The *_link values are dummy numbers so links work in development; never publish them.
+phone: null
+phone_link: "+920000000000"
+whatsapp: null
+whatsapp_link: "920000000000"
+whatsapp_message: "Hello RIPS, I would like information about admissions."
+email: null                                        # mailbox depends on OD-04
+email_link: admissions@example.com
+address: null                                      # verified address needed (PRD Q100, FEAT-005)
+office_hours: null
+map_link: null                                     # Google Maps link once the address is verified
+
+social: []                                         # e.g. { label: Facebook, url: https://… } once accounts are confirmed
+
+# Affiliation logos in the footer (Doc 05 Q08) wait for OD-08.
+affiliation_logos: []

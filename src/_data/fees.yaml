@@ -1,0 +1,19 @@
+# Fee schedules (Doc 08 "Fee schedule"). Amounts are shown exactly as entered; no calculations (SRS E-07).
+# All amounts are null until the Principal and admissions confirm them (OD-07). Null shows a visible placeholder.
+# Changes create a new version in Git history; record approved_by and approved_on with every change.
+- &fee
+  program: pharm-d
+  session: "2026–27"
+  sample: true
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: null, per: once }
+    - { label: Tuition fee, amount_pkr: null, per: year }
+    - { label: Examination and registration fees, amount_pkr: null, per: year }
+- { <<: *fee, program: dpt }
+- { <<: *fee, program: nursing }
+- { <<: *fee, program: allied-health-sciences }
+- { <<: *fee, program: computer-science }
+- { <<: *fee, program: business-studies }
