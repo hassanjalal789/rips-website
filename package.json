@@ -1,0 +1,28 @@
+{
+  "name": "rips-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "rips.edu.pk: website of Radiant Institute of Professional Studies, Sheikhupura. Static Eleventy site plus one serverless enquiry function.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "eleventy",
+    "test": "node --test tests/",
+    "check": "npm run build && node scripts/check.mjs",
+    "check:html": "node scripts/check-html.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:a11y": "node scripts/check-a11y.mjs",
+    "check:weight": "node scripts/check-weight.mjs",
+    "screenshots": "node scripts/screenshots.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.7",
+    "axe-core": "4.10.3",
+    "html-validate": "9.5.5",
+    "js-yaml": "4.3.2",
+    "playwright": "1.56.1"
+  }
+}
