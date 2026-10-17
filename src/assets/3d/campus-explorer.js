@@ -40,7 +40,8 @@ export async function mountCampus(container, { THREE, GLTFLoader, OrbitControls 
   campus.traverse((o) => {
     if (!o.isMesh) return;
     o.material = o.material.clone(); // own copy, so one building can glow on its own
-    o.castShadow = !/Ground|Paving/.test(o.material.name);
+    o.userData.emissive = o.material.emissive.getHex();
+    o.castShadow = !/Ground|Pav/.test(o.material.name);
     o.receiveShadow = true;
   });
   scene.add(campus);
@@ -101,7 +102,7 @@ export async function mountCampus(container, { THREE, GLTFLoader, OrbitControls 
     const s = spots.find((x) => x.id === id);
     if (!s) return;
     touched = true;
-    for (const m of selected ? buildingMeshes(selected.building) : []) m.material.emissive.setHex(0x000000);
+    for (const m of selected ? buildingMeshes(selected.building) : []) m.material.emissive.setHex(m.userData.emissive);
     selected = s;
     for (const m of buildingMeshes(s.building)) if (!m.material.transparent) m.material.emissive.setHex(0x3a2a08);
     const toTarget = s.point.clone().setY(Math.max(3, s.point.y * 0.6));
