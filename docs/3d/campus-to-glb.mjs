@@ -1,8 +1,8 @@
-// Turns the SketchUp placeholder campus (exported as triangles by the SketchUp session, see
+// Turns the SketchUp campus model (exported as triangles by the SketchUp session, see
 // README.md) into the compressed GLB the Campus Explorer loads. Dev-only: needs `three` and
 // `@gltf-transform/{core,extensions,functions}` installed wherever you run it.
 //
-//   node docs/3d/campus-to-glb.mjs docs/3d/campus-sketchup-export.json src/assets/3d/campus-placeholder.glb
+//   node docs/3d/campus-to-glb.mjs docs/3d/campus-sketchup-export.json src/assets/3d/campus.glb
 //
 // SketchUp is Z-up in inches; glTF is Y-up in metres. The site's centre goes to the origin.
 import fs from 'node:fs';
