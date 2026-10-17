@@ -160,6 +160,9 @@ main:focus { outline: none; }
 .btn-text { background: none; border: 0; padding-inline: 0; color: var(--c-link); text-decoration: underline; font-weight: 600; }
 .btn[disabled], .btn[aria-disabled="true"] { opacity: .7; cursor: progress; }
 .btn-block { display: flex; inline-size: 100%; }
+/* A trailing "(opens …)" or "(PDF, …)" note wraps under the label instead of becoming a second column. */
+.btn:has(> .small) { flex-wrap: wrap; column-gap: .35em; row-gap: 0; }
+.btn > .small { font-weight: 400; }
 .btn-row { display: flex; flex-wrap: wrap; gap: var(--s3); margin-block: var(--s4); }
 .header-enquire { padding-inline: var(--s3); }
 .spinner { inline-size: 1em; block-size: 1em; border: 2px solid currentColor; border-inline-end-color: transparent; border-radius: 50%; animation: spin .8s linear infinite; }

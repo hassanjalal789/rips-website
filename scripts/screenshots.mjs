@@ -17,6 +17,9 @@ for (const width of [360, 1366]) {
   for (const url of PAGES) {
     await page.goto(`http://127.0.0.1:${port}${url}${url === '/' ? '?3d=0' : ''}`, { waitUntil: 'networkidle' });
     const name = (url.replace(/^\/|\/$/g, '').replace(/[/.]/g, '-') || 'home') + `-${width}.png`;
+    // The WhatsApp button is pinned to the bottom of the screen; a full-page capture would paint it
+    // over the middle of the page, so it is left out of these shots.
+    await page.evaluate(() => document.querySelectorAll('.whatsapp-float').forEach((el) => { el.style.display = 'none'; }));
     await page.screenshot({ path: path.join(out, name), fullPage: true });
   }
   await context.close();
