@@ -1,0 +1,109 @@
+---
+layout: page.njk
+permalink: /admissions/
+title: Admissions
+crumbs: []
+description: "How to apply to RIPS Sheikhupura: admission dates, documents, fees, scholarships and answers to common questions."
+last_updated: 2026-10-17
+---
+{#- Admissions (Doc 05 tree: How to apply · Dates · Documents · Scholarships · FAQ; SRS D-04: steps,
+    documents, dates, fee table, scholarships, last updated; Doc 06 Q06: steps, deadline, cost →
+    download the prospectus or Enquire). Steps, documents and scholarships wait for admissions (OD-07). #}
+{%- set intake = intakes[0] -%}
+{%- set status = intake | intakeStatus(build.today) -%}
+<h1>Admissions</h1>
+<p class="lead">How and when to apply, what to bring and what it costs.</p>
+{%- if status %}
+<p class="admissions-status">
+  <span class="badge badge-{{ status.key }}">Admissions {{ status.label | lower }}</span>
+  <span>{{ intake.session }}: closes {{ intake.closes_on | displayDate }}</span>
+  {%- if intake.sample %} <span class="sample-tag">SAMPLE dates, OD-07</span>{% endif %}
+</p>
+{%- endif %}
+<div class="btn-row">
+  <a class="btn btn-primary" href="/enquire/">Enquire</a>
+  {%- if downloads.prospectus.file %}
+  <a class="btn btn-secondary" href="{{ downloads.prospectus.file }}">Download the prospectus <span class="small">(PDF, {{ downloads.prospectus.file | fileSize }}{% if downloads.prospectus.sample %}, SAMPLE{% endif %})</span></a>
+  {%- endif %}
+</div>
+
+<nav class="local-nav" aria-label="On this page">
+  <ul>
+    {%- for item in nav.admissions %}
+    <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+    {%- endfor %}
+  </ul>
+</nav>
+
+<div class="prose">
+  <section id="how-to-apply" aria-labelledby="how-title">
+    <h2 id="how-title">How to apply</h2>
+    <ol class="steps">
+      <li><strong>Choose your program.</strong> Each <a href="/programs/">program page</a> lists its duration, eligibility, fee and intake.</li>
+      <li><strong>Ask us anything.</strong> <a href="/enquire/">Send an enquiry</a> and the admissions office will call you back, or WhatsApp or call admissions.</li>
+      <li>{% tbc "the official application steps, from the application form to the fee deposit", "OD-07" %}</li>
+    </ol>
+  </section>
+
+  <section id="dates" aria-labelledby="dates-title">
+    <h2 id="dates-title">Dates</h2>
+    {%- if intakes.length %}
+    <table class="fee-table">
+      <caption class="visually-hidden">Admission dates</caption>
+      <thead>
+        <tr><th scope="col">Session</th><th scope="col">Applications open</th><th scope="col">Applications close</th><th scope="col">Status</th></tr>
+      </thead>
+      <tbody>
+        {%- for i in intakes %}
+        {%- set istatus = i | intakeStatus(build.today) %}
+        <tr>
+          <th scope="row">{{ i.session }}{% if i.sample %} <span class="sample-tag">SAMPLE</span>{% endif %}</th>
+          <td data-label="Open"><time datetime="{{ i.opens_on | isoDate }}">{{ i.opens_on | displayDate }}</time></td>
+          <td data-label="Close"><time datetime="{{ i.closes_on | isoDate }}">{{ i.closes_on | displayDate }}</time></td>
+          <td data-label="Status">{% if istatus %}<span class="badge badge-{{ istatus.key }}">{{ istatus.label }}</span>{% endif %}</td>
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+    {%- else %}
+    <p>{% tbc "admission dates for the next intake", "OD-07" %}</p>
+    {%- endif %}
+    <p>Merit lists and other admission notices are posted on the <a href="/notices/">notice board</a>.</p>
+  </section>
+
+  <section id="documents" aria-labelledby="documents-title">
+    <h2 id="documents-title">Documents to bring</h2>
+    <p>{% tbc "the list of documents needed for admission", "OD-07" %}</p>
+  </section>
+
+  <section id="fees" aria-labelledby="fees-title">
+    <h2 id="fees-title">Fees</h2>
+    <p>The <a href="/admissions/fees/">fee structure</a> lists the fees for every program, in Pakistani rupees.</p>
+    <p class="muted">Fees may change. Fee structure last updated {{ (fees[0].approved_on or last_updated) | displayDate }}.</p>
+    <p>RIPS never asks for fees to be paid into a personal account. {% tbc "official bank details for fee deposit, if they are shown here", "OD-18" %}</p>
+  </section>
+
+  <section id="scholarships" aria-labelledby="scholarships-title">
+    <h2 id="scholarships-title">Scholarships</h2>
+    <p>{% tbc "scholarships and fee concessions, with who can apply", "OD-07" %}</p>
+  </section>
+
+  <section id="faq" class="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Questions</h2>
+    <details>
+      <summary>Can I ask a question before I apply?</summary>
+      <div><p>Yes. <a href="/enquire/">Send an enquiry</a> with your phone number and the admissions office will call you back. You can also WhatsApp or call admissions; the numbers are on the <a href="/contact/">Contact page</a>.</p></div>
+    </details>
+    <details>
+      <summary>Where do I find my merit list?</summary>
+      <div><p>Merit lists are posted on the <a href="/notices/">notice board</a>. Choose your program to see only its notices.</p></div>
+    </details>
+    <details>
+      <summary>Which programs can I study?</summary>
+      <div><p>See the <a href="/programs/">programs list</a>. {% tbc "final program list and names", "OD-07" %}</p></div>
+    </details>
+    <p>{% tbc "the questions admissions hears most often, with approved answers", "OD-13" %}</p>
+  </section>
+</div>
+
+<p class="last-updated">Last updated {{ last_updated | displayDate }}</p>

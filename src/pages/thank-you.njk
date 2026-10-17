@@ -1,0 +1,19 @@
+---
+layout: page.njk
+permalink: /thank-you/
+title: Thank you, we have your enquiry
+noindex: true
+description: "Your enquiry has reached the RIPS admissions office."
+eleventyExcludeFromCollections: true
+---
+{#- Thank-you (SRS D-04: confirmation, what happens next, WhatsApp link; Back to programs. Doc 06 Q25:
+    the page title announces success). Not indexed and not linked from the menu (Doc 05). #}
+<h1>Thank you, we have your enquiry</h1>
+<p class="lead">The admissions office will call you back on the number you gave.</p>
+<h2>What happens next</h2>
+<ol class="steps">
+  <li>Admissions reads your enquiry.</li>
+  <li>They call or WhatsApp you on the number you gave. If you added an email address, you will also get a copy by email.</li>
+</ol>
+<p>Can’t wait? <a href="https://wa.me/{{ settings.whatsapp_link }}?text={{ settings.whatsapp_message | urlencode }}" rel="noopener">WhatsApp admissions <span class="small">(opens WhatsApp)</span></a>.</p>
+<p class="btn-row"><a class="btn btn-secondary" href="/programs/">Back to programs</a></p>

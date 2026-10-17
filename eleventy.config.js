@@ -1,5 +1,6 @@
 // Eleventy configuration (ADR-02). Content model follows Doc 08: programs, notices and news are
 // Markdown files with front matter; intakes, fee schedules, faculty and site settings are YAML data.
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
@@ -12,8 +13,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
   eleventyConfig.addPassthroughCopy({ 'src/files': 'files' });
   eleventyConfig.addPassthroughCopy({ 'src/assets/img/favicon.png': 'favicon.png' });
-  // The browser form uses the same validation module as the enquiry function.
-  eleventyConfig.addPassthroughCopy({ 'functions/lib/validate.js': 'assets/js/validate.js' });
   eleventyConfig.addWatchTarget('./functions/lib/');
   eleventyConfig.addWatchTarget('./lib/');
   eleventyConfig.addWatchTarget('./src/scripts/');
@@ -37,6 +36,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('noticeState', (notice, today) => noticeState(notice, today));
   eleventyConfig.addFilter('currentNotices', (items, today) => items.filter((n) => noticeState(n.data, today) === 'current'));
   eleventyConfig.addFilter('archivedNotices', (items, today) => items.filter((n) => noticeState(n.data, today) === 'archived'));
+  eleventyConfig.addFilter('sameProgramSession', (items, program, session, url) =>
+    items.filter((n) => n.url !== url && n.data.program === program && n.data.session === session),
+  );
+  eleventyConfig.addFilter('latestExcept', (items, url, n = 3) => items.filter((i) => i.url !== url).slice(0, n));
   eleventyConfig.addFilter('forProgram', (items, slug) => items.filter((n) => n.data.program === slug || n.data.program === 'all'));
   eleventyConfig.addFilter('activePrograms', (items) => items.filter((p) => p.data.status !== 'Withdrawn'));
   eleventyConfig.addFilter('sameField', (items, program) =>
@@ -67,6 +70,8 @@ export default function (eleventyConfig) {
     return bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
   });
   eleventyConfig.addFilter('pkr', (n) => (n == null ? null : `Rs ${Number(n).toLocaleString('en-PK')}`));
+  eleventyConfig.addFilter('cspHash', (code) => `sha256-${crypto.createHash('sha256').update(code).digest('base64')}`);
+  eleventyConfig.addFilter('pluck', (items, key) => items.map((i) => key.split('.').reduce((o, k) => o?.[k], i)));
   eleventyConfig.addFilter('json', (v) => JSON.stringify(v).replace(/</g, '\\u003c'));
   eleventyConfig.addFilter('initials', (title) =>
     String(title).split(/[\s(-]+/).filter((w) => /^[A-Za-z]/.test(w)).slice(0, 2).map((w) => w[0].toUpperCase()).join(''),
@@ -84,10 +89,17 @@ export default function (eleventyConfig) {
     validateContent('src');
     // Browser scripts (src/scripts) are bundled and minified once. home.js loads the 3D chunk
     // (three.js and the scene) itself, only on capable devices (CR-01).
-    fs.rmSync('_site/assets/js/chunks', { recursive: true, force: true }); // no stale hashed chunks
+    const jsDir = path.join(eleventyConfig.directories.output, 'assets/js');
+    fs.rmSync(path.join(jsDir, 'chunks'), { recursive: true, force: true }); // no stale hashed chunks
     await esbuild.build({
-      entryPoints: { site: 'src/scripts/site.js', home: 'src/scripts/home.js' },
-      outdir: '_site/assets/js',
+      // The enquiry form bundles functions/lib/validate.js, so browser and function share one set of rules.
+      entryPoints: {
+        site: 'src/scripts/site.js',
+        home: 'src/scripts/home.js',
+        filters: 'src/scripts/filters.js',
+        enquiry: 'src/scripts/enquiry.js',
+      },
+      outdir: jsDir,
       bundle: true,
       splitting: true,
       format: 'esm',

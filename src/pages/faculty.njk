@@ -1,0 +1,39 @@
+---
+layout: page.njk
+permalink: /faculty/
+title: Faculty
+crumbs: [{ label: About, url: /about/ }]
+description: "Teaching staff at RIPS Sheikhupura by department, with their designations and qualifications."
+---
+{#- Faculty (Doc 05: About › Faculty; Doc 08 "Faculty member"). A missing photo shows initials. #}
+<h1>Faculty</h1>
+{% include "partials/about-nav.njk" %}
+{%- set members = faculty | sort(false, false, "order") %}
+{%- if members | selectattr("sample") | length %}
+<p><span class="sample-tag">SAMPLE</span> {% tbc "approved faculty profiles", "Doc 05 Q13" %}</p>
+{%- endif %}
+{%- if members.length %}
+{%- for dept, items in members | groupby("department") %}
+<section aria-labelledby="dept-{{ loop.index }}">
+  <h2 id="dept-{{ loop.index }}">{{ dept }}</h2>
+  <ul class="grid grid-3 faculty-grid">
+    {%- for m in items %}
+    <li class="card faculty-card">
+      {%- if m.photo %}
+      <img src="{{ m.photo }}" alt="{{ m.name }}" width="320" height="320" loading="lazy">
+      {%- else %}
+      <div class="faculty-initials" aria-hidden="true">{{ m.name | replace("SAMPLE — ", "") | initials }}</div>
+      {%- endif %}
+      <div class="card-body">
+        <h3>{{ m.name }}</h3>
+        <p class="card-meta">{{ m.designation }}</p>
+        <p class="card-meta">{{ m.qualification }}</p>
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endfor %}
+{%- else %}
+<div class="empty-state"><p>Faculty profiles will be added soon.</p></div>
+{%- endif %}

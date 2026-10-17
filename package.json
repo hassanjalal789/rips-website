@@ -16,6 +16,7 @@
     "check:links": "node scripts/check-links.mjs",
     "check:a11y": "node scripts/check-a11y.mjs",
     "check:weight": "node scripts/check-weight.mjs",
+    "check:form": "node scripts/check-form.mjs",
     "screenshots": "node scripts/screenshots.mjs"
   },
   "devDependencies": {

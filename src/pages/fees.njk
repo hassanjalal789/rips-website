@@ -1,0 +1,61 @@
+---
+layout: page.njk
+permalink: /admissions/fees/
+title: Fee structure
+crumb: Fees
+crumbs: [{ label: Admissions, url: /admissions/ }]
+description: "Fees for every program at RIPS Sheikhupura, in Pakistani rupees: admission, tuition and examination fees."
+last_updated: 2026-10-17
+---
+{#- Fee structure (Doc 05: see fees, download PDF; Doc 06 Q22: below 600 px each program becomes a
+    stacked card). Amounts are shown exactly as entered, never calculated (SRS E-07). A missing amount
+    shows "Contact admissions for current fees" (Doc 06 Q10). #}
+{%- set programs = collections.programs | activePrograms %}
+<h1>Fee structure</h1>
+<p class="lead">Fees for each program, in Pakistani rupees (Rs).</p>
+{%- if fees | selectattr("sample") | length %}
+<p><span class="sample-tag">SAMPLE</span> {% tbc "fee amounts for every program", "OD-07" %}</p>
+{%- endif %}
+
+{%- set heads = fees[0].lines %}
+<table class="fee-table">
+  <caption>Fees for session <span class="nowrap">{{ fees[0].session }}</span></caption>
+  <thead>
+    <tr>
+      <th scope="col">Program</th>
+      {%- for line in heads %}
+      <th scope="col" class="amount">{{ line.label }} <span class="small">({% if line.per == "once" %}once{% else %}per {{ line.per }}{% endif %})</span></th>
+      {%- endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {%- for p in programs %}
+    {%- set f = fees | feeFor(p.data.slug) %}
+    <tr>
+      <th scope="row"><a href="/programs/{{ p.data.slug }}/">{{ p.data.title }}</a></th>
+      {%- if f and (f.lines | selectattr("amount_pkr") | length) %}
+      {%- for line in heads %}
+      {%- set l = f.lines[loop.index0] %}
+      <td class="amount" data-label="{{ line.label }}">{% if l and (l.amount_pkr or l.amount_pkr === 0) %}{{ l.amount_pkr | pkr }}{% else %}Contact admissions{% endif %}</td>
+      {%- endfor %}
+      {%- else %}
+      {#- No confirmed amount for this program yet: one line instead of a column of blanks (Doc 06 Q10). #}
+      <td colspan="{{ heads.length }}" data-label="Fees">Contact admissions for current fees</td>
+      {%- endif %}
+    </tr>
+    {%- endfor %}
+  </tbody>
+</table>
+
+<div class="prose">
+  <p class="muted">Fees may change. Last updated {{ (fees[0].approved_on or last_updated) | displayDate }}.</p>
+  {%- if downloads.fee_structure.file %}
+  <p><a class="btn btn-secondary" href="{{ downloads.fee_structure.file }}">Download the fee structure <span class="small">(PDF, {{ downloads.fee_structure.file | fileSize }})</span></a></p>
+  {%- else %}
+  <p>Fee structure PDF: {% tbc "approved fee structure PDF", "OD-07" %}</p>
+  {%- endif %}
+  <h2>Paying fees</h2>
+  <p>RIPS never asks for fees to be paid into a personal account. If anyone asks you to, contact admissions first.</p>
+  <p>{% tbc "how and where fees are paid, and whether bank details are shown here", "OD-18" %}</p>
+  <p>Questions about fees? <a href="/enquire/">Send an enquiry</a> or see the <a href="/contact/">Contact page</a>.</p>
+</div>

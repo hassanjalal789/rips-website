@@ -12,6 +12,14 @@ pageScript: home
 preload:
   - { href: /assets/img/study/stop-0-wide.webp, media: "(min-aspect-ratio: 11/10)" }
   - { href: /assets/img/study/stop-0-tall.webp, media: "(max-aspect-ratio: 11/10)" }
+eleventyComputed:
+  jsonld:
+    "@context": https://schema.org
+    "@type": EducationalOrganization
+    name: "{{ settings.name }}"
+    alternateName: "{{ settings.short_name }}"
+    url: "{{ settings.url }}/"
+    logo: "{{ settings.url }}/assets/img/crest.webp"
 chapters:
   - title: Find your program
     text: Start with what you want to do. Every program page puts the duration, eligibility, fee and intake in one place.
@@ -124,10 +132,8 @@ chapters:
     {%- if notices.length %}
     <ul class="notice-list" data-reveal-stagger>
       {%- for n in notices.slice(0, 5) %}
-      <li class="notice-row">
-        <h3><a href="{{ n.url }}">{{ n.data.title }}</a></h3>
-        <p><span class="notice-type">{{ n.data.type }}</span><time datetime="{{ n.data.publish_at | isoDate }}">{{ n.data.publish_at | displayDate }}</time>{% if n.data.file %}<span>PDF {{ n.data.file | fileSize }}</span>{% endif %}</p>
-      </li>
+      {%- set headingTag = "h3" %}
+      {% include "partials/notice-row.njk" %}
       {%- endfor %}
     </ul>
     {%- else %}

@@ -1,0 +1,9 @@
+# Affiliation and approval documents (Doc 05 Q16: show the issuing body and the letter's date;
+# Doc 06 Q24: every letter has a text summary). Empty until the Director supplies them (OD-08).
+# Example entry:
+# - body: "[issuing body]"
+#   what: "[what it approves, e.g. which program]"
+#   letter_date: 2026-01-31
+#   file: /files/affiliation/[file].pdf
+#   summary: "[one or two sentences saying what the letter says]"
+[]

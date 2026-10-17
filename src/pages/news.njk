@@ -1,0 +1,37 @@
+---
+layout: page.njk
+pagination:
+  data: collections.news
+  size: 10
+  alias: posts
+  generatePageOnEmptyData: true
+permalink: "/news/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}"
+title: News & Events
+crumbs: []
+description: "News and events from RIPS Sheikhupura, newest first."
+---
+{#- News & Events list (Doc 05: show activity; list template shared with Notices; 10 per page, Doc 06 Q10).
+    Empty state "No news yet." (SRS D-07). #}
+<h1>News &amp; Events</h1>
+{%- if posts.length %}
+<ul class="news-list">
+  {%- for n in posts %}
+  <li class="news-row">
+    <h2 class="h3"><a href="{{ n.url }}">{{ n.data.title }}</a></h2>
+    <p class="muted"><time datetime="{{ n.data.date | isoDate }}">{{ n.data.date | displayDate }}</time>{% if n.data.sample %} · <span class="sample-tag">SAMPLE</span>{% endif %}</p>
+    <p>{{ n.data.summary }}</p>
+  </li>
+  {%- endfor %}
+</ul>
+{%- if pagination.pages.length > 1 %}
+<nav aria-label="News pages">
+  <ul class="pagination pagination-links">
+    {%- for href in pagination.hrefs %}
+    <li><a href="{{ href }}"{% if page.url == href %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
+    {%- endfor %}
+  </ul>
+</nav>
+{%- endif %}
+{%- else %}
+<div class="empty-state"><p>No news yet.</p></div>
+{%- endif %}

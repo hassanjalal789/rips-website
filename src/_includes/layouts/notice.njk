@@ -2,9 +2,39 @@
 layout: page.njk
 crumbs: [{ label: Notices, url: /notices/ }]
 ---
+{#- Notice page (Doc 05 Q11: the PDF link first, then "See all notices"; Q20: other notices for the
+    same program and session). Two years after its archive date a notice is taken off the site and
+    this page says so (SRS D-06). #}
+{%- set state = { archive_on: archive_on } | noticeState(build.today) %}
+{%- if state == "removed" %}
+<h1>This notice is no longer available</h1>
+<p class="lead">It was taken off the website after its intake ended.</p>
+<p><a class="btn btn-secondary" href="/notices/">See current notices</a></p>
+{%- else %}
+{%- set prog = collections.programs | programBySlug(program) %}
 <h1>{{ title }}</h1>
-<p class="muted">{{ type }} · <time datetime="{{ publish_at | isoDate }}">{{ publish_at | displayDate }}</time>{% if sample %} · <span class="sample-tag">SAMPLE</span>{% endif %}</p>
-{%- if file %}
-<p><a class="btn btn-secondary" href="{{ file }}">Open the PDF ({{ file | fileSize }})</a></p>
+<p class="muted">{{ type }} · {{ prog.data.short if prog else "All programs" }} · Session {{ session }} · Published <time datetime="{{ publish_at | isoDate }}">{{ publish_at | displayDate }}</time>{% if sample %} · <span class="sample-tag">SAMPLE</span>{% endif %}</p>
+{%- if state == "archived" %}
+<p class="alert alert-info">This notice is archived. It is kept here for reference.</p>
 {%- endif %}
-<div class="prose">{{ content | safe }}</div>
+{%- if file %}
+<p><a class="btn btn-primary" href="{{ file }}">Open the PDF <span class="small">({{ file | fileSize }})</span></a></p>
+{%- endif %}
+<p><a href="/notices/">See all notices <span aria-hidden="true">→</span></a></p>
+{%- set body = content | trim %}
+{%- if body %}
+<div class="prose">{{ body | safe }}</div>
+{%- endif %}
+{%- set related = collections.notices | currentNotices(build.today) | sameProgramSession(program, session, page.url) %}
+{%- if related.length %}
+<section class="related" aria-labelledby="related-title">
+  <h2 id="related-title">Other {{ prog.data.short if prog else "" }} notices, {{ session }}</h2>
+  <ul class="notice-list">
+    {%- for n in related.slice(0, 5) %}
+    {%- set headingTag = "h3" %}
+    {% include "partials/notice-row.njk" %}
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+{%- endif %}

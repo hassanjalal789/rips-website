@@ -137,6 +137,11 @@ main:focus { outline: none; }
   .js .site-nav { order: 0; inline-size: auto; }
 }
 @media (min-width: 600px) { .brand-long { display: inline; } }
+/* 1024–1279px: the full name gives way so the menu, icons and Enquire stay on one row. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .brand-long { display: none; }
+  .site-nav a { padding-inline: var(--s2); }
+}
 @media (min-width: 1024px) {
   .js .menu-toggle { display: none; }
   .header-bar { flex-wrap: nowrap; }
@@ -214,7 +219,7 @@ main:focus { outline: none; }
 /* ---------- Notice row ---------- */
 .notice-list { list-style: none; padding: 0; margin: 0 0 var(--s4); border-block-start: 1px solid var(--c-line); }
 .notice-row { border-block-end: 1px solid var(--c-line); padding-block: var(--s3); display: grid; gap: var(--s1); }
-.notice-row h3 { font-size: 1.0625rem; margin: 0; }
+.notice-row h2, .notice-row h3 { font-family: var(--font); font-size: 1.0625rem; font-weight: 700; letter-spacing: 0; line-height: 1.3; margin: 0; }
 .notice-row p { margin: 0; color: var(--c-muted); font-size: .9375rem; display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); }
 .notice-type { font-weight: 700; color: var(--c-brand); }
 
@@ -232,7 +237,7 @@ main:focus { outline: none; }
 .fee-table td.amount, .fee-table th.amount { text-align: end; }
 @media (max-width: 599px) {
   .fee-table thead { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); }
-  .fee-table, .fee-table tbody, .fee-table tr, .fee-table th, .fee-table td { display: block; inline-size: 100%; }
+  .fee-table, .fee-table caption, .fee-table tbody, .fee-table tr, .fee-table th, .fee-table td { display: block; inline-size: 100%; }
   .fee-table tr { border: 1px solid var(--c-line); border-radius: var(--radius); margin-block-end: var(--s3); padding: var(--s2) var(--s3); }
   .fee-table th[scope="row"] { border: 0; padding: var(--s1) 0 var(--s2); font-size: 1.0625rem; color: var(--c-brand); }
   .fee-table td { display: flex; justify-content: space-between; gap: var(--s3); border: 0; border-block-start: 1px solid var(--c-line); padding: var(--s2) 0; }
@@ -469,6 +474,47 @@ html.lenis, html.lenis body { block-size: auto; }
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
   .program-card { transform: none; }
 }
+
+
+/* ---------- Header call and WhatsApp icons (wide screens only, Doc 05 Q08) ---------- */
+.header-icon { display: none; }
+@media (min-width: 1024px) {
+  .header-icon { display: inline-flex; align-items: center; justify-content: center; inline-size: var(--target); block-size: var(--target); border-radius: 50%; color: #fff; border: 1px solid rgba(255,255,255,.35); flex: none; }
+  .header-icon:hover { color: var(--c-accent); border-color: var(--c-accent); }
+}
+
+/* ---------- Inner pages ---------- */
+.nowrap { white-space: nowrap; }
+.h3 { font-family: var(--font); font-size: 1.25rem; font-weight: 700; letter-spacing: 0; line-height: 1.25; margin-block-start: 0; }
+.staging-banner { margin: 0; padding: var(--s2) var(--s4); background: var(--c-error); color: #fff; font-weight: 700; text-align: center; }
+.admissions-status, .program-status { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); }
+.filters-2 { grid-template-columns: 1fr; }
+@media (min-width: 600px) { .filters-2 { grid-template-columns: repeat(2, 1fr) auto; } }
+.filters .field { margin: 0; }
+.filter-actions { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; }
+.filter-actions [hidden] { display: none; }
+.related { margin-block-start: var(--s7); }
+.related-list { padding-inline-start: var(--s5); }
+.related-list li { margin-block-end: var(--s2); }
+.news-list { list-style: none; padding: 0; margin: 0; }
+.news-row { padding-block: var(--s4); border-block-end: 1px solid var(--c-line); }
+.news-row p { margin-block-end: var(--s1); }
+.pagination-links a { display: inline-flex; align-items: center; justify-content: center; min-inline-size: var(--target); min-block-size: var(--target); border: 2px solid var(--c-brand); border-radius: var(--radius); font-weight: 700; text-decoration: none; }
+.pagination-links a[aria-current="page"] { background: var(--c-brand); color: #fff; }
+.contact-cards { display: grid; gap: var(--s4); grid-template-columns: 1fr; margin-block: var(--s5) var(--s7); }
+@media (min-width: 600px) { .contact-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .contact-cards { grid-template-columns: repeat(4, 1fr); } }
+.contact-cards .panel { display: flex; flex-direction: column; }
+.contact-cards .panel > :last-child { margin-block-start: auto; margin-block-end: 0; }
+.contact-form h2 { margin-block-start: 0; }
+.faculty-initials { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; background: var(--c-brand-2); color: var(--c-accent); font-family: var(--font-display); font-size: 3rem; }
+.faculty-card img { aspect-ratio: 1; object-fit: cover; inline-size: 100%; }
+.affiliation-list { list-style: none; padding: 0; }
+.affiliation-list li { padding-block: var(--s4); border-block-end: 1px solid var(--c-line); }
+.enquiry-form .btn-lg .spinner[hidden] { display: none; }
+[data-show-when][hidden] { display: none; }
+.field-error[hidden], [data-error-summary][hidden], [data-form-failure][hidden] { display: none; }
+
 @media print {
   .site-header, .site-nav, .site-footer, .whatsapp-float, .btn, .skip-link, .breadcrumbs, .contact-strip, .filters { display: none !important; }
   body { color: #000; }

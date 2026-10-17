@@ -1,0 +1,29 @@
+---
+layout: page.njk
+permalink: /about/affiliation/
+title: Affiliation & approvals
+crumbs: [{ label: About, url: /about/ }]
+description: "Which university RIPS Sheikhupura is affiliated with and which bodies approve its programs, with the letters."
+---
+{#- Affiliation (Doc 05: verify affiliation, view letters; Q16: issuing body and letter date; Doc 06 Q24:
+    every letter has a text summary). Wording and documents wait for the Director (OD-08). #}
+<h1>Affiliation &amp; approvals</h1>
+{% include "partials/about-nav.njk" %}
+<div class="prose">
+  {%- if affiliations.length %}
+  <ul class="affiliation-list">
+    {%- for a in affiliations %}
+    <li>
+      <h2 class="h3">{{ a.body }}</h2>
+      <p>{{ a.what }}. Letter dated <time datetime="{{ a.letter_date | isoDate }}">{{ a.letter_date | displayDate }}</time>.</p>
+      <p>{{ a.summary }}</p>
+      {%- if a.file %}<p><a href="{{ a.file }}">View the letter <span class="small">({{ a.file | fileSize }})</span></a></p>{% endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- else %}
+  <p class="lead">This page will list each affiliation and approval with the body that issued it, the date of its letter, a short summary and a copy of the letter.</p>
+  <p>{% tbc "affiliating university, approving bodies and their letters", "OD-08" %}</p>
+  {%- endif %}
+  <p>To check an affiliation before you apply, ask the admissions office to show you the original letter. <a href="/contact/">Contact admissions</a>.</p>
+</div>
