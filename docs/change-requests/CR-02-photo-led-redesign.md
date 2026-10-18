@@ -52,6 +52,16 @@ Built site served locally with gzip and the security headers; Lighthouse 13.5.0,
 | Home, desktop | 100 | 100 | 100 | 100 | 0.4 s | 0 ms | 0 |
 | Programs, mobile | 100 | 100 | 100 | 100 | 1.4 s | 0 ms | 0 |
 
+Re-measured on the four key pages (Doc 07 Q32) after the owner's program list and contacts went in,
+same set-up, mobile preset:
+
+| Page | Performance | Accessibility | Best practices | SEO | LCP | TBT | CLS |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Home | 100 | 100 | 100 | 100 | 1.5 s | 50 ms | 0 |
+| Programs (22 programs) | 100 | 100 | 100 | 100 | 1.4 s | 0 ms | 0.005 |
+| Pharm-D program page | 100 | 100 | 100 | 100 | 1.5 s | 0 ms | 0 |
+| Admissions | 100 | 100 | 100 | 100 | 1.4 s | 0 ms | 0 |
+
 Home's first load is 144 KB on a phone and 234 KB on desktop (uncompressed, `npm run check:weight`),
 against 266–278 KB before the 3D scene loaded under CR-01 and 861 KB after it. axe-core finds no
 violations on any page at 360 and 1366 px, and html-validate passes (`npm run check`).

@@ -379,6 +379,18 @@ fieldset.field { border: 0; padding: 0; margin-inline: 0; }
 .photo-card p { margin: 0; color: var(--c-muted); }
 .photo-note { margin: var(--s5) 0 0; font-size: .875rem; color: var(--c-muted); }
 
+/* About: text with campus photos beside it on wide screens, after it on phones. */
+.about-layout { display: grid; gap: var(--s6); }
+.about-photos { display: grid; gap: var(--s5); align-content: start; }
+.about-photos figure { margin: 0; }
+.about-photos img { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; }
+.about-photos figcaption { margin-block-start: var(--s2); font-size: .875rem; color: var(--c-muted); }
+.about-photos .photo-note { margin: 0; }
+@media (min-width: 1024px) {
+  .about-layout { grid-template-columns: minmax(0, 42rem) minmax(0, 1fr); gap: var(--s7); }
+  .about-photos { padding-block-start: var(--s6); }
+}
+
 /* Vision and mission: the entrance photo beside the text on navy (stacked on phones). */
 .vision { background: var(--c-brand); color: #dbe3ec; padding-block: var(--s7); }
 .vision-grid { display: grid; gap: var(--s5); }
