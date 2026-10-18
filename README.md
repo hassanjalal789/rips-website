@@ -16,6 +16,10 @@ npm test                      # enquiry function tests
 npm run check                 # build + HTML, links, accessibility, page-weight and form checks
 ```
 
+To see the site from any computer without installing anything, open it in a GitHub Codespace:
+<https://codespaces.new/hassanjalal789/rips-website>. It installs, builds and opens the site in your
+browser at an address only your GitHub account can open (`.devcontainer/devcontainer.json`).
+
 ## Layout
 
 | Path | What |
