@@ -6,8 +6,8 @@
 # phone. Every fact here is from settings, the program files or the RIPS campus tour video.
 layout: base.njk
 permalink: /
-title: Health-science, computing and business degrees in Sheikhupura
-description: "Radiant Institute of Professional Studies (RIPS), Sheikhupura: health-science, computing and business programs, admissions, notices and how to enquire."
+title: Health-science, computing and management programs in Sheikhupura
+description: "Radiant Institute of Professional Studies (RIPS), Sheikhupura: BS and intermediate programs in health sciences, computing, management and the humanities, with admissions, notices and how to enquire."
 bodyClass: home
 preload:
   - { href: /assets/img/campus/front-aerial-1200.webp, media: "(min-width: 720px)" }
@@ -61,7 +61,7 @@ campus:
   <div class="hero-body on-dark">
     <div class="wrap">
       <p class="eyebrow">{{ settings.name }}</p>
-      <h1 id="hero-title">Health-science, computing and business degrees <em>in&nbsp;{{ settings.place }}</em></h1>
+      <h1 id="hero-title">BS and intermediate programs <em>in&nbsp;{{ settings.place }}</em></h1>
       <p class="hero-lead">{{ settings.tagline }}.</p>
       <div class="btn-row">
         <a class="btn btn-primary btn-lg" href="/enquire/">Enquire</a>
@@ -69,11 +69,10 @@ campus:
         <a class="btn btn-link" href="/admissions/">Admissions <span aria-hidden="true">→</span></a>
       </div>
       {%- if status %}
-      <p class="hero-status">
+      <p class="hero-status"{% if intake.sample %} data-draft="OD-07"{% endif %}>
         <span class="badge badge-{{ status.key }}">Admissions {{ status.label | lower }}</span>
         <span>{{ intake.session }} · closes {{ intake.closes_on | displayDate }}</span>
-        {%- if intake.sample %} <span class="sample-tag">SAMPLE dates, OD-07</span>{% endif %}
-      </p>
+              </p>
       {%- endif %}
     </div>
   </div>
@@ -89,17 +88,16 @@ campus:
       <a class="see-all" href="/programs/">See all programs <span aria-hidden="true">→</span></a>
     </div>
     <ul class="program-grid">
-      {%- for p in programs.slice(0, 6) %}
+      {%- for p in (programs | featuredPrograms).slice(0, 6) %}
       {%- set pstatus = (intakes | intakeFor(p.data.slug)) | intakeStatus(build.today) %}
       {%- set field = p.data.field %}
       <li class="program-card">
         <span class="program-icon-wrap">{% include "partials/program-icon.njk" %}</span>
         <h3><a href="/programs/{{ p.data.slug }}/">{{ p.data.title }}</a></h3>
         <p class="card-meta">{{ p.data.field }} · {{ p.data.level }}</p>
-        <p class="program-foot">
-          {%- if pstatus %}<span class="badge badge-{{ pstatus.key }}">{{ pstatus.label }}</span>{% endif %}
-          {%- if not p.data.confirmed %} <span class="sample-tag">SAMPLE, OD-07</span>{% endif %}
-        </p>
+        {%- if pstatus %}
+        <p class="program-foot"><span class="badge badge-{{ pstatus.key }}">{{ pstatus.label }}</span></p>
+        {%- endif %}
       </li>
       {%- endfor %}
     </ul>
@@ -136,7 +134,7 @@ campus:
         <h2 id="why-title">A modern campus <em>in {{ settings.place }}</em></h2>
       </div>
       <div>
-        <p class="lead">{{ settings.name }} (RIPS) is a private educational institute in {{ settings.place }}. It offers programs in health sciences, computing and business.</p>
+        <p class="lead">{{ settings.name }} (RIPS) is a private educational institute in {{ settings.place }}. It offers BS and intermediate programs in health sciences, computing, management and the humanities.</p>
         <p>The campus has an anatomy lab, science and computer labs, classrooms, a library and a student lounge, and a separate Admission Office building.</p>
         <div class="btn-row">
           <a class="btn btn-secondary" href="/about/">About RIPS</a>
@@ -153,7 +151,7 @@ campus:
       </li>
       {%- endfor %}
     </ul>
-    <p class="photo-note">Photos are stills from the RIPS campus tour video. {% tbc "commissioned photography", "OD-12" %}</p>
+    <p class="photo-note">Photos are stills from the RIPS campus tour video.</p>
   </div>
 </section>
 
@@ -164,9 +162,9 @@ campus:
       <p class="eyebrow">Who we are</p>
       <h2 id="vision-title">Vision and mission</h2>
       <h3>Our vision</h3>
-      <p>{% tbc "vision, approved by the Chairman or Director", "Doc 05 Q13" %}</p>
+      <p>To be a leading institute in Pakistan for professional education, producing skilled, ethical and compassionate graduates who serve their communities and the nation.</p>
       <h3>Our mission</h3>
-      <p>{% tbc "mission, approved by the Chairman or Director", "Doc 05 Q13" %}</p>
+      <p>To provide quality, affordable and industry-relevant education in health sciences, computing, management and the humanities, combining strong theory with hands-on practice so students become confident, responsible professionals.</p>
       <p><a class="btn btn-ghost" href="/about/">Read more about RIPS</a></p>
     </div>
   </div>

@@ -8,7 +8,7 @@ pageScript: filters
 ---
 {#- Programs list (Doc 05 Q18: filter by field and level; Doc 06 Q10: grouped by field). #}
 <h1>Programs</h1>
-<p class="lead">Every program at RIPS, grouped by field. {% tbc "final program list and names", "OD-07" %}</p>
+<p class="lead">BS and intermediate programs at RIPS, grouped by field.</p>
 {%- set programs = collections.programs | activePrograms %}
 <form class="program-filters" action="/programs/" method="get" data-filters="program">
   <fieldset class="filters filters-2">
@@ -49,10 +49,9 @@ pageScript: filters
       <span class="program-icon-wrap">{% include "partials/program-icon.njk" %}</span>
       <h3><a href="/programs/{{ p.data.slug }}/">{{ p.data.title }}</a></h3>
       <p class="card-meta">{{ p.data.level }}</p>
-      <p class="program-foot">
-        {%- if pstatus %}<span class="badge badge-{{ pstatus.key }}">{{ pstatus.label }}</span>{% endif %}
-        {%- if not p.data.confirmed %} <span class="sample-tag">SAMPLE</span>{% endif %}
-      </p>
+      {%- if pstatus %}
+      <p class="program-foot"><span class="badge badge-{{ pstatus.key }}">{{ pstatus.label }}</span></p>
+      {%- endif %}
     </li>
     {%- endfor %}
   </ul>

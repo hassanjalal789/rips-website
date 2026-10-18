@@ -42,6 +42,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('latestExcept', (items, url, n = 3) => items.filter((i) => i.url !== url).slice(0, n));
   eleventyConfig.addFilter('forProgram', (items, slug) => items.filter((n) => n.data.program === slug || n.data.program === 'all'));
   eleventyConfig.addFilter('activePrograms', (items) => items.filter((p) => p.data.status !== 'Withdrawn'));
+  eleventyConfig.addFilter('featuredPrograms', (items) => items.filter((p) => p.data.featured));
   eleventyConfig.addFilter('sameField', (items, program) =>
     items.filter((p) => p.data.field === program.field && p.data.slug !== program.slug && p.data.status !== 'Withdrawn'),
   );

@@ -1,21 +1,23 @@
 ---
-# Program (Doc 08 "Program"). Working example only: title, level and every key fact pending OD-07; affiliation pending OD-08.
+# Program (Doc 08 "Program"). The name is from the owner's list of 18 October 2026; duration, eligibility,
+# affiliation, overview, outline and careers are drafts to edit (confirmed: false), OD-07 and OD-08.
 slug: nursing
-title: "Nursing"
-short: "Nursing"
+title: "BS Nursing"
+short: "BS Nursing"
 field: Nursing
 level: Undergraduate
 confirmed: false
-duration: null
-eligibility: null
+featured: true
+duration: "4 years"
+eligibility: "Intermediate (FSc Pre-Medical) or equivalent."
 fee_per_year_pkr: null
-affiliation: null
+affiliation: "GC University Faisalabad"
 status: Active
-order: 3
+order: 4
 image: null
-last_updated: 2026-10-17
+last_updated: 2026-10-18
 approved_by: null
-outline: null
-careers: null
+outline: "<ul><li>Fundamentals of nursing</li><li>Anatomy, physiology and microbiology</li><li>Medical-surgical nursing</li><li>Community health and maternal and child health nursing</li><li>Clinical practice</li></ul>"
+careers: "<p>Staff nurse in hospitals and clinics, community health work, and further study in nursing.</p>"
 ---
-{% tbc "program overview from the Head of Department, approved by the Principal", "OD-07" %}
+BS Nursing combines nursing science with supervised clinical practice, preparing you to care for patients in hospitals and in the community.

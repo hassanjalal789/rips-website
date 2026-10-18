@@ -37,7 +37,7 @@ adapters). It is a preview, not a deployment (OD-03).
 | Command | What it checks |
 | --- | --- |
 | `npm test` | Enquiry function unit tests (`tests/`): validation, token reuse, duplicate flag, rate limit, formula escaping, origin, size and type limits, sheet and email failure paths, no personal data in responses or logs (Doc 08 Q40). |
-| `npm run check` | Builds, then runs the checks Doc 07 Q31 asks for on every build: HTML validation (html-validate), broken internal links and #anchors, an accessibility scan (axe-core in Chromium, every page at 360 and 1366 px, served under the real content security policy so a blocked script also fails), the page-weight budget (1.5 MB first load, NFR-PERF-02) and a browser test of the enquiry form and notice filters (`scripts/check-form.mjs`). It ends with a count of what still blocks launch: placeholders by OD, SAMPLE tags and dummy contact links. |
+| `npm run check` | Builds, then runs the checks Doc 07 Q31 asks for on every build: HTML validation (html-validate), broken internal links and #anchors, an accessibility scan (axe-core in Chromium, every page at 360 and 1366 px, served under the real content security policy so a blocked script also fails), the page-weight budget (1.5 MB first load, NFR-PERF-02) and a browser test of the enquiry form and notice filters (`scripts/check-form.mjs`). It ends with a count of what still blocks launch: placeholders by OD, SAMPLE tags, dummy contact links and drafts to approve. |
 | `npm run check:html`, `check:links`, `check:a11y`, `check:weight` | The same checks one at a time, against an existing `_site/`. `node scripts/check-form.mjs` runs the form test alone. |
 | `npm run screenshots [-- outdir]` | Full-page screenshots of the main pages at 360 and 1366 px (default `reports/screenshots/`, not committed). |
 
@@ -62,11 +62,14 @@ and when (Doc 08 Q11). The editing tool is not chosen yet (OD-05, ADR-03).
 | Menu | `src/_data/nav.yaml` | Menu changes need the Director's approval (Doc 05 Q34). |
 | Form error wording | `src/_data/enquiryMessages.json` | The only place this text lives (SRS F-07). |
 
-Two markers mean "not real yet":
+Three markers mean "not real yet":
 
 - `sample: true` in front matter or data marks working-example content; pages show a SAMPLE tag.
 - `null` values, and the `{% tbc "what", "OD-xx" %}` shortcode, show a visible
   `[TO CONFIRM — what, OD-xx]`.
+- `data-draft="OD-xx"` on an element, `confirmed: false` on a program and `draft_fields` in
+  `settings.yaml` mark filled-in drafts: text that reads normally but has not been approved. They are
+  not visible on the page; `npm run check` lists them.
 
 Replace each with approved content, then set `sample: false` (or remove it). The open decisions behind
 each placeholder are listed in `docs/open-decisions.md`.
@@ -126,8 +129,9 @@ SRS T-07 lists what blocks launch. For this codebase:
 
 - [ ] Every `[TO CONFIRM …]` and SAMPLE item replaced with approved content. Search for `TO CONFIRM`,
       `sample: true` and `SAMPLE` in `_site/`; none may remain.
-- [ ] The dummy `phone_link` and `whatsapp_link` numbers and the `example.com` addresses in
-      `src/_data/settings.yaml` replaced.
+- [ ] Every draft confirmed by the owner: `data-draft` in `_site/`, `confirmed: false` in
+      `src/content/programs/`, and `draft_fields` in `src/_data/settings.yaml` (`npm run check` lists
+      them). Remove each marker once its text is approved.
 - [ ] Security headers deployed (Doc 07 Q24; SRS O-06):
   - HTTPS only with HSTS;
   - a content security policy that includes the sha256 hash of the one inline script;

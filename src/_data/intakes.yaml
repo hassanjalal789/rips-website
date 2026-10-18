@@ -4,4 +4,4 @@
   sample: true
   opens_on: 2026-10-01
   closes_on: 2026-11-30
-  programs: [pharm-d, dpt, nursing, allied-health-sciences, computer-science, business-studies]
+  programs: [pharm-d, fsc-dispensing, dpt, nursing, fsc-nursing, rit, hnd, fsc-mlt, fsc-rit, fsc-ott, fsc-dental, fsc-medical, computer-science, computer-science-bridging, information-technology, data-science, ics, bba, accounting-finance, mass-communication, english-literature, english-literature-bridging]

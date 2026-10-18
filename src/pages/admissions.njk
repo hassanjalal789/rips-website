@@ -4,7 +4,7 @@ permalink: /admissions/
 title: Admissions
 crumbs: []
 description: "How to apply to RIPS Sheikhupura: admission dates, documents, fees, scholarships and answers to common questions."
-last_updated: 2026-10-17
+last_updated: 2026-10-18
 ---
 {#- Admissions (Doc 05 tree: How to apply · Dates · Documents · Scholarships · FAQ; SRS D-04: steps,
     documents, dates, fee table, scholarships, last updated; Doc 06 Q06: steps, deadline, cost →
@@ -14,10 +14,9 @@ last_updated: 2026-10-17
 <h1>Admissions</h1>
 <p class="lead">How and when to apply, what to bring and what it costs.</p>
 {%- if status %}
-<p class="admissions-status">
+<p class="admissions-status"{% if intake.sample %} data-draft="OD-07"{% endif %}>
   <span class="badge badge-{{ status.key }}">Admissions {{ status.label | lower }}</span>
   <span>{{ intake.session }}: closes {{ intake.closes_on | displayDate }}</span>
-  {%- if intake.sample %} <span class="sample-tag">SAMPLE dates, OD-07</span>{% endif %}
 </p>
 {%- endif %}
 <div class="btn-row">
@@ -41,7 +40,9 @@ last_updated: 2026-10-17
     <ol class="steps">
       <li><strong>Choose your program.</strong> Each <a href="/programs/">program page</a> lists its duration, eligibility, fee and intake.</li>
       <li><strong>Ask us anything.</strong> <a href="/enquire/">Send an enquiry</a> and the admissions office will call you back, or WhatsApp or call admissions.</li>
-      <li>{% tbc "the official application steps, from the application form to the fee deposit", "OD-07" %}</li>
+      <li data-draft="OD-07"><strong>Fill in the admission form</strong> at the Admission Office on campus, and bring the documents listed below.</li>
+      <li data-draft="OD-07"><strong>Pay the admission fee</strong> as the Admission Office tells you. Never pay into a personal account.</li>
+      <li data-draft="OD-07"><strong>Check the merit list</strong> on the <a href="/notices/">notice board</a>.</li>
     </ol>
   </section>
 
@@ -57,7 +58,7 @@ last_updated: 2026-10-17
         {%- for i in intakes %}
         {%- set istatus = i | intakeStatus(build.today) %}
         <tr>
-          <th scope="row">{{ i.session }}{% if i.sample %} <span class="sample-tag">SAMPLE</span>{% endif %}</th>
+          <th scope="row"{% if i.sample %} data-draft="OD-07"{% endif %}>{{ i.session }}</th>
           <td data-label="Open"><time datetime="{{ i.opens_on | isoDate }}">{{ i.opens_on | displayDate }}</time></td>
           <td data-label="Close"><time datetime="{{ i.closes_on | isoDate }}">{{ i.closes_on | displayDate }}</time></td>
           <td data-label="Status">{% if istatus %}<span class="badge badge-{{ istatus.key }}">{{ istatus.label }}</span>{% endif %}</td>
@@ -73,19 +74,25 @@ last_updated: 2026-10-17
 
   <section id="documents" aria-labelledby="documents-title">
     <h2 id="documents-title">Documents to bring</h2>
-    <p>{% tbc "the list of documents needed for admission", "OD-07" %}</p>
+    <ul data-draft="OD-07">
+      <li>Your matric and intermediate certificates or result cards: copies, with the originals to show.</li>
+      <li>A copy of your CNIC or B-Form, and of your father’s or guardian’s CNIC.</li>
+      <li>Recent passport-size photographs.</li>
+      <li>A character certificate from your last school or college.</li>
+    </ul>
+    <p>The Admission Office will tell you if your program needs anything else.</p>
   </section>
 
   <section id="fees" aria-labelledby="fees-title">
     <h2 id="fees-title">Fees</h2>
     <p>The <a href="/admissions/fees/">fee structure</a> lists the fees for every program, in Pakistani rupees.</p>
     <p class="muted">Fees may change. Fee structure last updated {{ (fees[0].approved_on or last_updated) | displayDate }}.</p>
-    <p>RIPS never asks for fees to be paid into a personal account. {% tbc "official bank details for fee deposit, if they are shown here", "OD-18" %}</p>
+    <p>RIPS never asks for fees to be paid into a personal account. If anyone asks you to, contact the admissions office first.</p>
   </section>
 
   <section id="scholarships" aria-labelledby="scholarships-title">
     <h2 id="scholarships-title">Scholarships</h2>
-    <p>{% tbc "scholarships and fee concessions, with who can apply", "OD-07" %}</p>
+    <p data-draft="OD-07">Ask the admissions office which scholarships and fee concessions are available this session, and who can apply.</p>
   </section>
 
   <section id="faq" class="faq" aria-labelledby="faq-title">
@@ -100,9 +107,12 @@ last_updated: 2026-10-17
     </details>
     <details>
       <summary>Which programs can I study?</summary>
-      <div><p>See the <a href="/programs/">programs list</a>. {% tbc "final program list and names", "OD-07" %}</p></div>
+      <div><p>RIPS offers BS programs, and intermediate programs (FSc and ICS). See the <a href="/programs/">programs list</a>.</p></div>
     </details>
-    <p>{% tbc "the questions admissions hears most often, with approved answers", "OD-13" %}</p>
+    <details>
+      <summary>Can I visit the campus before I apply?</summary>
+      <div><p>Yes. The Admission Office is open {{ settings.office_hours }}. Directions are on the <a href="/contact/">Contact page</a>.</p></div>
+    </details>
   </section>
 </div>
 

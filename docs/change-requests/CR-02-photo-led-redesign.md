@@ -22,7 +22,7 @@ from the RIPS campus tour video (<https://www.youtube.com/watch?v=ccsk4uAyFLM>).
 1. **Home.** In the Doc 06 order: header → headline on a photo of the main building → Enquire,
    Programs and Admissions → admissions status → program cards (at most 6) → latest notices (at most
    5) → why RIPS: "A modern campus in Sheikhupura" with six campus photos → vision and mission
-   (placeholders until approved, Doc 05 Q13) → admissions band → visit or contact → footer. On a
+   (the owner's wording of 18 October 2026) → admissions band → visit or contact → footer. On a
    360 × 640 phone the three hero buttons stay on the first screen.
 2. **No 3D or motion.** three.js, GSAP and Lenis are removed from `package.json`, together with the 3D
    scene, its poster stills, the Campus Explorer model and their notes (`docs/3d/`). There is no
@@ -34,8 +34,8 @@ from the RIPS campus tour video (<https://www.youtube.com/watch?v=ccsk4uAyFLM>).
    JavaScript the menu is a wrapped row under the logo and the header does not stick. The call and
    WhatsApp icons beside Enquire on wide screens are unchanged (Doc 05 Q08).
 4. **Program cards** on Home and the Programs page show a line icon for the program's field
-   (pharmacy, physical therapy, nursing, allied health, computing, business) instead of the program
-   initials: `src/_includes/partials/program-icon.njk`.
+   (pharmacy, physical therapy, nursing, allied health, sciences, computing, business, media,
+   English) instead of the program initials: `src/_includes/partials/program-icon.njk`.
 5. **Campus photos.** Seven 16:9 stills from the RIPS campus tour video: anatomy lab, science lab,
    computer lab, library, classroom, student lounge and the main entrance. Each is cropped clear of
    the video's black bar, its logo overlay and its subtitles, and saved at 640 and 400 px wide
