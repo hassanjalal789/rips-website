@@ -12,6 +12,7 @@ last_updated: 2026-10-18
     re-approved (Doc 05 Q02), so the messages wait for the Director. The Chairman's name is from Doc 01 Q06. #}
 <h1>About RIPS</h1>
 {% include "partials/about-nav.njk" %}
+<div class="about-layout">
 <div class="prose">
   <section aria-labelledby="overview">
     <h2 id="overview">Overview</h2>
@@ -31,5 +32,20 @@ last_updated: 2026-10-18
     <p>Chairman: Colonel (R) Ghulam Mustafa Hussain.</p>
   </section>
   <p>Affiliation and approvals are listed on the <a href="/about/affiliation/">Affiliation &amp; approvals</a> page, and teaching staff on the <a href="/faculty/">Faculty</a> page.</p>
+</div>
+{#- Campus photos beside the text on wide screens, after it on phones. Stills from the tour video (OD-12). #}
+<div class="about-photos">
+  {%- for p in [
+    { img: "entrance", caption: "The main entrance", alt: "The main entrance of RIPS: white columns under the institute's sign and a small white dome." },
+    { img: "anatomy-lab", caption: "Anatomy lab", alt: "Students gathered around a skeleton model in a RIPS lab, with anatomy models on the shelves behind them." },
+    { img: "library", caption: "Library", alt: "A student reading at a table in front of the library shelves at RIPS." }
+  ] %}
+  <figure>
+    <img src="/assets/img/campus/{{ p.img }}-640.webp" srcset="/assets/img/campus/{{ p.img }}-400.webp 400w, /assets/img/campus/{{ p.img }}-640.webp 640w" sizes="(min-width: 1024px) 26rem, 92vw" width="640" height="360" alt="{{ p.alt }}" loading="lazy">
+    <figcaption>{{ p.caption }}</figcaption>
+  </figure>
+  {%- endfor %}
+  <p class="photo-note">Photos are stills from the RIPS campus tour video.</p>
+</div>
 </div>
 <p class="last-updated">Last updated {{ last_updated | displayDate }}</p>
