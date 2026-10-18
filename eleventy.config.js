@@ -97,6 +97,7 @@ export default function (eleventyConfig) {
         site: 'src/scripts/site.js',
         filters: 'src/scripts/filters.js',
         enquiry: 'src/scripts/enquiry.js',
+        home: 'src/scripts/home.js',
       },
       outdir: jsDir,
       bundle: true,

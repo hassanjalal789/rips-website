@@ -2,7 +2,7 @@
 
 | | |
 | --- | --- |
-| Status | Built on the `site-foundation` branch at the owner's request, 18 October 2026 |
+| Status | Merged in PR #7, 18 October 2026. Its Home layout is replaced by [CR-04](CR-04-isl-layout-rips-colours.md); the permission notes below still apply |
 | Raised by | Project owner: rebuild Home in the design of www.isl.school, with RIPS's own identity |
 | Permission | "Website Design Language Permission Agreement" between International School Lahore (ISL) and RIPS, dated 18 October 2026, shared by the owner as a PDF, with a copy signed by Shahzad Tahir, Principal of ISL, shared the same day. The owner keeps the signed copy with the project records; it is not in this public repository |
 | Replaces | CR-02 item 1 (the Home section order). CR-02's header, menu, photos and "no 3D or motion" stay |

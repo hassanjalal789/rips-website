@@ -3,7 +3,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="/">
-          <img src="/assets/img/crest.webp" alt="" width="44" height="43" loading="lazy">
+          <img src="/assets/img/{{ "crest-gold.webp" if (bodyClass and "cine-page" in bodyClass) else "crest.webp" }}" alt="" width="44" height="43" loading="lazy">
           <span class="brand-name"><strong>RIPS</strong><span>{{ settings.name }}</span></span>
         </a>
         <p class="footer-tagline">{{ settings.tagline }}</p>
@@ -21,6 +21,7 @@
       <div>
         <h2>About</h2>
         <ul>
+          <li><a href="/why-rips/">Why RIPS?</a></li>
           {%- for item in nav.about %}
           <li><a href="{{ item.url }}">{{ item.label }}</a></li>
           {%- endfor %}

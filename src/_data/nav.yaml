@@ -1,5 +1,6 @@
 # Header navigation (Doc 05 Q03, Q08). Labels match page titles.
 main:
+  - { label: Why RIPS?, url: /why-rips/ }        # CR-04: the owner asked for this tab (18 Oct 2026)
   - { label: Programs, url: /programs/ }
   - { label: Admissions, url: /admissions/ }
   - { label: Notices, url: /notices/ }
