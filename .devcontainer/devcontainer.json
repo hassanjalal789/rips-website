@@ -1,0 +1,18 @@
+// Runs the site in a GitHub Codespace (or any dev container): installs, builds, starts `npm run dev`
+// and opens the site in the browser. Nothing is deployed (OD-03); the address is private to the
+// GitHub account that opens the codespace. Open: https://codespaces.new/hassanjalal789/rips-website
+{
+  "name": "RIPS website",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "updateContentCommand": "npm ci && npm run build",
+  "postAttachCommand": {
+    "site": "npm run dev"
+  },
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": {
+      "label": "RIPS website",
+      "onAutoForward": "openBrowser"
+    }
+  }
+}

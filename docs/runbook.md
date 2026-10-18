@@ -16,6 +16,12 @@ npm ci
 Dev-only tools such as Playwright's Chromium (screenshots, posters, accessibility checks) and ffmpeg
 (recordings) are needed only for the scripts that say so.
 
+Without a local set-up, open the repository in a GitHub Codespace
+(<https://codespaces.new/hassanjalal789/rips-website>). `.devcontainer/devcontainer.json` runs
+`npm ci` and a build, starts `npm run dev` and opens the site in the browser. The forwarded address is
+private to the GitHub account that opened the codespace, and the enquiry form works there too (mock
+adapters). It is a preview, not a deployment (OD-03).
+
 ## 2. Build and preview
 
 | Command | What it does |
