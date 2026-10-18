@@ -4,15 +4,14 @@
       <img src="/assets/img/crest.webp" alt="" width="44" height="43">
       <span class="brand-name"><strong>RIPS</strong><span class="brand-long">{{ settings.name }}</span></span>
     </a>
-    {#- Full-screen menu below 1024px, numbered 01–07 (motion storyboard S6); a plain row above. #}
+    {#- A drop-down list under the header below 1024px; a plain row above (CR-02). #}
     <nav class="site-nav" id="site-nav" aria-label="Main">
-      <ol class="nav-list">
+      <ul class="nav-list">
         {%- for item in nav.main %}
-        <li><a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% elif page.url and page.url.startsWith(item.url) %} class="is-section"{% endif %}><span class="nav-num" aria-hidden="true">{{ "0" + loop.index }}</span><span class="nav-label">{{ item.label }}</span></a></li>
+        <li><a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% elif page.url and page.url.startsWith(item.url) %} class="is-section"{% endif %}>{{ item.label }}</a></li>
         {%- endfor %}
-        <li class="nav-enquire"><a href="/enquire/"{% if page.url == "/enquire/" %} aria-current="page"{% endif %}><span class="nav-num" aria-hidden="true">{{ "0" + (nav.main.length + 1) }}</span><span class="nav-label">Enquire</span></a></li>
-      </ol>
-      <p class="nav-extra">{{ settings.tagline }}</p>
+        <li class="nav-enquire"><a href="/enquire/"{% if page.url == "/enquire/" %} aria-current="page"{% endif %}>Enquire</a></li>
+      </ul>
     </nav>
     {#- Call and WhatsApp icons beside Enquire on wide screens (Doc 05 Q08); each has a text label (Q31). #}
     <a class="header-icon" href="tel:{{ settings.phone_link }}"{% if not settings.phone %} data-placeholder="OD-14"{% endif %}>

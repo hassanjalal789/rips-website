@@ -77,14 +77,6 @@ export default function (eleventyConfig) {
     String(title).split(/[\s(-]+/).filter((w) => /^[A-Za-z]/.test(w)).slice(0, 2).map((w) => w[0].toUpperCase()).join(''),
   );
 
-  // Program card mark: an abbreviation such as "DPT" or "Pharm-D" as it is, otherwise the initials
-  // of the short name ("Business Studies" → "BS").
-  eleventyConfig.addFilter('programMark', (short) => {
-    const name = String(short).trim();
-    if (!/\s/.test(name) && /[A-Z]/.test(name.slice(1))) return name;
-    return name.split(/\s+/).slice(0, 3).map((w) => w[0].toUpperCase()).join('');
-  });
-
   // Visible placeholder for a fact that is not confirmed yet: [TO CONFIRM — what, OD-xx].
   eleventyConfig.addShortcode('tbc', (what, od) => `<span class="tbc">[TO CONFIRM — ${what}${od ? `, ${od}` : ''}]</span>`);
   eleventyConfig.addFilter('tbc', (value, what, od) =>
@@ -95,15 +87,13 @@ export default function (eleventyConfig) {
   // Fail the build on missing required fields or unknown program codes (Doc 08 Q12, Q16).
   eleventyConfig.on('eleventy.before', async () => {
     validateContent('src');
-    // Browser scripts (src/scripts) are bundled and minified once. home.js loads the 3D chunk
-    // (three.js and the scene) itself, only on capable devices (CR-01).
+    // Browser scripts (src/scripts) are bundled and minified once.
     const jsDir = path.join(eleventyConfig.directories.output, 'assets/js');
     fs.rmSync(path.join(jsDir, 'chunks'), { recursive: true, force: true }); // no stale hashed chunks
     await esbuild.build({
       // The enquiry form bundles functions/lib/validate.js, so browser and function share one set of rules.
       entryPoints: {
         site: 'src/scripts/site.js',
-        home: 'src/scripts/home.js',
         filters: 'src/scripts/filters.js',
         enquiry: 'src/scripts/enquiry.js',
       },

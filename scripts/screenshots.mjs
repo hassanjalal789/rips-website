@@ -15,11 +15,17 @@ for (const width of [360, 1366]) {
   const context = await browser.newContext({ viewport: { width, height: width < 600 ? 740 : 800 }, reducedMotion: 'reduce' });
   const page = await context.newPage();
   for (const url of PAGES) {
-    await page.goto(`http://127.0.0.1:${port}${url}${url === '/' ? '?3d=0' : ''}`, { waitUntil: 'networkidle' });
+    await page.goto(`http://127.0.0.1:${port}${url}`, { waitUntil: 'networkidle' });
     const name = (url.replace(/^\/|\/$/g, '').replace(/[/.]/g, '-') || 'home') + `-${width}.png`;
     // The WhatsApp button is pinned to the bottom of the screen; a full-page capture would paint it
     // over the middle of the page, so it is left out of these shots.
     await page.evaluate(() => document.querySelectorAll('.whatsapp-float').forEach((el) => { el.style.display = 'none'; }));
+    // Photos below the first screen load lazily, only once scrolled near, so scroll down the page first.
+    await page.evaluate(async () => {
+      for (let y = 0; y < document.documentElement.scrollHeight; y += innerHeight) { scrollTo(0, y); await new Promise((r) => setTimeout(r, 60)); }
+      scrollTo(0, 0);
+    });
+    await page.waitForLoadState('networkidle');
     await page.screenshot({ path: path.join(out, name), fullPage: true });
   }
   await context.close();

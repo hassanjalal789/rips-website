@@ -16,8 +16,9 @@ Status follows that register. Anything that waits on an open decision (OD-xx, se
 | [ADR-08](ADR-08-analytics.md) | Analytics: GA4 or cookieless | Proposed | Director, OD-15 |
 | [ADR-09](ADR-09-staff-identity.md) | Staff identity | Proposed | ADR-03 / OD-05 |
 
-The Home page's 3D and motion work is a change request, not an ADR. See
-[CR-01](../change-requests/CR-01-premium-3d-motion.md).
+Design changes to the public site are change requests, not ADRs: see
+[CR-02](../change-requests/CR-02-photo-led-redesign.md), the photo-led redesign, which replaced
+[CR-01](../change-requests/CR-01-premium-3d-motion.md) except its headings font.
 
 To record a decision: change the ADR's status and add the owner and date, update this table and the
 matching row in `docs/open-decisions.md`, and remove the placeholders the decision unblocks.

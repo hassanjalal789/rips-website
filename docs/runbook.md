@@ -13,8 +13,8 @@ Needs Node 20 or newer (`package.json` `engines`).
 npm ci
 ```
 
-Dev-only tools such as Playwright's Chromium (screenshots, posters, accessibility checks) and ffmpeg
-(recordings) are needed only for the scripts that say so.
+Playwright's Chromium (screenshots, accessibility, weight and form checks) is a dev-only tool, needed
+only for the scripts that say so.
 
 Without a local set-up, open the repository in a GitHub Codespace
 (<https://codespaces.new/hassanjalal789/rips-website>). `.devcontainer/devcontainer.json` runs
@@ -32,8 +32,6 @@ adapters). It is a preview, not a deployment (OD-03).
 | `SITE_ENV=staging npm run build` | Staging build (SRS S-02): every page gets `noindex`, `robots.txt` blocks all crawlers, the sitemap is empty, `_headers` adds `X-Robots-Tag: noindex`, and a "STAGING — not the real website" banner shows. Any other value builds the public site. |
 | `BUILD_DATE=2026-11-28 npm run build` | Builds as if today were that date (Pakistan time), to preview intake badges and notice archiving (`src/_data/build.js`). |
 
-The 3D scene on Home can be forced on or off with `?3d=1` or `?3d=0` (CR-01).
-
 ## 3. Test and check
 
 | Command | What it checks |
@@ -45,7 +43,7 @@ The 3D scene on Home can be forced on or off with `?3d=1` or `?3d=0` (CR-01).
 
 Lighthouse is not part of `npm run check`. Run it on the four key pages before each release (Doc 07
 Q32; SRS T-05: mobile performance 85 or higher, LCP 2.5 s or less). The figures for this branch are in
-CR-01.
+CR-02.
 
 ## 4. Edit content
 
@@ -82,16 +80,7 @@ Intake badges and notice archiving are worked out at build time, so the live sit
 day (Doc 07 Q08; SRS E-07). Without it, a badge stays "Open" after the closing date. Set this up as a
 scheduled build on the chosen host (OD-03).
 
-## 6. 3D posters and recordings (Home)
-
-| Command | When |
-| --- | --- |
-| `node docs/3d/render-posters.mjs` | After changing `src/scripts/3d/study-scene.js`. It re-renders the poster stills in `src/assets/img/study/`. Needs Playwright's Chromium. |
-| `node docs/3d/record-journey.mjs http://localhost:8080/ out/journey-desktop 1280 720 [fps]` | To record the scroll-through as MP4 and GIF, frame by frame. Needs the site served locally, Playwright's Chromium and ffmpeg. |
-
-More in `docs/3d/README.md`.
-
-## 7. Enquiry function
+## 6. Enquiry function
 
 - Code: `functions/lib/handler.js` (`POST /api/v1/enquiry`, Doc 08 endpoint specification).
 - Adapters: `functions/adapters/`. Configuration: `functions/config.js`.
@@ -114,7 +103,7 @@ settings, one set per environment, never in the repository (Doc 07 Q13, Q14).
 
 Use only fictional test data, such as "Test Student One" and 0300 0000001 (Doc 07 Q33; Doc 08 Q17).
 
-## 8. Deployment
+## 7. Deployment
 
 **Not done.** The host is an open decision (OD-03, ADR-04), as are the staging address (OD-16), email
 (OD-04) and the budget (OD-12).
@@ -131,7 +120,7 @@ within 30 minutes.
 
 The M0 holding page is ready in `holding/`. See `holding/README.md` for its placeholders.
 
-## 9. Before launch
+## 8. Before launch
 
 SRS T-07 lists what blocks launch. For this codebase:
 
@@ -154,8 +143,7 @@ SRS T-07 lists what blocks launch. For this codebase:
 - [ ] Cache rules (Doc 07 Q27): versioned scripts and images for a year; HTML and PDFs for minutes;
       the function never cached.
 - [ ] `sitemap.xml` lists indexable pages only; `robots.txt` published (SRS S-03; Doc 05 Q24).
-- [ ] PageSpeed Insights on production, and a real mid-range Android phone on 4G with the Home 3D
-      scene running (CR-01; NFR-PERF-01).
+- [ ] PageSpeed Insights on production, and a real mid-range Android phone on 4G (NFR-PERF-01).
 - [ ] Enquiry tested end to end on staging, including a simulated function failure (Doc 07 Q38).
 - [ ] Indexing: staging is built with `SITE_ENV=staging` (noindex everywhere, crawlers blocked, banner)
       and password-protected by the host (SRS S-02). Production is built without it. Pages with
@@ -166,7 +154,7 @@ SRS T-07 lists what blocks launch. For this codebase:
       and the sitemap submitted (SRS T-08).
 - [ ] Privacy policy approved by legal review (OD-15) and linked under every form (SRS O-08).
 
-## 10. After the host is chosen
+## 9. After the host is chosen
 
 Write these operating procedures then, because they depend on the host's dashboard (Doc 07 Q30;
 SRS S-06, O-12):

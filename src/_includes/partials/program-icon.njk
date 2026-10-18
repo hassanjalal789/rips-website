@@ -1,0 +1,19 @@
+{#- Line icon for a program card, chosen by the program's field (set `field` before including).
+    Decorative: the card's heading names the program. #}
+<svg class="program-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+{%- if field == "Pharmacy" %}
+  <g transform="rotate(-45 16 16)"><rect x="4" y="11" width="24" height="10" rx="5"/><path d="M16 11v10"/></g>
+{%- elif field == "Physical therapy" %}
+  <circle cx="16" cy="6" r="3"/><path d="M16 10v9M16 13l-7-3M16 13l7-3M16 19l-5 8M16 19l5 8"/>
+{%- elif field == "Nursing" %}
+  <path d="M16 27S6 21 6 13.5A5.5 5.5 0 0 1 16 10a5.5 5.5 0 0 1 10 3.5C26 21 16 27 16 27Z"/><path d="M9 16h4l2-3 3 6 2-3h3"/>
+{%- elif field == "Allied health" %}
+  <path d="M14 4l4 1.5-3.5 9.5-4-1.5zM12.5 14.5 11 18M7 27h18M11 27c0-3 2-5 5-5M16 22h6M21 10a8 8 0 0 1 1 12"/>
+{%- elif field == "Computing" %}
+  <rect x="6" y="7" width="20" height="13" rx="1.5"/><path d="M3 24h26M13 11l-3 3 3 3M19 11l3 3-3 3"/>
+{%- elif field == "Business" %}
+  <path d="M5 27h22M9 27v-5M15 27v-8M21 27v-6M27 27V14M6 15l6-5 5 4 9-8M21 6h5v5"/>
+{%- else %}
+  <path d="M4 12l12-6 12 6-12 6zM9 14.5V21c3 3 11 3 14 0v-6.5M28 12v7"/>
+{%- endif %}
+</svg>

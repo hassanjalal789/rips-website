@@ -55,4 +55,5 @@ lost. None are used on the site until someone confirms them.
   The build uses rips.edu.pk (`settings.url`).
 - **Decided: headings font.** The owner approved Instrument Serif for headings, and the larger Home
   hero headline, on 17 October 2026 ([CR-01](change-requests/CR-01-premium-3d-motion.md) item 3).
-  This changes Doc 06 Q27. The rest of CR-01 is still Proposed.
+  This changes Doc 06 Q27. The rest of CR-01 (the 3D Home and motion) was dropped on 18 October 2026,
+  when the owner asked for a photo-led redesign ([CR-02](change-requests/CR-02-photo-led-redesign.md)).
