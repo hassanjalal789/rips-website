@@ -1,7 +1,7 @@
 <header class="site-header">
   <div class="wrap header-bar">
     <a class="brand" href="/">
-      <img src="/assets/img/crest.webp" alt="" width="44" height="43">
+      <img src="/assets/img/{{ "crest-gold.webp" if (bodyClass and "cine-page" in bodyClass) else "crest.webp" }}" alt="" width="44" height="43">
       <span class="brand-name"><strong>RIPS</strong><span class="brand-long">{{ settings.name }}</span></span>
     </a>
     {#- A drop-down list under the header below 1024px; a plain row above (CR-02). #}

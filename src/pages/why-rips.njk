@@ -1,0 +1,135 @@
+---
+# Why RIPS? (CR-04, the owner's request of 18 October 2026 for a "Why RIPS?" tab, in the same design
+# language as Home under CR-03). Facilities are as seen in the RIPS campus tour video; claims taken from
+# that video's own description (hospital training, scholarships, internships, faculty, affiliation) are
+# drafts until the Principal confirms them (data-draft).
+layout: base.njk
+permalink: /why-rips/
+title: Why RIPS?
+description: "Why study at Radiant Institute of Professional Studies (RIPS), Sheikhupura: its programs, labs, library, computer lab, student lounge and Admission Office."
+bodyClass: why cine-page
+reasons:
+  - title: Programs for real careers
+    id: programs
+    img: anatomy-lab
+    alt: Students gathered around a skeleton model in a RIPS lab, with anatomy models on the shelves behind them.
+    text: "BS and intermediate programs in health sciences, computing, management and the humanities."
+    link: { label: See all programs, url: /programs/ }
+  - title: Labs for hands-on learning
+    id: labs
+    img: science-lab
+    alt: Two students at work at a lab bench beside a glassware cabinet in a RIPS lab.
+    text: "An anatomy lab with skeletons and models, and science labs with benches, microscopes and equipment, so practical classes happen on campus."
+    draft_text: "Students of health-science programs also train in real hospital settings."
+    draft: OD-07
+  - title: A computer lab for every student
+    id: computer-lab
+    img: computer-lab
+    alt: Students working at rows of desktop computers in the RIPS computer lab.
+    text: "Rows of desktop computers for hands-on computing classes, assignments and research."
+  - title: A library for quiet study
+    id: library
+    img: library
+    alt: A student reading at a table in front of the library shelves at RIPS.
+    text: "Shelves of books and long reading tables where students can read and work between classes."
+  - title: Classrooms built for discussion
+    id: classrooms
+    img: classroom
+    alt: A class of students at their desks while a teacher speaks at the whiteboard.
+    text: "Classrooms with whiteboards for lectures, presentations and discussion."
+    draft_text: "Classes are taught by qualified, experienced faculty."
+    draft: OD-07
+  - title: Room to relax
+    id: lounge
+    img: student-lounge
+    alt: Students sitting and talking at a long table in the RIPS student lounge.
+    text: "A student lounge to meet friends and talk between classes."
+  - title: Help with your application
+    id: admissions
+    img: admission-office
+    alt: The white RIPS Admission Office building with its glass front and name above the door.
+    text: "A separate Admission Office building on campus, where the admissions team helps you choose a program and apply."
+    link: { label: How to apply, url: /admissions/ }
+---
+{%- set programs = collections.programs | activePrograms -%}
+{%- set fields = programs | groupby("data.field") %}
+
+<section class="page-hero" aria-labelledby="why-title">
+  <picture class="page-hero-media">
+    <img src="/assets/img/campus/entrance-640.webp" srcset="/assets/img/campus/entrance-400.webp 400w, /assets/img/campus/entrance-640.webp 640w" sizes="100vw" width="640" height="360" alt="" fetchpriority="high">
+  </picture>
+  <div class="page-hero-body on-dark">
+    <div class="wrap">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><span aria-current="page">Why RIPS?</span></li>
+        </ol>
+      </nav>
+      <h1 id="why-title">Why RIPS?</h1>
+      <p class="hero-lead">{{ settings.tagline }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="At a glance">
+  <div class="wrap">
+    <p class="why-intro">{{ settings.name }} is a private educational institute in {{ settings.place }}, with {{ programs.length }} BS and intermediate programs in {{ fields | length }} fields, its own labs, library and computer lab, and an Admission Office on campus to help you apply.</p>
+    <ul class="why-facts">
+      <li><strong>{{ programs.length }}</strong><span>programs</span></li>
+      <li><strong>{{ fields | length }}</strong><span>fields of study</span></li>
+      <li><strong>BS</strong><span>and intermediate</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band band-soft" aria-labelledby="reasons-title">
+  <div class="wrap">
+    <header class="section-intro">
+      <p class="eyebrow">Life at RIPS</p>
+      <h2 id="reasons-title">Seven reasons to choose RIPS</h2>
+    </header>
+    <ol class="reason-list">
+      {%- for r in reasons %}
+      <li class="reason" id="{{ r.id }}">
+        <img src="/assets/img/campus/{{ r.img }}-640.webp" srcset="/assets/img/campus/{{ r.img }}-400.webp 400w, /assets/img/campus/{{ r.img }}-640.webp 640w" sizes="(min-width: 900px) 34rem, 92vw" width="640" height="360" alt="{{ r.alt }}" loading="lazy">
+        <div class="reason-body">
+          <p class="reason-num" aria-hidden="true">{{ "0" if loop.index < 10 }}{{ loop.index }}</p>
+          <h3>{{ r.title }}</h3>
+          <p>{{ r.text }}{% if r.draft_text %} <span data-draft="{{ r.draft }}">{{ r.draft_text }}</span>{% endif %}</p>
+          {%- if r.link %}
+          <p><a class="see-all" href="{{ r.link.url }}">{{ r.link.label }} <span aria-hidden="true">→</span></a></p>
+          {%- endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+    <p class="photo-note">Photos are stills from the RIPS campus tour video.</p>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="support-title">
+  <div class="wrap">
+    <header class="section-intro">
+      <p class="eyebrow">Beyond the classroom</p>
+      <h2 id="support-title">Support for your future</h2>
+    </header>
+    <ul class="feature-grid">
+      <li data-draft="OD-07"><h3>Scholarships</h3><p>Merit-based scholarships for students with strong results. Ask the Admission Office what you may qualify for.</p></li>
+      <li data-draft="OD-07"><h3>Internships</h3><p>Paid internships in the final year, so you leave with real work experience.</p></li>
+      <li data-draft="OD-08"><h3>Recognised degrees</h3><p>BS programs are affiliated with GC University Faisalabad. <a href="/about/affiliation/">See affiliation and approvals</a>.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta-band on-dark" aria-labelledby="cta-title">
+  <div class="wrap">
+    <h2 id="cta-title">Come and see the campus</h2>
+    <p>Talk to the admissions team, or visit the Admission Office, open {{ settings.office_hours }}.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary btn-lg" href="/enquire/">Enquire</a>
+      <a class="btn btn-ghost btn-lg" href="https://wa.me/{{ settings.whatsapp_link }}?text={{ settings.whatsapp_message | urlencode }}" rel="noopener">WhatsApp <span class="small">(opens WhatsApp)</span></a>
+      <a class="btn btn-link" href="https://www.youtube.com/watch?v=ccsk4uAyFLM" rel="noopener">Watch the campus tour <span class="small">(opens YouTube)</span></a>
+    </div>
+  </div>
+</section>

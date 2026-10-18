@@ -75,3 +75,7 @@ lost. None are used on the site until someone confirms them.
   www.isl.school and shared ISL's design-language permission. Home now follows that section order
   in RIPS's own words, photos, colours and code ([CR-03](change-requests/CR-03-isl-design-language.md)).
   This changes the Doc 06 Home content order.
+- **Decided: Home theme and a Why RIPS? page.** Later on 18 October 2026 the owner asked for Home
+  like ISL's but in the colours of the RIPS logo, and for a "Why RIPS?" tab. Home and the new
+  `/why-rips/` page use a navy and gold theme ([CR-04](change-requests/CR-04-isl-layout-rips-colours.md));
+  every other page keeps the light theme.
