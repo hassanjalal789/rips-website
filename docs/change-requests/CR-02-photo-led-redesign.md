@@ -2,7 +2,7 @@
 
 | | |
 | --- | --- |
-| Status | Proposed. Built on the `site-foundation` branch for the owner's review |
+| Status | Merged (PR #4). Item 1, the Home section order, is replaced by [CR-03](CR-03-isl-design-language.md) |
 | Raised by | Project owner, 18 October 2026: stop the 3D Home and rebuild the site in the style of a reference school website (www.isl.school) |
 | Replaces | CR-01 items 1, 2 and 4: the 3D Home, the motion and the Campus Explorer. CR-01 item 3, the approved headings font, stays |
 | Requirements affected | None. The Home section headings keep the sizes the merged site already had under CR-01 |

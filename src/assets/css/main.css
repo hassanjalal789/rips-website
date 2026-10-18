@@ -353,10 +353,18 @@ fieldset.field { border: 0; padding: 0; margin-inline: 0; }
   .hero h1 { font-size: clamp(2.75rem, 5vw, 4.25rem); }
   .hero-lead { font-size: 1.625rem; }
 }
+/* Centred hero (CR-03): crest, headline and actions stacked in the middle of the photo. The crest
+   shows only from 720 px, so phones keep the three buttons on the first screen. */
+.hero-crest { display: none; }
+@media (min-width: 720px) {
+  .hero-center { align-items: center; min-block-size: min(88vh, 820px); }
+  .hero-center::after { background: radial-gradient(ellipse at center, rgba(7,23,38,.78) 0%, rgba(7,23,38,.62) 55%, rgba(7,23,38,.45) 100%); }
+  .hero-center .hero-body { text-align: center; }
+  .hero-center .hero-crest { display: block; inline-size: 96px; block-size: auto; margin: 0 auto var(--s4); }
+  .hero-center h1 { margin-inline: auto; max-inline-size: 18ch; }
+  .hero-center .btn-row, .hero-center .hero-status { justify-content: center; }
+}
 
-.intro-grid { display: grid; gap: var(--s4); margin-block-end: var(--s6); }
-.intro-grid .lead { color: var(--c-ink); }
-@media (min-width: 1024px) { .intro-grid { grid-template-columns: 1fr 1.3fr; gap: var(--s7); margin-block-end: var(--s7); } }
 
 .program-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s4); grid-template-columns: 1fr; }
 @media (min-width: 600px) { .program-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -371,13 +379,6 @@ fieldset.field { border: 0; padding: 0; margin-inline: 0; }
 .program-card h3 a:focus-visible { outline: none; }
 .program-foot { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); margin: auto 0 0; padding-block-start: var(--s2); }
 
-.photo-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s5) var(--s4); grid-template-columns: 1fr; }
-@media (min-width: 600px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
-.photo-card img { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; margin-block-end: var(--s3); }
-.photo-card h3 { margin: 0 0 var(--s1); font-size: 1.1875rem; }
-.photo-card p { margin: 0; color: var(--c-muted); }
-.photo-note { margin: var(--s5) 0 0; font-size: .875rem; color: var(--c-muted); }
 
 /* About: text with campus photos beside it on wide screens, after it on phones. */
 .about-layout { display: grid; gap: var(--s6); }
@@ -391,33 +392,66 @@ fieldset.field { border: 0; padding: 0; margin-inline: 0; }
   .about-photos { padding-block-start: var(--s6); }
 }
 
-/* Vision and mission: the entrance photo beside the text on navy (stacked on phones). */
-.vision { background: var(--c-brand); color: #dbe3ec; padding-block: var(--s7); }
-.vision-grid { display: grid; gap: var(--s5); }
-.vision-photo { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; }
-.vision h2 { margin: 0 0 var(--s2); font-size: 1.875rem; }
-.vision h3 { font-family: var(--font); font-size: .875rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent); margin: var(--s5) 0 var(--s2); }
-.vision .btn { margin-block-start: var(--s3); }
+.photo-note { margin: var(--s5) 0 0; font-size: .875rem; color: var(--c-muted); }
+
+/* Home (CR-03): centred section intros, a row of four campus photos, vision and mission as two plain
+   statements, six facts, a photo-and-text tour band, program fields as icon tiles and a contact list. */
+.section-intro { text-align: center; max-inline-size: 44rem; margin: 0 auto var(--s6); }
+.section-intro h2 { margin: 0; }
+.section-intro .lead { margin: var(--s3) 0 0; color: var(--c-muted); }
+.section-more { text-align: center; margin: var(--s6) 0 0; }
+
+.campus-row { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s5) var(--s4); grid-template-columns: 1fr; }
+@media (min-width: 600px) { .campus-row { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .campus-row { grid-template-columns: repeat(4, 1fr); } }
+.campus-card img { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
+.campus-card h3, .feature-grid h3, .field-tile h3 { font-size: .9375rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--c-brand); }
+.campus-card h3 { margin: var(--s3) 0 0; text-align: center; }
+.campus-row + .photo-note { text-align: center; }
+
+.statements .wrap { display: grid; gap: var(--s6); max-inline-size: 48rem; text-align: center; }
+.statement h2 { margin: 0 0 var(--s3); }
+.statement p:last-child { margin: 0; font-size: 1.125rem; }
+
+.feature-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s5); grid-template-columns: 1fr; }
+@media (min-width: 600px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .feature-grid { grid-template-columns: repeat(3, 1fr); gap: var(--s6) var(--s5); } }
+.feature-grid li { padding-block-start: var(--s4); border-block-start: 3px solid var(--c-accent); }
+.feature-grid h3 { margin: 0 0 var(--s2); }
+.feature-grid p { margin: 0; color: var(--c-muted); }
+
+.tour { background: var(--c-brand); color: #dbe3ec; }
+.tour-grid { display: grid; }
+.tour-photo { display: block; inline-size: 100%; block-size: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.tour-body { padding: var(--s7) var(--s4); }
+.tour-body h2 { margin: 0 0 var(--s3); font-size: 1.875rem; }
+.tour-body p { max-inline-size: 34rem; }
 @media (min-width: 1024px) {
-  .vision { padding-block: 88px; }
-  .vision-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: var(--s7); }
-  .vision h2 { font-size: 2.75rem; }
+  .tour-grid { grid-template-columns: 1fr 1fr; align-items: center; }
+  .tour-photo { aspect-ratio: auto; min-block-size: 420px; }
+  .tour-body { padding: 88px var(--s7); }
+  .tour-body h2 { font-size: 2.75rem; }
 }
 
-.admissions-band { background: var(--c-accent); color: var(--c-brand); padding-block: var(--s7); }
-.admissions-band .eyebrow { color: var(--c-brand); }
-.admissions-band h2 { margin: 0 0 var(--s3); font-size: 2rem; }
-.admissions-band p { margin: 0; max-inline-size: 40rem; }
-.admissions-inner { display: grid; gap: var(--s4); }
-.admissions-band .btn-row { margin: 0; }
-@media (min-width: 1024px) { .admissions-inner { grid-template-columns: 1fr auto; align-items: center; gap: var(--s7); } .admissions-band h2 { font-size: 2.75rem; } }
+.field-row { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s4); grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 768px) { .field-row { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .field-row { grid-template-columns: repeat(5, 1fr); } }
+.field-tile { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--s2); padding: var(--s5) var(--s3); text-align: center; background: #fff; border: 1px solid var(--c-line); border-radius: 12px; transition: border-color .2s ease, box-shadow .2s ease; }
+.field-tile:hover { border-color: var(--c-brand); box-shadow: 0 12px 28px rgba(13,39,64,.12); }
+.field-tile:focus-within { outline: 3px solid var(--c-focus); outline-offset: 2px; }
+.field-tile h3 { margin: 0; font-size: .8125rem; }
+.field-tile h3 a { color: var(--c-brand); text-decoration: none; }
+.field-tile h3 a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.field-tile h3 a:focus-visible { outline: none; }
+.field-tile p { margin: 0; font-size: .875rem; color: var(--c-muted); }
 
-.contact-grid { list-style: none; margin: var(--s5) 0 0; padding: 0; display: grid; gap: var(--s4); grid-template-columns: 1fr; }
-@media (min-width: 768px) { .contact-grid { grid-template-columns: repeat(3, 1fr); } }
-.contact-grid > li { background: #fff; border: 1px solid var(--c-line); border-radius: 12px; padding: var(--s5); }
-.contact-grid h3 { margin: 0 0 var(--s3); }
-.contact-grid p { margin: 0 0 var(--s2); }
-.contact-grid a { display: inline-flex; flex-wrap: wrap; align-items: center; column-gap: .35em; min-block-size: var(--target); font-weight: 600; }
+.contact-list { display: grid; gap: var(--s4); margin: 0 auto; max-inline-size: 60rem; grid-template-columns: 1fr; }
+@media (min-width: 600px) { .contact-list { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .contact-list { grid-template-columns: repeat(5, 1fr); } }
+.contact-list > div { text-align: center; }
+.contact-list dt { font-size: .8125rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--c-gold-ink); margin-block-end: var(--s1); }
+.contact-list dd { margin: 0; overflow-wrap: anywhere; }
+.contact-actions { justify-content: center; margin-block-start: var(--s6); }
 
 .footer-tagline { font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--c-accent); }
 

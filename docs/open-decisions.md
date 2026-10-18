@@ -71,3 +71,7 @@ lost. None are used on the site until someone confirms them.
   hero headline, on 17 October 2026 ([CR-01](change-requests/CR-01-premium-3d-motion.md) item 3).
   This changes Doc 06 Q27. The rest of CR-01 (the 3D Home and motion) was dropped on 18 October 2026,
   when the owner asked for a photo-led redesign ([CR-02](change-requests/CR-02-photo-led-redesign.md)).
+- **Decided: Home composition.** On 18 October 2026 the owner asked for Home in the design of
+  www.isl.school and shared ISL's design-language permission. Home now follows that section order
+  in RIPS's own words, photos, colours and code ([CR-03](change-requests/CR-03-isl-design-language.md)).
+  This changes the Doc 06 Home content order.
