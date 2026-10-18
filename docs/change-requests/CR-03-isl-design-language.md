@@ -4,7 +4,7 @@
 | --- | --- |
 | Status | Built on the `site-foundation` branch at the owner's request, 18 October 2026 |
 | Raised by | Project owner: rebuild Home in the design of www.isl.school, with RIPS's own identity |
-| Permission | "Website Design Language Permission Agreement" between International School Lahore (ISL) and RIPS, dated 18 October 2026, shared by the owner as a PDF. The copy kept with the project records is the owner's; it is not in this public repository |
+| Permission | "Website Design Language Permission Agreement" between International School Lahore (ISL) and RIPS, dated 18 October 2026, shared by the owner as a PDF, with a copy signed by Shahzad Tahir, Principal of ISL, shared the same day. The owner keeps the signed copy with the project records; it is not in this public repository |
 | Replaces | CR-02 item 1 (the Home section order). CR-02's header, menu, photos and "no 3D or motion" stay |
 | Requirements affected | Doc 06 Home content order: program cards (max 6) become program-field tiles, the "why RIPS" campus band becomes the campus row, vision and mission and six facts, and the admissions band is dropped. Owner's request, recorded here |
 | Requirements not changed | Three hero actions on the first screen of a 360 × 640 phone, admissions status in the hero, at most 5 notices, navy and gold palette (Doc 06 Q05, pending sign-off), approved headings font (CR-01 item 3), WCAG 2.1 AA, "no invented facts or statistics", NFR-PERF-01 and 02 |
