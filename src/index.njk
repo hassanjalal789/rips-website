@@ -1,17 +1,17 @@
 ---
-# Home (Doc 05 page inventory; Doc 06 Home checklist and wireframe; motion storyboard S1–S4).
-# Content order: header → headline → Programs / Admissions / Enquire → admissions status →
-# "Your path at RIPS" → program cards (max 6) → latest notices (max 5) → why RIPS (verified only)
-# → contact strip → footer. The hero's buttons stay on the first screen of a 360 × 640 phone.
+# Home (Doc 05 page inventory; Doc 06 Home checklist; CR-02 photo-led layout).
+# Content order (Doc 06): header → headline and photo → Enquire / Programs / Admissions → admissions
+# status → program cards (max 6) → latest notices (max 5) → why RIPS: campus photos, vision and mission
+# → admissions band → contact → footer. The hero's buttons stay on the first screen of a 360 × 640
+# phone. Every fact here is from settings, the program files or the RIPS campus tour video.
 layout: base.njk
 permalink: /
 title: Health-science, computing and business degrees in Sheikhupura
 description: "Radiant Institute of Professional Studies (RIPS), Sheikhupura: health-science, computing and business programs, admissions, notices and how to enquire."
 bodyClass: home
-pageScript: home
 preload:
-  - { href: /assets/img/study/stop-0-wide.webp, media: "(min-aspect-ratio: 11/10)" }
-  - { href: /assets/img/study/stop-0-tall.webp, media: "(max-aspect-ratio: 11/10)" }
+  - { href: /assets/img/campus/front-aerial-1200.webp, media: "(min-width: 720px)" }
+  - { href: /assets/img/campus/front-aerial-720.webp, media: "(max-width: 719px)" }
 eleventyComputed:
   jsonld:
     "@context": https://schema.org
@@ -20,109 +20,95 @@ eleventyComputed:
     alternateName: "{{ settings.short_name }}"
     url: "{{ settings.url }}/"
     logo: "{{ settings.url }}/assets/img/crest.webp"
-chapters:
-  - title: Find your program
-    text: Start with what you want to do. Every program page puts the duration, eligibility, fee and intake in one place.
-    link: { label: Browse programs, url: /programs/ }
-  - title: Learn in class
-    text: Learn from your teachers in the classroom, then take your notes further on your own and with your class.
-    link: { label: How admissions work, url: /admissions/ }
-  - title: Practise in the lab
-    text: The campus has medical and science labs and a computer lab, so practical work sits next to the theory.
-    link: { label: See the campus, url: "#campus" }
-  - title: Study together
-    text: The library and the student lounge give you room to read, revise and work through problems with friends.
-    link: { label: Latest notices, url: /notices/ }
-  - title: Graduate ready for what is next
-    text: Finish your program with the knowledge and the practice to take your next step.
-    link: { label: Enquire about admissions, url: /enquire/ }
+# Facilities seen in the RIPS campus tour video (https://www.youtube.com/watch?v=ccsk4uAyFLM). The photos are
+# 16:9 stills from it, cropped clear of the video's logo overlay and subtitles, until commissioned photos (OD-12).
+campus:
+  - title: Anatomy lab
+    text: Skeletons and anatomy models for learning the human body up close.
+    img: anatomy-lab
+    alt: Students gathered around a skeleton model in a RIPS lab, with anatomy models on the shelves behind them.
+  - title: Science labs
+    text: Lab benches, microscopes and equipment for practical classes.
+    img: science-lab
+    alt: Two students at work at a lab bench beside a glassware cabinet in a RIPS lab.
+  - title: Computer lab
+    text: Rows of desktop computers for hands-on classes.
+    img: computer-lab
+    alt: Students working at rows of desktop computers in the RIPS computer lab.
+  - title: Library
+    text: Shelves of books and long reading tables for quiet study.
+    img: library
+    alt: A student reading at a table in front of the library shelves at RIPS.
+  - title: Classrooms
+    text: Classrooms with whiteboards for lectures and discussion.
+    img: classroom
+    alt: A class of students at their desks while a teacher speaks at the whiteboard.
+  - title: Student lounge
+    text: A place to meet friends and talk between classes.
+    img: student-lounge
+    alt: Students sitting and talking at a long table in the RIPS student lounge.
 ---
 {%- set intake = intakes[0] -%}
 {%- set status = intake | intakeStatus(build.today) -%}
 {%- set programs = collections.programs | activePrograms -%}
 {%- set notices = collections.notices | currentNotices(build.today) -%}
 
-<div class="journey on-dark" data-journey>
-  {#- One sticky stage behind the hero and the chapters. The 3D scene replaces the posters on capable
-      devices (src/scripts/home.js); the posters are stills of the same scene. #}
-  <div class="journey-stage" aria-hidden="true" data-posters="/assets/img/study/stop-{stop}-{crop}.webp">
-    <picture class="poster is-shown" data-poster>
-      <source media="(max-aspect-ratio: 11/10)" srcset="/assets/img/study/stop-0-tall.webp" width="720" height="1400">
-      <img src="/assets/img/study/stop-0-wide.webp" alt="" width="1600" height="1000" fetchpriority="high">
-    </picture>
-    <canvas class="stage-canvas"></canvas>
-  </div>
-
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="wrap hero-inner">
-      <p class="eyebrow hero-in hero-in-0">{{ settings.name }}</p>
+<section class="hero" aria-labelledby="hero-title">
+  <picture class="hero-media">
+    <source media="(min-width: 720px)" srcset="/assets/img/campus/front-aerial-1200.webp" width="1200" height="580">
+    <img src="/assets/img/campus/front-aerial-720.webp" width="720" height="348" alt="The RIPS main building in {{ settings.place }}, seen from the air." fetchpriority="high">
+  </picture>
+  <div class="hero-body on-dark">
+    <div class="wrap">
+      <p class="eyebrow">{{ settings.name }}</p>
       <h1 id="hero-title">Health-science, computing and business degrees <em>in&nbsp;{{ settings.place }}</em></h1>
-      <p class="hero-lead hero-in hero-in-1">{{ settings.tagline }}.</p>
-      <div class="btn-row hero-in hero-in-2">
+      <p class="hero-lead">{{ settings.tagline }}.</p>
+      <div class="btn-row">
         <a class="btn btn-primary btn-lg" href="/enquire/">Enquire</a>
         <a class="btn btn-ghost btn-lg" href="/programs/">Programs</a>
         <a class="btn btn-link" href="/admissions/">Admissions <span aria-hidden="true">→</span></a>
       </div>
       {%- if status %}
-      <p class="hero-status hero-in hero-in-3">
+      <p class="hero-status">
         <span class="badge badge-{{ status.key }}">Admissions {{ status.label | lower }}</span>
         <span>{{ intake.session }} · closes {{ intake.closes_on | displayDate }}</span>
         {%- if intake.sample %} <span class="sample-tag">SAMPLE dates, OD-07</span>{% endif %}
       </p>
       {%- endif %}
     </div>
-    <a class="scroll-cue" href="#path"><span>Your path at RIPS</span></a>
-  </section>
+  </div>
+</section>
 
-  <section id="path" class="chapters" aria-labelledby="path-title">
-    <h2 id="path-title" class="visually-hidden">Your path at RIPS</h2>
-    {%- for c in chapters %}
-    <article class="chapter" aria-labelledby="chapter-{{ loop.index }}">
-      <div class="wrap">
-        <div class="chapter-card" data-reveal>
-          <p class="chapter-num"><span class="chapter-kicker">Your path at RIPS</span> <span>{{ "0" + loop.index }}</span><span class="chapter-of">/ 0{{ chapters.length }}</span></p>
-          <h3 id="chapter-{{ loop.index }}">{{ c.title }}</h3>
-          <p>{{ c.text }}</p>
-          <a class="chapter-link" href="{{ c.link.url }}">{{ c.link.label }} <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </article>
-    {%- endfor %}
-  </section>
-</div>
-
-<section class="band band-light" aria-labelledby="programs-title">
+<section class="band band-soft" aria-labelledby="programs-title">
   <div class="wrap">
-    <div class="section-head" data-reveal>
+    <div class="section-head">
       <div>
         <p class="eyebrow">Programs</p>
         <h2 id="programs-title">Choose your program</h2>
       </div>
       <a class="see-all" href="/programs/">See all programs <span aria-hidden="true">→</span></a>
     </div>
-    <ol class="program-grid" data-reveal-stagger>
+    <ul class="program-grid">
       {%- for p in programs.slice(0, 6) %}
       {%- set pstatus = (intakes | intakeFor(p.data.slug)) | intakeStatus(build.today) %}
-      <li>
-        <article class="program-card" data-tilt>
-          <p class="program-num" aria-hidden="true">{{ "0" + loop.index }}</p>
-          <h3><a href="/programs/{{ p.data.slug }}/">{{ p.data.title }}</a></h3>
-          <p class="card-meta">{{ p.data.field }} · {{ p.data.level }}</p>
-          <p class="program-foot">
-            {%- if pstatus %}<span class="badge badge-{{ pstatus.key }}">{{ pstatus.label }}</span>{% endif %}
-            {%- if not p.data.confirmed %} <span class="sample-tag">SAMPLE, OD-07</span>{% endif %}
-            <span class="program-go" aria-hidden="true">→</span>
-          </p>
-        </article>
+      {%- set field = p.data.field %}
+      <li class="program-card">
+        <span class="program-icon-wrap">{% include "partials/program-icon.njk" %}</span>
+        <h3><a href="/programs/{{ p.data.slug }}/">{{ p.data.title }}</a></h3>
+        <p class="card-meta">{{ p.data.field }} · {{ p.data.level }}</p>
+        <p class="program-foot">
+          {%- if pstatus %}<span class="badge badge-{{ pstatus.key }}">{{ pstatus.label }}</span>{% endif %}
+          {%- if not p.data.confirmed %} <span class="sample-tag">SAMPLE, OD-07</span>{% endif %}
+        </p>
       </li>
       {%- endfor %}
-    </ol>
+    </ul>
   </div>
 </section>
 
 <section class="band" aria-labelledby="notices-title">
   <div class="wrap">
-    <div class="section-head" data-reveal>
+    <div class="section-head">
       <div>
         <p class="eyebrow">Notice board</p>
         <h2 id="notices-title">Latest notices</h2>
@@ -130,7 +116,7 @@ chapters:
       <a class="see-all" href="/notices/">All notices <span aria-hidden="true">→</span></a>
     </div>
     {%- if notices.length %}
-    <ul class="notice-list" data-reveal-stagger>
+    <ul class="notice-list">
       {%- for n in notices.slice(0, 5) %}
       {%- set headingTag = "h3" %}
       {% include "partials/notice-row.njk" %}
@@ -142,46 +128,90 @@ chapters:
   </div>
 </section>
 
-{#- Why RIPS: verified facts only (Doc 06 Home checklist). The facilities are the ones the RIPS campus
-    tour video shows; affiliation waits for OD-08. #}
-<section id="campus" class="band band-navy on-dark" aria-labelledby="campus-title">
-  <div class="wrap campus-grid">
-    <div data-reveal>
-      <p class="eyebrow">On campus</p>
-      <h2 id="campus-title">Labs, classrooms and a library <em>under one roof</em></h2>
-      <p>The RIPS campus tour shows the main building and its facilities:</p>
-      <ul class="facility-list">
-        <li>Medical and science labs</li>
-        <li>Classrooms and a computer lab</li>
-        <li>A library</li>
-        <li>A student lounge</li>
-        <li>A separate Admission Office</li>
-      </ul>
-      <p>Affiliation: {% tbc "affiliating university and approvals", "OD-08" %}</p>
-      <p><a class="btn btn-ghost" href="https://www.youtube.com/watch?v=ccsk4uAyFLM" rel="noopener">Watch the campus tour <span class="small">(opens YouTube)</span></a></p>
-    </div>
-    <figure class="campus-photo" data-reveal>
-      <img src="/assets/img/campus/front-aerial-720.webp" srcset="/assets/img/campus/front-aerial-720.webp 720w, /assets/img/campus/front-aerial-1200.webp 1200w" sizes="(min-width: 1024px) 40rem, 100vw" width="1200" height="580" alt="The RIPS main building from the air: a white portico with the institute's sign, a small dome, red-brick bays and a large green-grey roof." loading="lazy">
-      <figcaption>From the RIPS campus tour video. {% tbc "commissioned photography", "OD-12" %}</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="contact-strip" aria-labelledby="contact-title">
+<section id="campus" class="band band-soft" aria-labelledby="why-title">
   <div class="wrap">
-    <h2 id="contact-title" class="visually-hidden">Contact admissions</h2>
-    <ul>
-      <li><strong>Call</strong><br>{{ settings.phone | tbc("admissions phone", "OD-14") | safe }}</li>
-      <li><strong>WhatsApp</strong><br>{{ settings.whatsapp | tbc("WhatsApp number", "OD-14") | safe }}</li>
-      <li><strong>Visit</strong><br>{{ settings.address | tbc("verified address and map link", "OD-14") | safe }}</li>
+    <div class="intro-grid">
+      <div>
+        <p class="eyebrow">Why RIPS</p>
+        <h2 id="why-title">A modern campus <em>in {{ settings.place }}</em></h2>
+      </div>
+      <div>
+        <p class="lead">{{ settings.name }} (RIPS) is a private educational institute in {{ settings.place }}. It offers programs in health sciences, computing and business.</p>
+        <p>The campus has an anatomy lab, science and computer labs, classrooms, a library and a student lounge, and a separate Admission Office building.</p>
+        <div class="btn-row">
+          <a class="btn btn-secondary" href="/about/">About RIPS</a>
+          <a class="btn btn-text" href="https://www.youtube.com/watch?v=ccsk4uAyFLM" rel="noopener">Watch the campus tour <span class="small">(opens YouTube)</span></a>
+        </div>
+      </div>
+    </div>
+    <ul class="photo-grid">
+      {%- for c in campus %}
+      <li class="photo-card">
+        <img src="/assets/img/campus/{{ c.img }}-640.webp" srcset="/assets/img/campus/{{ c.img }}-400.webp 400w, /assets/img/campus/{{ c.img }}-640.webp 640w" sizes="(min-width: 1024px) 23rem, (min-width: 600px) 45vw, 92vw" width="640" height="360" alt="{{ c.alt }}" loading="lazy">
+        <h3>{{ c.title }}</h3>
+        <p>{{ c.text }}</p>
+      </li>
+      {%- endfor %}
     </ul>
+    <p class="photo-note">Photos are stills from the RIPS campus tour video. {% tbc "commissioned photography", "OD-12" %}</p>
   </div>
 </section>
 
-<section class="cta-band" aria-labelledby="cta-title">
-  <div class="wrap cta-inner" data-reveal>
-    <h2 id="cta-title">Questions about admissions?</h2>
-    <p>Send a short enquiry and the admissions office will call you back.</p>
-    <a class="btn btn-navy btn-lg" href="/enquire/">Enquire</a>
+<section class="vision on-dark" aria-labelledby="vision-title">
+  <div class="wrap vision-grid">
+    <img class="vision-photo" src="/assets/img/campus/entrance-640.webp" srcset="/assets/img/campus/entrance-400.webp 400w, /assets/img/campus/entrance-640.webp 640w" sizes="(min-width: 1024px) 34rem, 92vw" width="640" height="360" alt="The main entrance of RIPS: white columns under the institute's sign and a small white dome." loading="lazy">
+    <div class="vision-body">
+      <p class="eyebrow">Who we are</p>
+      <h2 id="vision-title">Vision and mission</h2>
+      <h3>Our vision</h3>
+      <p>{% tbc "vision, approved by the Chairman or Director", "Doc 05 Q13" %}</p>
+      <h3>Our mission</h3>
+      <p>{% tbc "mission, approved by the Chairman or Director", "Doc 05 Q13" %}</p>
+      <p><a class="btn btn-ghost" href="/about/">Read more about RIPS</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="admissions-band" aria-labelledby="admissions-title">
+  <div class="wrap admissions-inner">
+    <div>
+      <p class="eyebrow">Admissions {{ intake.session }}</p>
+      <h2 id="admissions-title">Start your application</h2>
+      <p>Send a short enquiry and the admissions office will call you back. Every program page lists its duration, eligibility, fee and intake.</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-navy btn-lg" href="/enquire/">Enquire</a>
+      <a class="btn btn-secondary btn-lg" href="/admissions/">How to apply</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="contact-title">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2 id="contact-title">Visit or contact us</h2>
+    <ul class="contact-grid">
+      <li>
+        <h3>Visit</h3>
+        <p>{{ settings.address | tbc("verified address", "OD-14") | safe }}</p>
+        <p>Office hours: {{ settings.office_hours | tbc("office hours", "OD-14") | safe }}</p>
+        {%- if settings.map_link %}
+        <p><a href="{{ settings.map_link }}" rel="noopener">Get directions <span class="small">(opens Google Maps)</span></a></p>
+        {%- else %}
+        <p>Directions: {% tbc "Google Maps link", "OD-14" %}</p>
+        {%- endif %}
+      </li>
+      <li>
+        <h3>Call or WhatsApp</h3>
+        <p>Phone: {{ settings.phone | tbc("admissions phone", "OD-14") | safe }}</p>
+        <p>WhatsApp: {{ settings.whatsapp | tbc("WhatsApp number", "OD-14") | safe }}</p>
+        <p><a href="tel:{{ settings.phone_link }}"{% if not settings.phone %} data-placeholder="OD-14"{% endif %}>Call admissions</a></p>
+      </li>
+      <li>
+        <h3>Email</h3>
+        <p>{{ settings.email | tbc("admissions email", "OD-04") | safe }}</p>
+        <p><a href="/contact/">All contact details</a></p>
+      </li>
+    </ul>
   </div>
 </section>

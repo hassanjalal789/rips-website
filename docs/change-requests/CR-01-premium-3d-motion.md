@@ -2,7 +2,7 @@
 
 | | |
 | --- | --- |
-| Status | Proposed. Built on the `site-foundation` branch for review. The type change (item 3) is approved; the rest needs the owner's approval before launch |
+| Status | Withdrawn on 18 October 2026, except item 3 (the headings font, approved 17 October 2026). The owner asked for a photo-led redesign instead: [CR-02](CR-02-photo-led-redesign.md). The 3D code is in the git history at commit 079145b |
 | Raised by | Project owner: the premium 3D and motion brief, then the update of 17 October 2026 (keep the college's navy and gold from the logo; animate students studying rather than the college building) |
 | Requirements affected | NFR-PERF-01 (Lighthouse mobile ≥ 85, LCP ≤ 2.5 s, CLS ≤ 0.1), NFR-PERF-02 (≤ 1.5 MB first load), Doc 06 Q27 (type rules) |
 | Requirements not changed | Doc 06 Home content order, one filled button per screen area, WCAG 2.1 AA, "no invented facts or statistics" |

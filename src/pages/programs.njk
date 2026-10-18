@@ -41,16 +41,18 @@ pageScript: filters
 {%- for field, items in programs | groupby("data.field") -%}
 <section aria-labelledby="field-{{ loop.index }}" data-filter-group>
   <h2 id="field-{{ loop.index }}">{{ field }}</h2>
-  <ul class="grid grid-3">
+  <ul class="program-grid">
     {%- for p in items %}
     {%- set pstatus = (intakes | intakeFor(p.data.slug)) | intakeStatus(build.today) %}
-    <li class="card" data-filter-item data-field="{{ p.data.field }}" data-level="{{ p.data.level }}">
-      <div class="card-media" aria-hidden="true">{{ (p.data.short or p.data.title) | programMark }}</div>
-      <div class="card-body">
-        <h3><a href="/programs/{{ p.data.slug }}/">{{ p.data.title }}</a></h3>
-        <p class="card-meta">{{ p.data.level }}</p>
-        <p class="card-meta">{% if pstatus %}<span class="badge badge-{{ pstatus.key }}">{{ pstatus.label }}</span>{% endif %}{% if not p.data.confirmed %} <span class="sample-tag">SAMPLE</span>{% endif %}</p>
-      </div>
+    {%- set field = p.data.field %}
+    <li class="program-card" data-filter-item data-field="{{ p.data.field }}" data-level="{{ p.data.level }}">
+      <span class="program-icon-wrap">{% include "partials/program-icon.njk" %}</span>
+      <h3><a href="/programs/{{ p.data.slug }}/">{{ p.data.title }}</a></h3>
+      <p class="card-meta">{{ p.data.level }}</p>
+      <p class="program-foot">
+        {%- if pstatus %}<span class="badge badge-{{ pstatus.key }}">{{ pstatus.label }}</span>{% endif %}
+        {%- if not p.data.confirmed %} <span class="sample-tag">SAMPLE</span>{% endif %}
+      </p>
     </li>
     {%- endfor %}
   </ul>

@@ -1,5 +1,5 @@
-// Every page: the full-screen menu (numbered 01–07) below 1024px. Without JavaScript the menu is a
-// plain wrapped list under the logo (see main.css), so nothing here is required to navigate.
+// Every page: the drop-down menu under the header below 1024px (CR-02). Without JavaScript the menu
+// is a plain wrapped list under the logo (see main.css), so nothing here is required to navigate.
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.getElementById('site-nav');
 

@@ -23,17 +23,15 @@ Eleventy 3 with Nunjucks templates (`eleventy.config.js`).
   Doc 08 Q12, Q16).
 - Browser scripts in `src/scripts/` are bundled by esbuild in Eleventy's `before` hook: ES modules,
   code-split and minified.
-- The Home 3D scene uses three.js, GSAP and Lenis. It is loaded lazily and only on capable devices;
-  the rules and measurements are in
-  [CR-01](../change-requests/CR-01-premium-3d-motion.md). CR-01 does not fit the Doc 07 register, so it
-  is recorded as a change request, not as an ADR.
+- The site uses no browser libraries. CR-01 had added three.js, GSAP and Lenis for a 3D Home;
+  [CR-02](../change-requests/CR-02-photo-led-redesign.md) removed them. Design changes like these are
+  recorded as change requests, not as ADRs.
 
 ## Consequences
 
 - Changing generator later means re-templating, not rewriting content: the content stays plain files
   (Doc 07 register).
 - Output in `_site/` is plain files, so any static host can serve it (ADR-04).
-- Doc 07 Q11 asks for "minimal JavaScript", and Q25 for "build-time dependencies only". CR-01 adds
-  browser libraries on Home: about 50 KB gzipped at load, plus a lazy 150 KB chunk on capable devices.
-  They are pinned in `package.json`. This needs the owner's approval with CR-01.
+- Doc 07 Q11 asks for "minimal JavaScript", and Q25 for "build-time dependencies only". Since CR-02
+  the only browser scripts are the site's own: the menu, the enquiry form and the list filters.
 - One developer can run, build and check everything with Node (see `docs/runbook.md`).
