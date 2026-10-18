@@ -4,14 +4,13 @@ permalink: /privacy/
 title: Privacy policy
 crumbs: []
 description: "How RIPS Sheikhupura uses the details you send through its website, who sees them, how long they are kept and how to ask for them to be deleted."
-last_updated: 2026-10-17
+last_updated: 2026-10-18
 ---
 {#- Privacy policy (SRS O-08, M-03 to M-06; PRD Q103: the policy "states what is collected, why, who sees it, how long
-    it is kept and how to request deletion"). DRAFT by the developer for legal review (OD-15); retention
-    periods are proposals until OD-10. #}
+    it is kept and how to request deletion"). DRAFT by the developer for legal review (OD-15); the services
+    (OD-06), retention period (OD-10) and reply time (OD-15) are proposals, marked data-draft. #}
 <h1>Privacy policy</h1>
-<p class="alert alert-warning"><strong>Draft.</strong> {% tbc "legal review of this policy", "OD-15" %}</p>
-<div class="prose">
+<div class="prose" data-draft="OD-15">
   <h2>Who we are</h2>
   <p>This is the website of {{ settings.name }} (RIPS), {{ settings.place }}. Contact: {{ settings.email | tbc("admissions email", "OD-04") | safe }}.</p>
 
@@ -31,13 +30,13 @@ last_updated: 2026-10-17
 
   <h2>Who sees it</h2>
   <p>Only our admissions team and the website administrator. We do not sell or share your details.</p>
-  <p>{% tbc "the services that store and email enquiries for us", "OD-06" %}</p>
+  <p data-draft="OD-06">Enquiries are kept in a private spreadsheet that only the admissions team can open, and the admissions office is told about each new enquiry by email.</p>
 
   <h2>How long we keep it</h2>
-  <p>{% tbc "retention period for enquiries; proposed: 12 months after the intake it relates to closes", "OD-10" %}</p>
+  <p data-draft="OD-10">We keep an enquiry for 12 months after the intake it relates to closes, then delete it.</p>
 
   <h2>Seeing, correcting or deleting your details</h2>
-  <p>Ask the admissions office by email or WhatsApp to see, correct or delete your enquiry, or to stop contacting you. {% tbc "how quickly we reply; proposed: within 14 days", "OD-15" %}</p>
+  <p>Ask the admissions office by email or WhatsApp to see, correct or delete your enquiry, or to stop contacting you. <span data-draft="OD-15">We reply within 14 days.</span></p>
 
   <h2>Cookies and analytics</h2>
   <p>This website does not set cookies and does not use analytics. If analytics are added later, they will run only after you choose Accept, and this policy will be updated first.</p>

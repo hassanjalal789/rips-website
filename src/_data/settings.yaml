@@ -8,18 +8,19 @@ url: https://rips.edu.pk
 lang: en
 dir: ltr                                           # rtl for Urdu pages later (OD-11)
 
-# Contact details (OD-14: admissions WhatsApp number, phone and office hours).
-# The *_link values are dummy numbers so links work in development; never publish them.
-phone: null
-phone_link: "+920000000000"
-whatsapp: null
-whatsapp_link: "920000000000"
+# Contact details. WhatsApp, email and the map link are from the owner (18 October 2026).
+# Values named in draft_fields were filled in until the owner confirms them; npm run check lists them.
+phone: "+92 327 4103941"                           # the WhatsApp number, used for calls too
+phone_link: "+923274103941"
+whatsapp: "+92 327 4103941"
+whatsapp_link: "923274103941"
 whatsapp_message: "Hello RIPS, I would like information about admissions."
-email: null                                        # mailbox depends on OD-04
-email_link: admissions@example.com
-address: null                                      # verified address needed (PRD Q100, FEAT-005)
-office_hours: null
-map_link: null                                     # Google Maps link once the address is verified
+email: radiantcollagesheikhupura@gmail.com         # spelled as the owner gave it
+email_link: radiantcollagesheikhupura@gmail.com
+address: "Sheikhupura, Punjab, Pakistan"           # street address to add (the map link finds the campus)
+office_hours: "8:00 AM to 3:00 PM"                 # from the owner's reference page; not confirmed
+map_link: https://share.google/9zHAz5ebhSFbfrlxe
+draft_fields: [phone, address, office_hours]
 
 social: []                                         # e.g. { label: Facebook, url: https://… } once accounts are confirmed
 

@@ -12,8 +12,24 @@
     - { label: Admission fee, amount_pkr: null, per: once }
     - { label: Tuition fee, amount_pkr: null, per: year }
     - { label: Examination and registration fees, amount_pkr: null, per: year }
+- { <<: *fee, program: fsc-dispensing }
 - { <<: *fee, program: dpt }
 - { <<: *fee, program: nursing }
-- { <<: *fee, program: allied-health-sciences }
+- { <<: *fee, program: fsc-nursing }
+- { <<: *fee, program: rit }
+- { <<: *fee, program: hnd }
+- { <<: *fee, program: fsc-mlt }
+- { <<: *fee, program: fsc-rit }
+- { <<: *fee, program: fsc-ott }
+- { <<: *fee, program: fsc-dental }
+- { <<: *fee, program: fsc-medical }
 - { <<: *fee, program: computer-science }
-- { <<: *fee, program: business-studies }
+- { <<: *fee, program: computer-science-bridging }
+- { <<: *fee, program: information-technology }
+- { <<: *fee, program: data-science }
+- { <<: *fee, program: ics }
+- { <<: *fee, program: bba }
+- { <<: *fee, program: accounting-finance }
+- { <<: *fee, program: mass-communication }
+- { <<: *fee, program: english-literature }
+- { <<: *fee, program: english-literature-bridging }

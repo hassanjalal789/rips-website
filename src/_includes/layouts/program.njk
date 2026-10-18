@@ -13,9 +13,8 @@ crumbs: [{ label: Programs, url: /programs/ }]
   {%- if status and page.data.status == "Active" %}<span class="badge badge-{{ status.key }}">{{ status.label }}</span>{% endif %}
   {%- if page.data.status == "Not offered this intake" %}<span class="badge badge-not-offered">Not offered this intake</span>{% endif %}
   {%- if page.data.status == "Withdrawn" %}<span class="badge badge-withdrawn">Not currently offered</span>{% endif %}
-  {%- if not confirmed %} <span class="sample-tag">SAMPLE, OD-07</span>{% endif %}
 </p>
-<section class="key-facts" aria-labelledby="key-facts">
+<section class="key-facts" aria-labelledby="key-facts"{% if not confirmed %} data-draft="OD-07"{% endif %}>
   <h2 id="key-facts">Key facts</h2>
   <dl>
     <dt>Level</dt><dd>{{ level }}</dd>
@@ -23,11 +22,11 @@ crumbs: [{ label: Programs, url: /programs/ }]
     <dt>Eligibility</dt><dd>{{ eligibility | tbc("eligibility", "OD-07") | safe }}</dd>
     <dt>Fee per year</dt><dd>{% if fee_per_year_pkr %}{{ fee_per_year_pkr | pkr }}{% else %}Contact admissions for current fees{% endif %} · <a href="/admissions/fees/">Fee details</a></dd>
     <dt>Affiliation</dt><dd>{{ affiliation | tbc("affiliating university", "OD-08") | safe }}</dd>
-    <dt>Intake</dt><dd>{% if intake %}{{ intake.session }}: {{ intake.opens_on | displayDate }} to {{ intake.closes_on | displayDate }}{% if intake.sample %} <span class="sample-tag">SAMPLE</span>{% endif %}{% else %}{% tbc "intake dates", "OD-07" %}{% endif %}</dd>
+    <dt>Intake</dt><dd>{% if intake %}{{ intake.session }}: {{ intake.opens_on | displayDate }} to {{ intake.closes_on | displayDate }}{% else %}{% tbc "intake dates", "OD-07" %}{% endif %}</dd>
   </dl>
 </section>
 <p class="btn-row"><a class="btn btn-primary" href="/enquire/?program={{ slug }}">Enquire about {{ short or title }}</a></p>
-<div class="prose">
+<div class="prose"{% if not confirmed %} data-draft="OD-07"{% endif %}>
   <h2>Overview</h2>
   {{ content | safe }}
   <h2>What you will study</h2>

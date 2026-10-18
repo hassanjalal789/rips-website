@@ -5,7 +5,7 @@ title: Fee structure
 crumb: Fees
 crumbs: [{ label: Admissions, url: /admissions/ }]
 description: "Fees for every program at RIPS Sheikhupura, in Pakistani rupees: admission, tuition and examination fees."
-last_updated: 2026-10-17
+last_updated: 2026-10-18
 ---
 {#- Fee structure (Doc 05: see fees, download PDF; Doc 06 Q22: below 600 px each program becomes a
     stacked card). Amounts are shown exactly as entered, never calculated (SRS E-07). A missing amount
@@ -13,9 +13,6 @@ last_updated: 2026-10-17
 {%- set programs = collections.programs | activePrograms %}
 <h1>Fee structure</h1>
 <p class="lead">Fees for each program, in Pakistani rupees (Rs).</p>
-{%- if fees | selectattr("sample") | length %}
-<p><span class="sample-tag">SAMPLE</span> {% tbc "fee amounts for every program", "OD-07" %}</p>
-{%- endif %}
 
 {%- set heads = fees[0].lines %}
 <table class="fee-table">
@@ -52,10 +49,9 @@ last_updated: 2026-10-17
   {%- if downloads.fee_structure.file %}
   <p><a class="btn btn-secondary" href="{{ downloads.fee_structure.file }}">Download the fee structure <span class="small">(PDF, {{ downloads.fee_structure.file | fileSize }})</span></a></p>
   {%- else %}
-  <p>Fee structure PDF: {% tbc "approved fee structure PDF", "OD-07" %}</p>
+  <p>Ask the admissions office for the full fee structure for your program.</p>
   {%- endif %}
   <h2>Paying fees</h2>
   <p>RIPS never asks for fees to be paid into a personal account. If anyone asks you to, contact admissions first.</p>
-  <p>{% tbc "how and where fees are paid, and whether bank details are shown here", "OD-18" %}</p>
   <p>Questions about fees? <a href="/enquire/">Send an enquiry</a> or see the <a href="/contact/">Contact page</a>.</p>
 </div>

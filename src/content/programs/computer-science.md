@@ -1,21 +1,23 @@
 ---
-# Program (Doc 08 "Program"). Working example only: title, level and every key fact pending OD-07; affiliation pending OD-08.
+# Program (Doc 08 "Program"). The name is from the owner's list of 18 October 2026; duration, eligibility,
+# affiliation, overview, outline and careers are drafts to edit (confirmed: false), OD-07 and OD-08.
 slug: computer-science
-title: "Computer Science"
-short: "Computer Science"
+title: "BS Computer Science"
+short: "BS CS"
 field: Computing
 level: Undergraduate
 confirmed: false
-duration: null
-eligibility: null
+featured: true
+duration: "4 years"
+eligibility: "Intermediate with mathematics (FSc Pre-Engineering or ICS) or equivalent."
 fee_per_year_pkr: null
-affiliation: null
+affiliation: "GC University Faisalabad"
 status: Active
-order: 5
+order: 13
 image: null
-last_updated: 2026-10-17
+last_updated: 2026-10-18
 approved_by: null
-outline: null
-careers: null
+outline: "<ul><li>Programming and data structures</li><li>Algorithms</li><li>Databases</li><li>Computer networks and operating systems</li><li>Software engineering and a final-year project</li></ul>"
+careers: "<p>Software developer, web and app developer, database or systems administrator, and IT roles in any industry.</p>"
 ---
-{% tbc "program overview from the Head of Department, approved by the Principal", "OD-07" %}
+BS Computer Science teaches programming, algorithms and how software systems are designed and built, with practical work in the computer lab.
