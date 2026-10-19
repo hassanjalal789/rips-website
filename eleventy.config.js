@@ -71,6 +71,20 @@ export default function (eleventyConfig) {
     return bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
   });
   eleventyConfig.addFilter('pkr', (n) => (n == null ? null : `Rs ${Number(n).toLocaleString('en-PK')}`));
+  // Cache busting: assets are cached for a day (src/_headers.njk), so each stylesheet or script URL
+  // carries a short hash of its source. A changed file gets a new URL and browsers fetch it at once.
+  const scriptSources = ['src/scripts', 'functions/lib'];
+  eleventyConfig.addFilter('assetUrl', (url) => {
+    const hash = crypto.createHash('sha256');
+    if (url.startsWith('/assets/js/')) {
+      for (const dir of scriptSources) {
+        for (const f of fs.readdirSync(dir).sort()) if (f.endsWith('.js')) hash.update(fs.readFileSync(path.join(dir, f)));
+      }
+    } else {
+      hash.update(fs.readFileSync(path.join('src', url)));
+    }
+    return `${url}?v=${hash.digest('hex').slice(0, 10)}`;
+  });
   eleventyConfig.addFilter('cspHash', (code) => `sha256-${crypto.createHash('sha256').update(code).digest('base64')}`);
   eleventyConfig.addFilter('pluck', (items, key) => items.map((i) => key.split('.').reduce((o, k) => o?.[k], i)));
   eleventyConfig.addFilter('json', (v) => JSON.stringify(v).replace(/</g, '\\u003c'));

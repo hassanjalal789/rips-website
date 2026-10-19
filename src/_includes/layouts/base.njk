@@ -22,11 +22,11 @@
 {%- for p in preload %}
 <link rel="preload" as="image" href="{{ p.href }}"{% if p.media %} media="{{ p.media }}"{% endif %} fetchpriority="high">
 {%- endfor %}
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | assetUrl }}">
 <script>{{ inlineScripts.js | safe }}</script>
-<script type="module" src="/assets/js/site.js"></script>
+<script type="module" src="{{ '/assets/js/site.js' | assetUrl }}"></script>
 {%- if pageScript %}
-<script type="module" src="/assets/js/{{ pageScript }}.js"></script>
+<script type="module" src="{{ ('/assets/js/' + pageScript + '.js') | assetUrl }}"></script>
 {%- endif %}
 {%- if jsonld %}
 <script type="application/ld+json">{{ jsonld | json | safe }}</script>

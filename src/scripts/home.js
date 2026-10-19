@@ -1,23 +1,26 @@
-// Home only (CR-04). Everything here is an extra: without it the hero shows its poster photo and every
-// section is visible. The video collage loads only on screens 720px and wider, never with reduced motion
-// or Save-Data, and has a pause button (WCAG 2.2.2). Sections fade up once as they scroll into view.
+// Home only (CR-05). Everything here is an extra: without it the hero shows its three poster photos with
+// the crest, name and buttons, and every section is visible. The three videos load only without reduced
+// motion or Save-Data, and one button pauses them all (WCAG 2.2.2). Sections fade up once as they
+// scroll into view.
 const motionOK = !matchMedia('(prefers-reduced-motion: reduce)').matches;
 const saveData = navigator.connection?.saveData === true;
 
-const video = document.querySelector('.cine-hero-video');
-const pause = document.querySelector('.cine-pause');
-if (video && pause && motionOK && !saveData && matchMedia('(min-width: 720px)').matches) {
-  const label = pause.querySelector('.cine-pause-label');
-  const setPaused = (paused) => {
-    pause.setAttribute('aria-pressed', String(paused));
-    label.textContent = paused ? 'Play video' : 'Pause video';
-  };
+const videos = [...document.querySelectorAll('.isl-panel video')];
+const pause = document.querySelector('.isl-pause');
+if (videos.length && pause && motionOK && !saveData) {
+  const label = pause.querySelector('.isl-pause-label');
   // WebM (VP9) where it plays, else MP4 (H.264) for Safari.
-  video.src = video.canPlayType('video/webm; codecs="vp9"') ? video.dataset.webm : video.dataset.mp4;
-  video.addEventListener('playing', () => { video.classList.add('is-playing'); pause.hidden = false; }, { once: true });
-  video.play().catch(() => {}); // autoplay refused: the poster stays
+  const webm = videos[0].canPlayType('video/webm; codecs="vp9"') !== '';
+  for (const v of videos) {
+    v.src = webm ? v.dataset.webm : v.dataset.mp4;
+    v.addEventListener('playing', () => { v.classList.add('is-playing'); pause.hidden = false; }, { once: true });
+    v.play().catch(() => {}); // autoplay refused: the poster stays
+  }
   pause.addEventListener('click', () => {
-    if (video.paused) { video.play(); setPaused(false); } else { video.pause(); setPaused(true); }
+    const paused = pause.getAttribute('aria-pressed') !== 'true';
+    for (const v of videos) { if (paused) v.pause(); else v.play().catch(() => {}); }
+    pause.setAttribute('aria-pressed', String(paused));
+    label.textContent = paused ? 'Play videos' : 'Pause videos';
   });
 }
 
