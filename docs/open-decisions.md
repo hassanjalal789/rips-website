@@ -79,3 +79,7 @@ lost. None are used on the site until someone confirms them.
   like ISL's but in the colours of the RIPS logo, and for a "Why RIPS?" tab. Home and the new
   `/why-rips/` page use a navy and gold theme ([CR-04](change-requests/CR-04-isl-layout-rips-colours.md));
   every other page keeps the light theme.
+- **Decided: Home's opening and colours.** On 19 October 2026 the owner asked for ISL's opening sequence:
+  three tall video panels with the crest, the name and one pill revealed over them, in near-black,
+  charcoal and gold. Home now follows that ([CR-05](change-requests/CR-05-home-three-panel-hero.md));
+  the RIPS logo navy stays as the second programme-button colour. Why RIPS? keeps CR-04's navy.

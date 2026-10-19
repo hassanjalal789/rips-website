@@ -2,7 +2,7 @@
 
 | | |
 | --- | --- |
-| Status | Built on the `site-foundation` branch at the owner's request, 18 October 2026 |
+| Status | Built 18 October 2026. Its Home is replaced by [CR-05](CR-05-home-three-panel-hero.md); the Why RIPS? page stays as built here |
 | Raised by | Project owner, 18 October 2026: CR-03's Home was "very bad"; make Home like www.isl.school "for RIPS, not ISL", with "the theme according to the RIPS logo", and add a "Why RIPS?" tab |
 | Permission | The same ISL design-language permission as [CR-03](CR-03-isl-design-language.md) (clauses 01 to 05) |
 | Replaces | CR-03's Home layout. CR-03's permission notes still apply |

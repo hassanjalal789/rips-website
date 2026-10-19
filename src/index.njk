@@ -1,12 +1,13 @@
 ---
-# Home (Doc 05 page inventory; Doc 06 Home checklist). CR-04: the cinematic black, charcoal and gold
-# treatment of ISL's design language, under ISL's permission of 18 October 2026 (CR-03), built in RIPS's
-# own code, words and photos. Order: compact dark header → full-screen video collage with the crest,
-# name, outlined Apply button, Enquire and Programs links and the admissions status → our campus (four
-# photos) → vision and mission on a campus photo → Why RIPS? (six cards whose text shows on hover or
-# focus) → wide classroom photo → programs by field → latest notices (max 5) → four-column contact →
-# footer. The hero's actions stay on the first screen of a 360 × 640 phone. Every fact here is from
-# settings, the program files or the RIPS campus tour video.
+# Home (Doc 05 page inventory; Doc 06 Home checklist). CR-05: ISL's homepage layout and opening sequence
+# (CR-03 permission), built in RIPS's own code, words, crest and footage, near-black with RIPS gold.
+# Order: dark header → three video panels from the RIPS tour video, with the crest, the name in gold, the
+# Apply pill, Enquire and Programs links and the admissions status revealed over them → "Our campus"
+# gold band and a full-width campus photo → vision and mission on a darkened campus photo → Why RIPS?
+# (white lead-in, then a 3 × 2 grid of charcoal tiles) → learning at RIPS (framed photo) → programs by
+# field on a blurred photo → latest notices (max 5) → four-column contact → footer. The hero's actions
+# stay on the first screen of a 360 × 640 phone. Every fact is from settings, the program files or the
+# RIPS campus tour video.
 layout: base.njk
 permalink: /
 title: Health-science, computing and management programs in Sheikhupura
@@ -14,8 +15,7 @@ description: "Radiant Institute of Professional Studies (RIPS), Sheikhupura: BS 
 bodyClass: home cine-page
 pageScript: home
 preload:
-  - { href: /assets/img/campus/hero-collage-1280.webp, media: "(min-width: 720px)" }
-  - { href: /assets/img/campus/hero-collage-720.webp, media: "(max-width: 719px)" }
+  - { href: /assets/img/campus/hero-learning.webp }
 eleventyComputed:
   jsonld:
     "@context": https://schema.org
@@ -24,27 +24,19 @@ eleventyComputed:
     alternateName: "{{ settings.short_name }}"
     url: "{{ settings.url }}/"
     logo: "{{ settings.url }}/assets/img/crest.webp"
-# Photos are stills from the RIPS campus tour video (https://www.youtube.com/watch?v=ccsk4uAyFLM), cropped
-# clear of the video's logo overlay and subtitles, until commissioned photos arrive (OD-12).
-campus:
-  - title: Main building
-    img: entrance
-    url: /about/
-    alt: The main entrance of RIPS, with white columns under the institute's sign and a small white dome.
-  - title: Admission Office
-    img: admission-office
-    url: /admissions/
-    alt: The white RIPS Admission Office building with its glass front and name above the door.
-  - title: Labs
-    img: anatomy-lab
-    url: /why-rips/#labs
-    alt: Students gathered around a skeleton model in a RIPS lab, with anatomy models on the shelves behind them.
-  - title: Library
-    img: library
-    url: /why-rips/#library
-    alt: A student reading at a table in front of the library shelves at RIPS.
-# Why RIPS? cards: the title always shows; the text slides up on hover or keyboard focus, and is always
-# shown on touch screens. Each links to its section of the Why RIPS? page.
+# Hero panels: clips from the RIPS campus tour video (https://www.youtube.com/watch?v=ccsk4uAyFLM), cropped
+# clear of its logo overlay and subtitles, until commissioned footage arrives (OD-12).
+panels: [campus, learning, life]
+# Facilities seen in the tour video, linked to their part of the Why RIPS? page.
+facilities:
+  - { label: Labs, url: /why-rips/#labs }
+  - { label: Computer lab, url: /why-rips/#computer-lab }
+  - { label: Library, url: /why-rips/#library }
+  - { label: Classrooms, url: /why-rips/#classrooms }
+  - { label: Student lounge, url: /why-rips/#lounge }
+  - { label: Admission Office, url: /why-rips/#admissions }
+# Why RIPS? tiles: the title always shows; the text and a photo rise on hover or keyboard focus, and the
+# text always shows on touch screens. Each links to its part of the Why RIPS? page.
 why:
   - title: Programs for your career
     img: classroom
@@ -77,119 +69,118 @@ why:
 {%- set notices = collections.notices | currentNotices(build.today) -%}
 {%- set fields = programs | groupby("data.field") %}
 
-{#- Hero: a 2 × 2 collage of clips from the campus tour video behind the crest, the name in gold capitals
-    and one outlined button. The poster image is the fallback: phones, no JavaScript, reduced motion and
-    Save-Data never load the video (home.js). #}
-<section class="cine-hero" aria-labelledby="hero-title">
-  <div class="cine-hero-media">
-    <picture>
-      <source media="(min-width: 720px)" srcset="/assets/img/campus/hero-collage-1280.webp" width="1280" height="720">
-      <img src="/assets/img/campus/hero-collage-720.webp" width="720" height="405" alt="" fetchpriority="high">
-    </picture>
-    <video class="cine-hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-mp4="/assets/video/hero-collage.mp4" data-webm="/assets/video/hero-collage.webm"></video>
+{#- Opening: three tall video panels side by side; the crest, name and Apply pill fade up over them. The
+    posters are the fallback: no JavaScript, reduced motion and Save-Data never load the videos (home.js). #}
+<section class="isl-hero" aria-labelledby="hero-title">
+  <div class="isl-panels" aria-hidden="true">
+    {%- for p in panels %}
+    <div class="isl-panel">
+      <img src="/assets/img/campus/hero-{{ p }}.webp" width="384" height="512" alt=""{% if loop.index == 2 %} fetchpriority="high"{% endif %}>
+      <video muted loop playsinline preload="none" tabindex="-1" data-mp4="/assets/video/panel-{{ p }}.mp4" data-webm="/assets/video/panel-{{ p }}.webm"></video>
+    </div>
+    {%- endfor %}
   </div>
-  <div class="cine-hero-body">
-    <img class="cine-crest" src="/assets/img/crest-gold.webp" alt="" width="148" height="145">
-    <h1 id="hero-title" class="cine-wordmark">{{ settings.name }}</h1>
-    <p class="cine-tagline">{{ settings.tagline }}</p>
-    <a class="btn-pill btn-pill-lg" href="/admissions/">Apply for admission</a>
-    <p class="cine-links"><a href="/enquire/">Enquire</a><span aria-hidden="true">·</span><a href="/programs/">Programs</a></p>
+  <div class="isl-brand">
+    <img class="isl-crest" src="/assets/img/crest-gold.webp" alt="" width="148" height="145">
+    <h1 id="hero-title" class="isl-wordmark">{{ settings.name }}</h1>
+    <p class="isl-tagline">{{ settings.tagline }}</p>
+    <a class="isl-pill" href="/admissions/">Apply for admission</a>
+    <p class="isl-links"><a href="/enquire/">Enquire</a><span aria-hidden="true">·</span><a href="/programs/">Programs</a></p>
     {%- if status %}
-    <p class="cine-status"{% if intake.sample %} data-draft="OD-07"{% endif %}>
+    <p class="isl-status"{% if intake.sample %} data-draft="OD-07"{% endif %}>
       <span class="badge badge-{{ status.key }}">Admissions {{ status.label | lower }}</span>
       <span>{{ intake.session }} · closes {{ intake.closes_on | displayDate }}</span>
     </p>
     {%- endif %}
   </div>
-  <button class="cine-pause" type="button" aria-pressed="false" hidden><span class="cine-pause-icon" aria-hidden="true"></span><span class="cine-pause-label">Pause video</span></button>
+  <button class="isl-pause" type="button" aria-pressed="false" hidden><span class="isl-pause-icon" aria-hidden="true"></span><span class="isl-pause-label">Pause videos</span></button>
 </section>
 
-{#- Our campus: four slanted photo panels, edge to edge, on a gold-to-black glow. #}
-<section id="campus" class="cine-campus-band" aria-labelledby="campus-title">
-  <div class="wrap">
-    <h2 id="campus-title" class="cine-title reveal">Our campus</h2>
-    <ul class="cine-campus">
-      {%- for c in campus %}
-      <li class="cine-panel reveal">
-        <a href="{{ c.url }}">
-          <img src="/assets/img/campus/{{ c.img }}-640.webp" srcset="/assets/img/campus/{{ c.img }}-400.webp 400w, /assets/img/campus/{{ c.img }}-640.webp 640w" sizes="(min-width: 1024px) 20rem, 92vw" width="640" height="360" alt="{{ c.alt }}" loading="lazy">
-          <span class="cine-panel-title">{{ c.title }}<small>RIPS {{ settings.place }}</small></span>
-        </a>
-      </li>
-      {%- endfor %}
-    </ul>
-    <p class="cine-note">Photos are stills from the RIPS campus tour video.</p>
+{#- Our campus: a gold heading band, then the campus full width with its caption. RIPS has one campus. #}
+<section id="campus" class="isl-campus" aria-labelledby="campus-title">
+  <div class="isl-band">
+    <h2 id="campus-title" class="reveal">Our campus</h2>
   </div>
+  <div class="isl-campus-view">
+    <img src="/assets/img/campus/front-aerial-1200.webp" srcset="/assets/img/campus/front-aerial-720.webp 720w, /assets/img/campus/front-aerial-1200.webp 1200w" sizes="100vw" width="1200" height="580" alt="The RIPS main building in {{ settings.place }}, seen from the air: a white dome over the entrance, red-brick wings and a paved forecourt." loading="lazy">
+    <div class="isl-campus-caption reveal">
+      <p class="isl-kicker">Main campus</p>
+      <p class="isl-campus-name">{{ settings.place }}, Punjab</p>
+      <ul class="isl-chips">
+        {%- for f in facilities %}
+        <li><a href="{{ f.url }}">{{ f.label }}</a></li>
+        {%- endfor %}
+      </ul>
+      {%- if settings.map_link %}
+      <a class="isl-pill isl-pill-sm" href="{{ settings.map_link }}" rel="noopener">Get directions <span class="visually-hidden">(opens Google Maps)</span></a>
+      {%- endif %}
+    </div>
+  </div>
+  <p class="isl-photo-note">Photos and video are from the RIPS campus tour.</p>
 </section>
 
-{#- Vision and mission: a zig-zag on black over a faint hourglass shape; the key phrases in gold. #}
-<section class="cine-statements" aria-label="Vision and mission">
-  <div class="wrap">
-    <div class="cine-statement reveal">
+{#- Vision and mission over the campus at dusk; the key phrases in gold. #}
+<section class="isl-statements" aria-label="Vision and mission">
+  <img class="isl-bg" src="/assets/img/campus/front-dusk-854.webp" width="854" height="372" alt="" loading="lazy">
+  <div class="isl-statements-inner">
+    <div class="isl-statement reveal">
       <h2>Our <span>Vision</span></h2>
       <p>To be a leading institute in Pakistan for professional education, producing <strong>skilled, ethical and compassionate graduates</strong> who serve their communities and the nation.</p>
     </div>
-    <div class="cine-statement cine-statement-end reveal">
+    <div class="isl-statement isl-statement-end reveal">
       <h2>Our <span>Mission</span></h2>
       <p>To provide <strong>quality, affordable and industry-relevant education</strong> in health sciences, computing, management and the humanities, combining strong theory with <strong>hands-on practice</strong> so students become confident, responsible professionals.</p>
     </div>
   </div>
 </section>
 
-{#- Why RIPS?: a ruled 3 × 2 grid of photo tiles. On hover or focus a tile turns gold and shows its text;
-    on touch screens and phones the text always shows. #}
-<section class="cine-why-band" aria-labelledby="why-title">
-  <div class="wrap">
-    <header class="cine-why-head reveal">
-      <h2 id="why-title">Why RIPS?</h2>
-      <p>{{ programs.length }} programs, hands-on labs, a library and a computer lab in {{ settings.place }}.</p>
-    </header>
-    <ul class="cine-why">
-      {%- for w in why %}
-      <li class="cine-tile">
-        <a href="/why-rips/#{{ w.id }}">
-          <img src="/assets/img/campus/{{ w.img }}-400.webp" width="400" height="225" alt="" loading="lazy">
-          <span class="cine-tile-title">{{ w.title }}</span>
-          <span class="cine-tile-text">{{ w.text }}</span>
-        </a>
-      </li>
-      {%- endfor %}
-    </ul>
-    <p class="cine-more"><a class="btn-pill btn-pill-solid" href="/why-rips/">View more</a></p>
+{#- Why RIPS?: a white lead-in, then six charcoal tiles with gold hairlines. #}
+<section class="isl-why" aria-labelledby="why-title">
+  <div class="isl-why-head reveal">
+    <h2 id="why-title">Why RIPS?</h2>
+    <p>{{ programs.length }} programs, hands-on labs, a library and a computer lab, on one campus in {{ settings.place }}.</p>
   </div>
+  <ul class="isl-tiles">
+    {%- for w in why %}
+    <li class="isl-tile">
+      <a href="/why-rips/#{{ w.id }}">
+        <img src="/assets/img/campus/{{ w.img }}-400.webp" width="400" height="225" alt="" loading="lazy">
+        <span class="isl-tile-title">{{ w.title }}</span>
+        <span class="isl-tile-text">{{ w.text }}</span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+  <p class="isl-more"><a class="isl-pill isl-pill-solid" href="/why-rips/">View more</a></p>
 </section>
 
-{#- Teaching: a heading line, then a full-width photo. Temporary: a still from the tour video until a
-    faculty photo is supplied (OD-12). #}
-<section class="cine-faculty" aria-labelledby="faculty-title">
-  <div class="wrap">
-    <h2 id="faculty-title" class="reveal">Learning at <span>RIPS</span></h2>
-  </div>
-  <figure class="cine-wide">
-    <img src="/assets/img/campus/classroom-wide-1280.webp" srcset="/assets/img/campus/classroom-wide-720.webp 720w, /assets/img/campus/classroom-wide-1280.webp 1280w" sizes="100vw" width="1280" height="480" alt="A class of students at their desks while a teacher writes on the whiteboard at RIPS." loading="lazy">
+{#- Learning at RIPS: heading, then a framed full-width photo. Temporary: a still from the tour video until
+    a faculty photo is supplied (OD-12). #}
+<section class="isl-learning" aria-labelledby="learning-title">
+  <h2 id="learning-title" class="reveal">Learning at <span>RIPS</span></h2>
+  <figure>
+    <img src="/assets/img/campus/classroom-wide-1280.webp" srcset="/assets/img/campus/classroom-wide-720.webp 720w, /assets/img/campus/classroom-wide-1280.webp 1280w" sizes="(min-width: 1280px) 1200px, 100vw" width="1280" height="480" alt="A class of students at their desks while a teacher writes on the whiteboard at RIPS." loading="lazy">
     <figcaption data-asset="faculty photo">Temporary photo from the campus tour video, to be replaced with a photo of RIPS faculty.</figcaption>
   </figure>
 </section>
 
-{#- Programs: field labels as flat buttons over a darkened campus photo, alternating gold and navy. #}
-<section class="cine-programs" aria-labelledby="programs-title">
-  <img class="cine-bg" src="/assets/img/campus/front-aerial-1200.webp" srcset="/assets/img/campus/front-aerial-720.webp 720w, /assets/img/campus/front-aerial-1200.webp 1200w" sizes="100vw" width="1200" height="580" alt="" loading="lazy">
-  <div class="wrap">
-    <h2 id="programs-title" class="cine-title reveal">Programs</h2>
-    <ul class="cine-fields">
-      {%- for field, items in fields %}
-      <li><a class="cine-field" href="/programs/?field={{ field | urlencode }}">{{ field }} <span>{{ items.length }}<span class="visually-hidden"> program{{ "s" if items.length != 1 }}</span></span></a></li>
-      {%- endfor %}
-    </ul>
-    <p class="cine-more"><a class="btn-pill" href="/programs/">See all {{ programs.length }} programs</a></p>
-  </div>
+{#- Programs: field buttons over a softly blurred campus photo, alternating gold and RIPS navy. #}
+<section class="isl-programs" aria-labelledby="programs-title">
+  <img class="isl-bg" src="/assets/img/campus/library-640.webp" width="640" height="360" alt="" loading="lazy">
+  <h2 id="programs-title" class="reveal">Programs</h2>
+  <ul class="isl-fields">
+    {%- for field, items in fields %}
+    <li><a class="isl-field" href="/programs/?field={{ field | urlencode }}">{{ field }}<span>{{ items.length }}<span class="visually-hidden"> program{{ "s" if items.length != 1 }}</span></span></a></li>
+    {%- endfor %}
+  </ul>
+  <p class="isl-more"><a class="isl-pill" href="/programs/">See all {{ programs.length }} programs</a></p>
 </section>
 
-<section class="cine-notices" aria-labelledby="notices-title">
-  <div class="wrap">
-    <div class="cine-notices-head">
-      <h2 id="notices-title">Latest <span>notices</span></h2>
-      <a href="/notices/">All notices <span aria-hidden="true">→</span></a>
+<section class="isl-notices" aria-labelledby="notices-title">
+  <div class="isl-notices-inner">
+    <div class="isl-notices-head">
+      <h2 id="notices-title">Latest notices</h2>
+      <a class="isl-pill isl-pill-sm" href="/notices/">All notices</a>
     </div>
     {%- if notices.length %}
     <ul class="notice-list">
@@ -204,34 +195,34 @@ why:
   </div>
 </section>
 
-{#- Contact: four equal columns divided by hairlines. #}
-<section class="cine-contact" aria-labelledby="contact-title">
+{#- Contact: four equal black columns divided by hairlines, white icons and gold headings. #}
+<section class="isl-contact" aria-labelledby="contact-title">
   <h2 id="contact-title" class="visually-hidden">Contact RIPS</h2>
-  <div class="cine-contact-grid">
+  <div class="isl-contact-grid">
     <div>
-      <svg class="cine-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.3" d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+      <svg class="isl-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.3" d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
       <h3>Address</h3>
       <p>{{ settings.address | tbc("verified address", "OD-14") | safe }}</p>
       {%- if settings.map_link %}
-      <p><a class="cine-flat" href="{{ settings.map_link }}" rel="noopener">Get directions <span class="small">(opens Google Maps)</span></a></p>
+      <p><a class="isl-flat" href="{{ settings.map_link }}" rel="noopener">Get directions <span class="visually-hidden">(opens Google Maps)</span></a></p>
       {%- endif %}
     </div>
     <div>
-      <svg class="cine-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.3" d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></svg>
+      <svg class="isl-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.3" d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></svg>
       <h3>Phone</h3>
-      <p class="cine-big"><a href="tel:{{ settings.phone_link }}"{% if not settings.phone %} data-placeholder="OD-14"{% endif %}>{{ settings.phone | tbc("admissions phone", "OD-14") | safe }}</a></p>
-      <p>Office hours {{ settings.office_hours | tbc("office hours", "OD-14") | safe }}</p>
+      <p class="isl-big"><a href="tel:{{ settings.phone_link }}"{% if not settings.phone %} data-placeholder="OD-14"{% endif %}>{{ settings.phone | tbc("admissions phone", "OD-14") | safe }}</a></p>
+      <p class="isl-small">Office hours {{ settings.office_hours | tbc("office hours", "OD-14") | safe }}</p>
     </div>
     <div>
-      <svg class="cine-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+      <svg class="isl-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
       <h3>Email</h3>
-      <p class="cine-big">{% if settings.email %}<a href="mailto:{{ settings.email }}">{{ settings.email }}</a>{% else %}{% tbc "admissions email", "OD-04" %}{% endif %}</p>
+      <p class="isl-email">{% if settings.email %}<a href="mailto:{{ settings.email }}">{{ settings.email | replace("@", "@<wbr>") | safe }}</a>{% else %}{% tbc "admissions email", "OD-04" %}{% endif %}</p>
     </div>
     <div>
-      <svg class="cine-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.3" d="M12 3a9 9 0 0 0-7.8 13.4L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/></svg>
+      <svg class="isl-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.3" d="M12 3a9 9 0 0 0-7.8 13.4L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/></svg>
       <h3>Connect</h3>
-      <p><a class="cine-flat" href="https://wa.me/{{ settings.whatsapp_link }}?text={{ settings.whatsapp_message | urlencode }}" rel="noopener"{% if not settings.whatsapp %} data-placeholder="OD-14"{% endif %}>WhatsApp <span class="small">(opens WhatsApp)</span></a></p>
-      <p><a class="cine-flat" href="/enquire/">Enquire online</a></p>
+      <p><a class="isl-flat" href="https://wa.me/{{ settings.whatsapp_link }}?text={{ settings.whatsapp_message | urlencode }}" rel="noopener"{% if not settings.whatsapp %} data-placeholder="OD-14"{% endif %}>WhatsApp <span class="visually-hidden">(opens WhatsApp)</span></a></p>
+      <p><a class="isl-flat" href="/enquire/">Enquire online</a></p>
     </div>
   </div>
 </section>
