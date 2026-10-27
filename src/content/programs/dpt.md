@@ -8,14 +8,18 @@ field: Physical therapy
 level: Undergraduate
 confirmed: false
 featured: true
-duration: "5 years"
-eligibility: "Intermediate (FSc Pre-Medical) or equivalent."
-fee_per_year_pkr: null
+duration: "5 years (10 semesters)"
+eligibility: "Minimum 50%. Last degree required: FSc Medical."
+seats: "50"
+fee_pkr: 150000
+admission_fee_pkr: 25000
+admission_period: "July to December"
 affiliation: "GC University Faisalabad"
+facts_confirmed: true
 status: Active
 order: 3
 image: null
-last_updated: 2026-10-18
+last_updated: 2026-10-27
 approved_by: null
 outline: "<ul><li>Anatomy, physiology and kinesiology</li><li>Exercise therapy and manual therapy</li><li>Electrotherapy</li><li>Musculoskeletal, neurological and sports physical therapy</li><li>Clinical practice</li></ul>"
 careers: "<p>Hospitals, rehabilitation centres, sports clubs and private physiotherapy practice.</p>"

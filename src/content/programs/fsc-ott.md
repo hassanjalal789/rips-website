@@ -9,13 +9,17 @@ level: Intermediate
 confirmed: false
 featured: false
 duration: "2 years"
-eligibility: "Matric (Science) or equivalent."
-fee_per_year_pkr: null
-affiliation: "Punjab Medical Faculty (PMF)"
+eligibility: "Passing marks in Matric."
+seats: "50"
+fee_pkr: 100000
+admission_fee_pkr: 25000
+admission_period: "May to September"
+affiliation: "Federal Board"
+facts_confirmed: true
 status: Active
 order: 10
 image: null
-last_updated: 2026-10-18
+last_updated: 2026-10-27
 approved_by: null
 outline: "<ul><li>Operation theatre procedures</li><li>Sterilisation and infection control</li><li>Surgical instruments</li><li>Patient care before and after surgery</li></ul>"
 careers: "<p>Operation theatre assistant in hospitals, or further study in allied health.</p>"

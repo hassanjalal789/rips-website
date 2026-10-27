@@ -1,35 +1,221 @@
 # Fee schedules (Doc 08 "Fee schedule"). Amounts are shown exactly as entered; no calculations (SRS E-07).
-# All amounts are null until the Principal and admissions confirm them (OD-07). Null shows a visible placeholder.
+# Amounts are from the owner's workbook of 27 October 2026 ("Fee for Each Program" and "Admission Fee"). The
+# workbook does not say whether the program fee is per year, per semester or in total, so it is labelled
+# "Program fee" only. Programs missing from the workbook (accounting-finance, data-science) stay null (OD-07).
 # Changes create a new version in Git history; record approved_by and approved_on with every change.
-- &fee
-  program: pharm-d
+- program: pharm-d
   session: "2026–27"
-  sample: true
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 220000, per: null }
+- program: fsc-dispensing
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: dpt
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 150000, per: null }
+- program: nursing
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 70000, per: once }
+    - { label: Program fee, amount_pkr: 220000, per: null }
+- program: fsc-nursing
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: rit
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 150000, per: null }
+- program: hnd
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 150000, per: null }
+- program: fsc-mlt
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: fsc-rit
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: fsc-ott
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: fsc-dental
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: fsc-medical
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: computer-science
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: computer-science-bridging
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: information-technology
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: data-science
+  session: "2026–27"
+  sample: false
   approved_by: null
   approved_on: null
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: null, per: once }
-    - { label: Tuition fee, amount_pkr: null, per: year }
-    - { label: Examination and registration fees, amount_pkr: null, per: year }
-- { <<: *fee, program: fsc-dispensing }
-- { <<: *fee, program: dpt }
-- { <<: *fee, program: nursing }
-- { <<: *fee, program: fsc-nursing }
-- { <<: *fee, program: rit }
-- { <<: *fee, program: hnd }
-- { <<: *fee, program: fsc-mlt }
-- { <<: *fee, program: fsc-rit }
-- { <<: *fee, program: fsc-ott }
-- { <<: *fee, program: fsc-dental }
-- { <<: *fee, program: fsc-medical }
-- { <<: *fee, program: computer-science }
-- { <<: *fee, program: computer-science-bridging }
-- { <<: *fee, program: information-technology }
-- { <<: *fee, program: data-science }
-- { <<: *fee, program: ics }
-- { <<: *fee, program: bba }
-- { <<: *fee, program: accounting-finance }
-- { <<: *fee, program: mass-communication }
-- { <<: *fee, program: english-literature }
-- { <<: *fee, program: english-literature-bridging }
+    - { label: Program fee, amount_pkr: null, per: null }
+- program: ics
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: bba
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: accounting-finance
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: null, per: once }
+    - { label: Program fee, amount_pkr: null, per: null }
+- program: mass-communication
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: english-literature
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: english-literature-bridging
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: accounting-finance-bridging
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 100000, per: null }
+- program: bed
+  session: "2026–27"
+  sample: false
+  approved_by: null
+  approved_on: null
+  pdf: null
+  lines:
+    - { label: Admission fee, amount_pkr: 25000, per: once }
+    - { label: Program fee, amount_pkr: 70000, per: null }

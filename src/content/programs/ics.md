@@ -9,13 +9,17 @@ level: Intermediate
 confirmed: false
 featured: false
 duration: "2 years"
-eligibility: "Matric (Science) or equivalent."
-fee_per_year_pkr: null
+eligibility: "Passing marks in Matric."
+seats: "Unlimited"
+fee_pkr: 100000
+admission_fee_pkr: 25000
+admission_period: "May to September"
 affiliation: "BISE Lahore"
+facts_confirmed: true
 status: Active
 order: 17
 image: null
-last_updated: 2026-10-18
+last_updated: 2026-10-27
 approved_by: null
 outline: "<ul><li>Computer science</li><li>Mathematics</li><li>Physics or statistics</li><li>English, Urdu and Islamic Studies</li></ul>"
 careers: "<p>Entry to BS Computer Science, BS IT, BS Data Science and other degrees.</p>"

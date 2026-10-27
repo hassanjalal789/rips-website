@@ -33,6 +33,9 @@
         <ul>
           <li>Phone: {{ settings.phone | tbc("admissions phone", "OD-14") | safe }}</li>
           <li>WhatsApp: {{ settings.whatsapp | tbc("WhatsApp number", "OD-14") | safe }}</li>
+          {%- if settings.office_numbers %}
+          <li>Office numbers: {% for n in settings.office_numbers %}<a href="tel:{{ n.link }}">{{ n.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</li>
+          {%- endif %}
           <li>Email: {{ settings.email | tbc("admissions email", "OD-04") | safe }}</li>
           <li>Office hours: {{ settings.office_hours | tbc("office hours", "OD-14") | safe }}</li>
           <li><a href="/contact/">Contact page</a></li>

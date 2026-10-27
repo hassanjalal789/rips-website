@@ -1,6 +1,6 @@
 # Site settings (Doc 08 "Site settings"): used on every page and in auto-replies. Edit once, shown everywhere.
 # Values in [TO CONFIRM …] form are placeholders; replace them before launch.
-name: Radiant Institute of Professional Studies   # official spelling pending OD-09
+name: Radiant Institute of Professional Studies   # spelling matches the Institute Name in the owner's workbook of 27 October 2026 (OD-09)
 short_name: RIPS
 place: Sheikhupura
 tagline: Empowering you to thrive                  # from the logo artwork
@@ -17,10 +17,17 @@ whatsapp_link: "923274103941"
 whatsapp_message: "Hello RIPS, I would like information about admissions."
 email: radiantcollagesheikhupura@gmail.com         # spelled as the owner gave it
 email_link: radiantcollagesheikhupura@gmail.com
-address: "Sheikhupura, Punjab, Pakistan"           # street address to add (the map link finds the campus)
-office_hours: "8:00 AM to 3:00 PM"                 # from the owner's reference page; not confirmed
+address: "Masjid Cowk Canal Bypass Link Road, Damuana Road, Sheikhupura"   # as in the owner's workbook of 27 October 2026 (MASJID COWK CANAL BYPASS LINK ROAD, DAMUANA ROAD SHEIKHUPURA)
+office_hours: "8:00 AM to 5:00 PM"                 # from the owner's workbook of 27 October 2026 (08:00AM to 05:00PM)
 map_link: https://share.google/9zHAz5ebhSFbfrlxe
-draft_fields: [phone, address, office_hours]
+# The four numbers under "WhatsApp Contact" in the owner's workbook of 27 October 2026. Which one the WhatsApp
+# button should open is still to be decided, so phone and whatsapp above stay as they were.
+office_numbers:
+  - { label: "0339-8181850", link: "+923398181850" }
+  - { label: "0339-8181851", link: "+923398181851" }
+  - { label: "0339-4464646", link: "+923394464646" }
+  - { label: "0303-7655906", link: "+923037655906" }
+draft_fields: [phone]
 
 social: []                                         # e.g. { label: Facebook, url: https://… } once accounts are confirmed
 

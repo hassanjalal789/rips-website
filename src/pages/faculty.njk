@@ -14,8 +14,12 @@ description: "Teaching staff at RIPS Sheikhupura by department, with their desig
 {%- endif %}
 {%- if members.length %}
 {%- for dept, items in members | groupby("department") %}
-<section aria-labelledby="dept-{{ loop.index }}">
+<section{% if dept != "undefined" %} aria-labelledby="dept-{{ loop.index }}"{% endif %}>
+  {%- if dept != "undefined" %}
   <h2 id="dept-{{ loop.index }}">{{ dept }}</h2>
+  {%- else %}
+  <h2 class="visually-hidden">Teaching staff</h2>
+  {%- endif %}
   <ul class="grid grid-3 faculty-grid">
     {%- for m in items %}
     <li class="card faculty-card">
@@ -26,7 +30,7 @@ description: "Teaching staff at RIPS Sheikhupura by department, with their desig
       {%- endif %}
       <div class="card-body">
         <h3>{{ m.name }}</h3>
-        <p class="card-meta">{{ m.designation }}</p>
+        {%- if m.designation %}<p class="card-meta">{{ m.designation }}</p>{% endif %}
         <p class="card-meta">{{ m.qualification }}</p>
       </div>
     </li>

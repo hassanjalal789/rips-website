@@ -8,14 +8,18 @@ field: Business
 level: Undergraduate
 confirmed: false
 featured: true
-duration: "4 years"
-eligibility: "Intermediate (FA, FSc, ICS or I.Com) or equivalent."
-fee_per_year_pkr: null
+duration: "4 years (8 semesters)"
+eligibility: "Minimum 45%. Last degree required: Science and Arts subjects."
+seats: "50"
+fee_pkr: 100000
+admission_fee_pkr: 25000
+admission_period: "July to December"
 affiliation: "GC University Faisalabad"
+facts_confirmed: true
 status: Active
 order: 18
 image: null
-last_updated: 2026-10-18
+last_updated: 2026-10-27
 approved_by: null
 outline: "<ul><li>Principles of management</li><li>Marketing</li><li>Accounting and finance</li><li>Human resource management</li><li>Business communication and entrepreneurship</li></ul>"
 careers: "<p>Management roles in business, banking, marketing and human resources, or starting your own business.</p>"

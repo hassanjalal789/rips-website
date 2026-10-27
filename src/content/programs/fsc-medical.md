@@ -9,13 +9,17 @@ level: Intermediate
 confirmed: false
 featured: true
 duration: "2 years"
-eligibility: "Matric (Science) or equivalent."
-fee_per_year_pkr: null
+eligibility: "Passing marks in Matric."
+seats: "Unlimited"
+fee_pkr: 100000
+admission_fee_pkr: 25000
+admission_period: "May to September"
 affiliation: "BISE Lahore"
+facts_confirmed: true
 status: Active
 order: 12
 image: null
-last_updated: 2026-10-18
+last_updated: 2026-10-27
 approved_by: null
 outline: "<ul><li>Biology</li><li>Chemistry</li><li>Physics</li><li>English, Urdu and Islamic Studies</li></ul>"
 careers: "<p>Entry to BS programs in health sciences, including Pharm-D, DPT, BS Nursing and allied health.</p>"
