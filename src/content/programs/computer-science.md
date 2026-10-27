@@ -8,14 +8,18 @@ field: Computing
 level: Undergraduate
 confirmed: false
 featured: true
-duration: "4 years"
-eligibility: "Intermediate with mathematics (FSc Pre-Engineering or ICS) or equivalent."
-fee_per_year_pkr: null
+duration: "4 years (8 semesters)"
+eligibility: "Minimum 50%. Last degree required: FSc Pre-Medical, FSc Engineering or ICS."
+seats: "50"
+fee_pkr: 100000
+admission_fee_pkr: 25000
+admission_period: "July to December"
 affiliation: "GC University Faisalabad"
+facts_confirmed: true
 status: Active
 order: 13
 image: null
-last_updated: 2026-10-18
+last_updated: 2026-10-27
 approved_by: null
 outline: "<ul><li>Programming and data structures</li><li>Algorithms</li><li>Databases</li><li>Computer networks and operating systems</li><li>Software engineering and a final-year project</li></ul>"
 careers: "<p>Software developer, web and app developer, database or systems administrator, and IT roles in any industry.</p>"

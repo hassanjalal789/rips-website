@@ -8,14 +8,18 @@ field: English
 level: Undergraduate
 confirmed: false
 featured: false
-duration: "4 years"
-eligibility: "Intermediate (FA, FSc, ICS or I.Com) or equivalent."
-fee_per_year_pkr: null
+duration: "4 years (8 semesters)"
+eligibility: "Minimum 45%. Last degree required: Science and Arts subjects."
+seats: "50"
+fee_pkr: 100000
+admission_fee_pkr: 25000
+admission_period: "July to December"
 affiliation: "GC University Faisalabad"
+facts_confirmed: true
 status: Active
 order: 21
 image: null
-last_updated: 2026-10-18
+last_updated: 2026-10-27
 approved_by: null
 outline: "<ul><li>Poetry, drama and the novel</li><li>Literary criticism</li><li>Linguistics</li><li>Academic and creative writing</li></ul>"
 careers: "<p>Teaching, writing and editing, media and communication roles, and civil service exams.</p>"

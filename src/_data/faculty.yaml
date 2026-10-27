@@ -1,9 +1,51 @@
-# Faculty members (Doc 08 "Faculty member"). Empty until the content editor adds approved profiles;
-# the page says profiles will be added soon. Example entry:
-# - name: "Full name"
-#   designation: "Lecturer"
-#   qualification: "MPhil Pharmacology"
-#   department: Pharmacy
-#   photo: null
-#   order: 1
-[]
+# Faculty members (Doc 08 "Faculty member"), from the owner's workbook of 27 October 2026. The workbook gives
+# a name, a qualification and, for eight people, a photo. Designation and department were not given, so they
+# are left out (the page shows name and qualification only). Add them here when they are supplied.
+- name: "Prof. Asif Ali"
+  qualification: "M. Phil in Computer Science"
+  photo: /assets/img/faculty/asif-ali.webp
+  order: 1
+- name: "Prof. Qasim Ali"
+  qualification: "M. Phil in Information Technology"
+  photo: /assets/img/faculty/qasim-ali.webp
+  order: 2
+- name: "Dr. Yusra Iqbal"
+  qualification: "M. Phil DPT"
+  photo: /assets/img/faculty/yusra-iqbal.webp
+  order: 3
+- name: "Prof. Farwa Rasheed"
+  qualification: "M. Phil in Pharmacology"
+  photo: null
+  order: 4
+- name: "Prof. Mujtaba Ijaz"
+  qualification: "M. Phil RIT"
+  photo: /assets/img/faculty/mujtaba-ijaz.webp
+  order: 5
+- name: "Prof. Sara Shabbir"
+  qualification: "M. Phil Microbiology"
+  photo: /assets/img/faculty/sara-shabbir.webp
+  order: 6
+- name: "Prof. Saher Shabbir"
+  qualification: "M. Phil Microbiology"
+  photo: /assets/img/faculty/saher-shabbir.webp
+  order: 7
+- name: "Prof. Raheena"
+  qualification: "M. Phil AI"
+  photo: null
+  order: 8
+- name: "Prof. Saif Sadiq"
+  qualification: "M. Phil English Literature"
+  photo: null
+  order: 9
+- name: "Prof. Arslan Ahmad"
+  qualification: "MBA"
+  photo: /assets/img/faculty/arslan-ahmad.webp
+  order: 10
+- name: "Prof. Shamas Abbas"
+  qualification: "M. Phil Business Administration"
+  photo: /assets/img/faculty/shamas-abbas.webp
+  order: 11
+- name: "Prof. Irfan Raza"
+  qualification: "M. Phil Mathematics"
+  photo: null
+  order: 12

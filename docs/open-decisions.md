@@ -79,6 +79,14 @@ lost. None are used on the site until someone confirms them.
   like ISL's but in the colours of the RIPS logo, and for a "Why RIPS?" tab. Home and the new
   `/why-rips/` page use a navy and gold theme ([CR-04](change-requests/CR-04-isl-layout-rips-colours.md));
   every other page keeps the light theme.
+- **Decided: the owner's workbook of 27 October 2026.** Durations, eligibility, seats, program and admission
+  fees, admission periods, documents, affiliations, address, office hours, four office numbers, twelve
+  faculty (eight with photos) and the scholarship categories come from the owner's workbook and PDF. Two programs
+  were added (BS Accounting and Finance (Bridging), B.Ed) and BS RIT, FSc Dental and FSc MLT take the workbook's
+  names. BS Accounting and Finance (four-year) and BS Data Science are not in the workbook, so they are unchanged
+  and show no fees. The workbook gives only months for admission, so the intake dates stay sample (OD-07). Which
+  of the four numbers the WhatsApp button should open is still open (OD-14). The affiliation letters are still
+  needed (OD-08).
 - **Decided: Home's opening and colours.** On 19 October 2026 the owner asked for ISL's opening sequence:
   three tall video panels with the crest, the name and one pill revealed over them, in near-black,
   charcoal and gold. Home now follows that ([CR-05](change-requests/CR-05-home-three-panel-hero.md));

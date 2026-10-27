@@ -16,6 +16,14 @@ pageScript: enquiry
     <h2 id="c-call" class="h3">Call</h2>
     <p>{{ settings.phone | tbc("admissions phone", "OD-14") | safe }}</p>
     <p><a class="btn btn-secondary" href="tel:{{ settings.phone_link }}"{% if not settings.phone %} data-placeholder="OD-14"{% endif %}>Call admissions</a></p>
+    {%- if settings.office_numbers %}
+    <p class="small">Office numbers</p>
+    <ul>
+      {%- for n in settings.office_numbers %}
+      <li><a href="tel:{{ n.link }}">{{ n.label }}</a></li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
   </section>
   <section class="panel" aria-labelledby="c-whatsapp" id="whatsapp">
     <h2 id="c-whatsapp" class="h3">WhatsApp</h2>

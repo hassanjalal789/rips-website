@@ -8,14 +8,18 @@ field: Allied health
 level: Undergraduate
 confirmed: false
 featured: false
-duration: "4 years"
-eligibility: "Intermediate (FSc Pre-Medical) or equivalent."
-fee_per_year_pkr: null
+duration: "4 years (8 semesters)"
+eligibility: "Minimum 50%. Last degree required: FSc Medical."
+seats: "50"
+fee_pkr: 150000
+admission_fee_pkr: 25000
+admission_period: "July to December"
 affiliation: "GC University Faisalabad"
+facts_confirmed: true
 status: Active
 order: 7
 image: null
-last_updated: 2026-10-18
+last_updated: 2026-10-27
 approved_by: null
 outline: "<ul><li>Food science and nutrition</li><li>Biochemistry and physiology</li><li>Clinical nutrition and diet therapy</li><li>Community nutrition</li></ul>"
 careers: "<p>Dietitian or nutritionist in hospitals, clinics, fitness centres and the food industry.</p>"

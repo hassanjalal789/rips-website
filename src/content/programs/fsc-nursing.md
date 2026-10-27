@@ -9,13 +9,17 @@ level: Intermediate
 confirmed: false
 featured: false
 duration: "2 years"
-eligibility: "Matric (Science) or equivalent."
-fee_per_year_pkr: null
-affiliation: "Punjab Medical Faculty (PMF)"
+eligibility: "Passing marks in Matric."
+seats: "50"
+fee_pkr: 100000
+admission_fee_pkr: 25000
+admission_period: "May to September"
+affiliation: "Federal Board"
+facts_confirmed: true
 status: Active
 order: 5
 image: null
-last_updated: 2026-10-18
+last_updated: 2026-10-27
 approved_by: null
 outline: "<ul><li>Basic nursing care</li><li>Human body and health</li><li>First aid</li><li>Science subjects</li></ul>"
 careers: "<p>Further study in BS Nursing and other health-science programs.</p>"

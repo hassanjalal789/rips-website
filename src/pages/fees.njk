@@ -21,7 +21,7 @@ last_updated: 2026-10-18
     <tr>
       <th scope="col">Program</th>
       {%- for line in heads %}
-      <th scope="col" class="amount">{{ line.label }} <span class="small">({% if line.per == "once" %}once{% else %}per {{ line.per }}{% endif %})</span></th>
+      <th scope="col" class="amount">{{ line.label }} {% if line.per %}<span class="small">({% if line.per == "once" %}once{% else %}per {{ line.per }}{% endif %})</span>{% endif %}</th>
       {%- endfor %}
     </tr>
   </thead>

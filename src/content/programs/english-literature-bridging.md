@@ -8,14 +8,18 @@ field: English
 level: Undergraduate
 confirmed: false
 featured: false
-duration: "2 years"
-eligibility: "A two-year bachelor’s degree (BA) with English, or equivalent."
-fee_per_year_pkr: null
+duration: "2 years (4 semesters)"
+eligibility: "Minimum 45% (2nd Division ADP). Last degree required: Associate Degree in Arts and Science (BA) and BSc."
+seats: "50"
+fee_pkr: 100000
+admission_fee_pkr: 25000
+admission_period: "July to December"
 affiliation: "GC University Faisalabad"
+facts_confirmed: true
 status: Active
 order: 22
 image: null
-last_updated: 2026-10-18
+last_updated: 2026-10-27
 approved_by: null
 outline: "<ul><li>Literature in English</li><li>Literary criticism</li><li>Linguistics</li><li>Research writing</li></ul>"
 careers: "<p>The same careers as BS English Literature.</p>"

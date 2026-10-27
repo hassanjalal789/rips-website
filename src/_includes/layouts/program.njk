@@ -14,14 +14,23 @@ crumbs: [{ label: Programs, url: /programs/ }]
   {%- if page.data.status == "Not offered this intake" %}<span class="badge badge-not-offered">Not offered this intake</span>{% endif %}
   {%- if page.data.status == "Withdrawn" %}<span class="badge badge-withdrawn">Not currently offered</span>{% endif %}
 </p>
-<section class="key-facts" aria-labelledby="key-facts"{% if not confirmed %} data-draft="OD-07"{% endif %}>
+<section class="key-facts" aria-labelledby="key-facts"{% if not (facts_confirmed or confirmed) %} data-draft="OD-07"{% endif %}>
   <h2 id="key-facts">Key facts</h2>
   <dl>
     <dt>Level</dt><dd>{{ level }}</dd>
     <dt>Duration</dt><dd>{{ duration | tbc("duration", "OD-07") | safe }}</dd>
     <dt>Eligibility</dt><dd>{{ eligibility | tbc("eligibility", "OD-07") | safe }}</dd>
-    <dt>Fee per year</dt><dd>{% if fee_per_year_pkr %}{{ fee_per_year_pkr | pkr }}{% else %}Contact admissions for current fees{% endif %} · <a href="/admissions/fees/">Fee details</a></dd>
+    {%- if seats %}
+    <dt>Seats</dt><dd>{{ seats }}{% if seats | int %} seats{% endif %}</dd>
+    {%- endif %}
+    <dt>Program fee</dt><dd>{% if fee_pkr %}{{ fee_pkr | pkr }}{% else %}Contact admissions for current fees{% endif %} · <a href="/admissions/fees/">Fee details</a></dd>
+    {%- if admission_fee_pkr %}
+    <dt>Admission fee</dt><dd>{{ admission_fee_pkr | pkr }}</dd>
+    {%- endif %}
     <dt>Affiliation</dt><dd>{{ affiliation | tbc("affiliating university", "OD-08") | safe }}</dd>
+    {%- if admission_period %}
+    <dt>Admission period</dt><dd>{{ admission_period }}</dd>
+    {%- endif %}
     <dt>Intake</dt><dd>{% if intake %}{{ intake.session }}: {{ intake.opens_on | displayDate }} to {{ intake.closes_on | displayDate }}{% else %}{% tbc "intake dates", "OD-07" %}{% endif %}</dd>
   </dl>
 </section>
@@ -42,7 +51,7 @@ crumbs: [{ label: Programs, url: /programs/ }]
   <p>{% tbc "careers this program leads to", "OD-07" %}</p>
   {%- endif %}
   <h2>Fees</h2>
-  <p>{% if fee_per_year_pkr %}{{ fee_per_year_pkr | pkr }} per year.{% else %}Contact admissions for current fees.{% endif %} The <a href="/admissions/fees/">fee structure</a> shows every fee for {{ short or title }}{% if fee %}, session {{ fee.session }}{% endif %}.</p>
+  <p>{% if fee_pkr %}Program fee {{ fee_pkr | pkr }}{% if admission_fee_pkr %}, admission fee {{ admission_fee_pkr | pkr }}{% endif %}.{% else %}Contact admissions for current fees.{% endif %} The <a href="/admissions/fees/">fee structure</a> shows every fee for {{ short or title }}{% if fee %}, session {{ fee.session }}{% endif %}.</p>
 </div>
 
 {%- set related = collections.programs | sameField({ field: field, slug: slug }) %}

@@ -20,8 +20,7 @@ reasons:
     img: science-lab
     alt: Two students at work at a lab bench beside a glassware cabinet in a RIPS lab.
     text: "An anatomy lab with skeletons and models, and science labs with benches, microscopes and equipment, so practical classes happen on campus."
-    draft_text: "Students of health-science programs also train in real hospital settings."
-    draft: OD-07
+    extra_text: "RIPS has an MOU with more than ten hospitals for training."
   - title: A computer lab for every student
     id: computer-lab
     img: computer-lab
@@ -96,7 +95,7 @@ reasons:
         <div class="reason-body">
           <p class="reason-num" aria-hidden="true">{{ "0" if loop.index < 10 }}{{ loop.index }}</p>
           <h3>{{ r.title }}</h3>
-          <p>{{ r.text }}{% if r.draft_text %} <span data-draft="{{ r.draft }}">{{ r.draft_text }}</span>{% endif %}</p>
+          <p>{{ r.text }}{% if r.extra_text %} {{ r.extra_text }}{% endif %}{% if r.draft_text %} <span data-draft="{{ r.draft }}">{{ r.draft_text }}</span>{% endif %}</p>
           {%- if r.link %}
           <p><a class="see-all" href="{{ r.link.url }}">{{ r.link.label }} <span aria-hidden="true">→</span></a></p>
           {%- endif %}
@@ -115,9 +114,9 @@ reasons:
       <h2 id="support-title">Support for your future</h2>
     </header>
     <ul class="feature-grid">
-      <li data-draft="OD-07"><h3>Scholarships</h3><p>Merit-based scholarships for students with strong results. Ask the Admission Office what you may qualify for.</p></li>
+      <li><h3>Scholarships</h3><p>Scholarship categories are merit, kinship, need base, high achievers and Shuhdah. Ask the Admission Office who qualifies.</p></li>
       <li data-draft="OD-07"><h3>Internships</h3><p>Paid internships in the final year, so you leave with real work experience.</p></li>
-      <li data-draft="OD-08"><h3>Recognised degrees</h3><p>BS programs are affiliated with GC University Faisalabad. <a href="/about/affiliation/">See affiliation and approvals</a>.</p></li>
+      <li data-draft="OD-08"><h3>Recognised degrees</h3><p>BS programs are affiliated with GC University Faisalabad (BS Nursing: Islamia University Bahawalpur, Islamabad), and intermediate programs with the Federal Board or BISE Lahore. <a href="/about/affiliation/">See affiliation and approvals</a>.</p></li>
     </ul>
   </div>
 </section>
