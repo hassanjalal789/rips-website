@@ -12,6 +12,7 @@ duration: "2 years"
 eligibility: "Passing marks in Matric."
 seats: "50"
 fee_pkr: 100000
+fee_per: "total"
 admission_fee_pkr: 25000
 admission_period: "May to September"
 affiliation: "Federal Board"

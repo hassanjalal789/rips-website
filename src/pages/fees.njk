@@ -21,7 +21,7 @@ last_updated: 2026-10-18
     <tr>
       <th scope="col">Program</th>
       {%- for line in heads %}
-      <th scope="col" class="amount">{{ line.label }} {% if line.per %}<span class="small">({% if line.per == "once" %}once{% else %}per {{ line.per }}{% endif %})</span>{% endif %}</th>
+      <th scope="col" class="amount">{{ line.label }} {% if line.per == "once" %}<span class="small">(once)</span>{% endif %}</th>
       {%- endfor %}
     </tr>
   </thead>
@@ -33,7 +33,7 @@ last_updated: 2026-10-18
       {%- if f and (f.lines | selectattr("amount_pkr") | length) %}
       {%- for line in heads %}
       {%- set l = f.lines[loop.index0] %}
-      <td class="amount" data-label="{{ line.label }}">{% if l and (l.amount_pkr or l.amount_pkr === 0) %}{{ l.amount_pkr | pkr }}{% else %}Contact admissions{% endif %}</td>
+      <td class="amount" data-label="{{ line.label }}">{% if l and (l.amount_pkr or l.amount_pkr === 0) %}{{ l.amount_pkr | pkr }}{% if l.per and l.per != "once" %} <span class="small">{{ l.per }}</span>{% endif %}{% else %}Contact admissions{% endif %}</td>
       {%- endfor %}
       {%- else %}
       {#- No confirmed amount for this program yet: one line instead of a column of blanks (Doc 06 Q10). #}
@@ -45,6 +45,7 @@ last_updated: 2026-10-18
 </table>
 
 <div class="prose">
+  <p>BS program fees are per semester. Intermediate program fees are the total for the whole program.</p>
   <p class="muted">Fees may change. Last updated {{ (fees[0].approved_on or last_updated) | displayDate }}.</p>
   {%- if downloads.fee_structure.file %}
   <p><a class="btn btn-secondary" href="{{ downloads.fee_structure.file }}">Download the fee structure <span class="small">(PDF, {{ downloads.fee_structure.file | fileSize }})</span></a></p>

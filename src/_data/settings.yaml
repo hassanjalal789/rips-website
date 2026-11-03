@@ -29,7 +29,11 @@ office_numbers:
   - { label: "0303-7655906", link: "+923037655906", wa: "923037655906" }
 draft_fields: [phone]
 
-social: []                                         # e.g. { label: Facebook, url: https://… } once accounts are confirmed
+# Social accounts from the owner, 3 November 2026 (tracking parts of the links removed).
+social:
+  - { label: Facebook, url: "https://www.facebook.com/share/1CUzD3XuEP/" }
+  - { label: Instagram, url: "https://www.instagram.com/radiant_university_sheikhupura" }
+  - { label: TikTok, url: "https://www.tiktok.com/@radiant.university" }
 
 # Affiliation logos in the footer (Doc 05 Q08) wait for OD-08.
 affiliation_logos: []

@@ -13,6 +13,7 @@ duration: "1.5 years (3 semesters)"
 eligibility: "Minimum 45% (2nd Division BS programs). Last degree required: BS programs and MA."
 seats: "50"
 fee_pkr: 70000
+fee_per: "per semester"
 admission_fee_pkr: 25000
 admission_period: "July to December"
 affiliation: "GC University Faisalabad"

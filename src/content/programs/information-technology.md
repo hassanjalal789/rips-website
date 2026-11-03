@@ -12,6 +12,7 @@ duration: "4 years (8 semesters)"
 eligibility: "Minimum 50%. Last degree required: FSc Pre-Medical, FSc Engineering, ICS or FA-IT."
 seats: "50"
 fee_pkr: 100000
+fee_per: "per semester"
 admission_fee_pkr: 25000
 admission_period: "July to December"
 affiliation: "GC University Faisalabad"

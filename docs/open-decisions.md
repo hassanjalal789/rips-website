@@ -93,6 +93,10 @@ lost. None are used on the site until someone confirms them.
   stand. BS Accounting and Finance (four-year) is still offered (its fees are still needed); BS Data Science is
   no longer offered and shows "Not currently offered". "Shuhdah" is spelled correctly. Still open: whether the
   program fee is per year, per semester or total; the BS Nursing affiliation; Facebook and Instagram links.
+- **Decided: the owner's answers of 3 November 2026 (second message).** BS program fees are per semester;
+  intermediate (diploma) fees are the total for the program. BS Accounting and Finance (four-year) costs
+  Rs 800,000 for 4 years (its admission fee is still needed). BS Nursing is affiliated with the Islamia
+  University of Bahawalpur. Facebook, Instagram and TikTok links are in the footer and on the Contact page.
 - **Decided: Home's opening and colours.** On 19 October 2026 the owner asked for ISL's opening sequence:
   three tall video panels with the crest, the name and one pill revealed over them, in near-black,
   charcoal and gold. Home now follows that ([CR-05](change-requests/CR-05-home-three-panel-hero.md));
