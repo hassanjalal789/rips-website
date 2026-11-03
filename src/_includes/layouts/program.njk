@@ -6,13 +6,13 @@ crumbs: [{ label: Programs, url: /programs/ }]
     overview → outline → careers → fee link → related programs and notices → last updated.
     A withdrawn or not-offered program keeps its page with a badge (Doc 05 Q19, Q23). #}
 {%- set intake = intakes | intakeFor(slug) -%}
-{%- set status = intake | intakeStatus(build.today) -%}
+{%- set intakeState = intake | intakeStatus(build.today) -%}
 {%- set fee = fees | feeFor(slug) -%}
 <h1>{{ title }}</h1>
 <p class="program-status">
-  {%- if status and page.data.status == "Active" %}<span class="badge badge-{{ status.key }}">{{ status.label }}</span>{% endif %}
-  {%- if page.data.status == "Not offered this intake" %}<span class="badge badge-not-offered">Not offered this intake</span>{% endif %}
-  {%- if page.data.status == "Withdrawn" %}<span class="badge badge-withdrawn">Not currently offered</span>{% endif %}
+  {%- if intakeState and status == "Active" %}<span class="badge badge-{{ intakeState.key }}">{{ intakeState.label }}</span>{% endif %}
+  {%- if status == "Not offered this intake" %}<span class="badge badge-not-offered">Not offered this intake</span>{% endif %}
+  {%- if status == "Withdrawn" %}<span class="badge badge-withdrawn">Not currently offered</span>{% endif %}
 </p>
 <section class="key-facts" aria-labelledby="key-facts"{% if not (facts_confirmed or confirmed) %} data-draft="OD-07"{% endif %}>
   <h2 id="key-facts">Key facts</h2>
@@ -31,7 +31,9 @@ crumbs: [{ label: Programs, url: /programs/ }]
     {%- if admission_period %}
     <dt>Admission period</dt><dd>{{ admission_period }}</dd>
     {%- endif %}
-    <dt>Intake</dt><dd>{% if intake %}{{ intake.session }}: {{ intake.opens_on | displayDate }} to {{ intake.closes_on | displayDate }}{% else %}{% tbc "intake dates", "OD-07" %}{% endif %}</dd>
+    {%- if intake %}
+    <dt>Intake</dt><dd>{{ intake.session }}: {{ intake.opens_on | displayDate }} to {{ intake.closes_on | displayDate }}</dd>
+    {%- endif %}
   </dl>
 </section>
 <p class="btn-row"><a class="btn btn-primary" href="/enquire/?program={{ slug }}">Enquire about {{ short or title }}</a></p>

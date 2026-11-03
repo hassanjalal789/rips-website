@@ -87,6 +87,12 @@ lost. None are used on the site until someone confirms them.
   and show no fees. The workbook gives only months for admission, so the intake dates stay sample (OD-07). Which
   of the four numbers the WhatsApp button should open is still open (OD-14). The affiliation letters are still
   needed (OD-08).
+- **Decided: the owner's answers of 3 November 2026.** All four office numbers work for calls and WhatsApp; the
+  WhatsApp buttons open 0339-8181850 and the contact page links each number. The address reads "Masjid Chowk".
+  There are no fixed admission dates, so no intake dates or open/closed badges are shown; the admission periods
+  stand. BS Accounting and Finance (four-year) is still offered (its fees are still needed); BS Data Science is
+  no longer offered and shows "Not currently offered". "Shuhdah" is spelled correctly. Still open: whether the
+  program fee is per year, per semester or total; the BS Nursing affiliation; Facebook and Instagram links.
 - **Decided: Home's opening and colours.** On 19 October 2026 the owner asked for ISL's opening sequence:
   three tall video panels with the crest, the name and one pill revealed over them, in near-black,
   charcoal and gold. Home now follows that ([CR-05](change-requests/CR-05-home-three-panel-hero.md));
