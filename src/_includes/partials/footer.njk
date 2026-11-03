@@ -39,6 +39,9 @@
           {%- endif %}
           <li>Email: {{ settings.email | tbc("admissions email", "OD-04") | safe }}</li>
           <li>Office hours: {{ settings.office_hours | tbc("office hours", "OD-14") | safe }}</li>
+          {%- if settings.social.length %}
+          <li>Follow RIPS: {% for s in settings.social %}<a href="{{ s.url }}" rel="noopener">{{ s.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</li>
+          {%- endif %}
           <li><a href="/contact/">Contact page</a></li>
         </ul>
       </div>

@@ -1,7 +1,7 @@
 # Fee schedules (Doc 08 "Fee schedule"). Amounts are shown exactly as entered; no calculations (SRS E-07).
 # Amounts are from the owner's workbook of 27 October 2026 ("Fee for Each Program" and "Admission Fee"). The
-# workbook does not say whether the program fee is per year, per semester or in total, so it is labelled
-# "Program fee" only. Programs missing from the workbook (accounting-finance, data-science) stay null (OD-07).
+# owner said on 3 November 2026 that BS program fees are per semester and intermediate (diploma) fees are the
+# total for the program, and gave BS Accounting and Finance as Rs 800,000 for 4 years. Data Science stays null.
 # Changes create a new version in Git history; record approved_by and approved_on with every change.
 - program: pharm-d
   session: "2026–27"
@@ -11,7 +11,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 220000, per: null }
+    - { label: Program fee, amount_pkr: 220000, per: "per semester" }
 - program: fsc-dispensing
   session: "2026–27"
   sample: false
@@ -20,7 +20,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "total" }
 - program: dpt
   session: "2026–27"
   sample: false
@@ -29,7 +29,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 150000, per: null }
+    - { label: Program fee, amount_pkr: 150000, per: "per semester" }
 - program: nursing
   session: "2026–27"
   sample: false
@@ -38,7 +38,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 70000, per: once }
-    - { label: Program fee, amount_pkr: 220000, per: null }
+    - { label: Program fee, amount_pkr: 220000, per: "per semester" }
 - program: fsc-nursing
   session: "2026–27"
   sample: false
@@ -47,7 +47,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "total" }
 - program: rit
   session: "2026–27"
   sample: false
@@ -56,7 +56,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 150000, per: null }
+    - { label: Program fee, amount_pkr: 150000, per: "per semester" }
 - program: hnd
   session: "2026–27"
   sample: false
@@ -65,7 +65,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 150000, per: null }
+    - { label: Program fee, amount_pkr: 150000, per: "per semester" }
 - program: fsc-mlt
   session: "2026–27"
   sample: false
@@ -74,7 +74,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "total" }
 - program: fsc-rit
   session: "2026–27"
   sample: false
@@ -83,7 +83,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "total" }
 - program: fsc-ott
   session: "2026–27"
   sample: false
@@ -92,7 +92,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "total" }
 - program: fsc-dental
   session: "2026–27"
   sample: false
@@ -101,7 +101,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "total" }
 - program: fsc-medical
   session: "2026–27"
   sample: false
@@ -110,7 +110,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "total" }
 - program: computer-science
   session: "2026–27"
   sample: false
@@ -119,7 +119,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "per semester" }
 - program: computer-science-bridging
   session: "2026–27"
   sample: false
@@ -128,7 +128,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "per semester" }
 - program: information-technology
   session: "2026–27"
   sample: false
@@ -137,7 +137,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "per semester" }
 - program: data-science
   session: "2026–27"
   sample: false
@@ -146,7 +146,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: null, per: once }
-    - { label: Program fee, amount_pkr: null, per: null }
+    - { label: Program fee, amount_pkr: null, per: "per semester" }
 - program: ics
   session: "2026–27"
   sample: false
@@ -155,7 +155,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "total" }
 - program: bba
   session: "2026–27"
   sample: false
@@ -164,7 +164,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "per semester" }
 - program: accounting-finance
   session: "2026–27"
   sample: false
@@ -173,7 +173,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: null, per: once }
-    - { label: Program fee, amount_pkr: null, per: null }
+    - { label: Program fee, amount_pkr: 800000, per: "total for 4 years" }
 - program: mass-communication
   session: "2026–27"
   sample: false
@@ -182,7 +182,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "per semester" }
 - program: english-literature
   session: "2026–27"
   sample: false
@@ -191,7 +191,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "per semester" }
 - program: english-literature-bridging
   session: "2026–27"
   sample: false
@@ -200,7 +200,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "per semester" }
 - program: accounting-finance-bridging
   session: "2026–27"
   sample: false
@@ -209,7 +209,7 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 100000, per: null }
+    - { label: Program fee, amount_pkr: 100000, per: "per semester" }
 - program: bed
   session: "2026–27"
   sample: false
@@ -218,4 +218,4 @@
   pdf: null
   lines:
     - { label: Admission fee, amount_pkr: 25000, per: once }
-    - { label: Program fee, amount_pkr: 70000, per: null }
+    - { label: Program fee, amount_pkr: 70000, per: "per semester" }

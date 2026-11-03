@@ -23,7 +23,7 @@ crumbs: [{ label: Programs, url: /programs/ }]
     {%- if seats %}
     <dt>Seats</dt><dd>{{ seats }}{% if seats | int %} seats{% endif %}</dd>
     {%- endif %}
-    <dt>Program fee</dt><dd>{% if fee_pkr %}{{ fee_pkr | pkr }}{% else %}Contact admissions for current fees{% endif %} · <a href="/admissions/fees/">Fee details</a></dd>
+    <dt>Program fee</dt><dd>{% if fee_pkr %}{{ fee_pkr | pkr }}{% if fee_per %} {{ fee_per }}{% endif %}{% else %}Contact admissions for current fees{% endif %} · <a href="/admissions/fees/">Fee details</a></dd>
     {%- if admission_fee_pkr %}
     <dt>Admission fee</dt><dd>{{ admission_fee_pkr | pkr }}</dd>
     {%- endif %}
@@ -53,7 +53,7 @@ crumbs: [{ label: Programs, url: /programs/ }]
   <p>{% tbc "careers this program leads to", "OD-07" %}</p>
   {%- endif %}
   <h2>Fees</h2>
-  <p>{% if fee_pkr %}Program fee {{ fee_pkr | pkr }}{% if admission_fee_pkr %}, admission fee {{ admission_fee_pkr | pkr }}{% endif %}.{% else %}Contact admissions for current fees.{% endif %} The <a href="/admissions/fees/">fee structure</a> shows every fee for {{ short or title }}{% if fee %}, session {{ fee.session }}{% endif %}.</p>
+  <p>{% if fee_pkr %}Program fee {{ fee_pkr | pkr }}{% if fee_per %} {{ fee_per }}{% endif %}{% if admission_fee_pkr %}, admission fee {{ admission_fee_pkr | pkr }}{% endif %}.{% else %}Contact admissions for current fees.{% endif %} The <a href="/admissions/fees/">fee structure</a> shows every fee for {{ short or title }}{% if fee %}, session {{ fee.session }}{% endif %}.</p>
 </div>
 
 {%- set related = collections.programs | sameField({ field: field, slug: slug }) %}

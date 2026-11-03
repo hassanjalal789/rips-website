@@ -12,9 +12,10 @@ duration: "4 years (8 semesters)"
 eligibility: "Minimum 50%. Last degree required: FSc Pre-Medical."
 seats: "50"
 fee_pkr: 220000
+fee_per: "per semester"
 admission_fee_pkr: 70000
 admission_period: "July to December"
-affiliation: "Islamia University Bahawalpur, Islamabad"
+affiliation: "Islamia University of Bahawalpur"
 facts_confirmed: true
 status: Active
 order: 4

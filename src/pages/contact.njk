@@ -40,6 +40,16 @@ pageScript: enquiry
     <p>Directions: {% tbc "Google Maps link", "OD-14" %}</p>
     {%- endif %}
   </section>
+  {%- if settings.social.length %}
+  <section class="panel" aria-labelledby="c-social">
+    <h2 id="c-social" class="h3">Follow RIPS</h2>
+    <ul>
+      {%- for s in settings.social %}
+      <li><a href="{{ s.url }}" rel="noopener">{{ s.label }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
   <section class="panel" aria-labelledby="c-email">
     <h2 id="c-email" class="h3">Email</h2>
     <p>{% if settings.email %}<a href="mailto:{{ settings.email }}">{{ settings.email }}</a>{% else %}{% tbc "admissions email", "OD-04" %}{% endif %}</p>

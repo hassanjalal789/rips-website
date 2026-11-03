@@ -10,7 +10,8 @@ confirmed: false
 featured: false
 duration: "4 years"
 eligibility: "Intermediate (FA, FSc, ICS or I.Com) or equivalent."
-fee_per_year_pkr: null
+fee_pkr: 800000
+fee_per: "total for 4 years"
 affiliation: "GC University Faisalabad"
 status: Active
 order: 19

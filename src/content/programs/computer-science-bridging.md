@@ -12,6 +12,7 @@ duration: "2 years (4 semesters)"
 eligibility: "Minimum 50% (2nd Division ADP). Last degree required: Science subjects."
 seats: "50"
 fee_pkr: 100000
+fee_per: "per semester"
 admission_fee_pkr: 25000
 admission_period: "July to December"
 affiliation: "GC University Faisalabad"

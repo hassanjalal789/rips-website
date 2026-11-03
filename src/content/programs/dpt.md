@@ -12,6 +12,7 @@ duration: "5 years (10 semesters)"
 eligibility: "Minimum 50%. Last degree required: FSc Medical."
 seats: "50"
 fee_pkr: 150000
+fee_per: "per semester"
 admission_fee_pkr: 25000
 admission_period: "July to December"
 affiliation: "GC University Faisalabad"
