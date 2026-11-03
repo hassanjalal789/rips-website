@@ -12,21 +12,21 @@ dir: ltr                                           # rtl for Urdu pages later (O
 # Values named in draft_fields were filled in until the owner confirms them; npm run check lists them.
 phone: "+92 327 4103941"                           # the WhatsApp number, used for calls too
 phone_link: "+923274103941"
-whatsapp: "+92 327 4103941"
-whatsapp_link: "923274103941"
+whatsapp: "0339-8181850"                          # first of the four office numbers; the owner said all four work on WhatsApp (3 November 2026)
+whatsapp_link: "923398181850"
 whatsapp_message: "Hello RIPS, I would like information about admissions."
 email: radiantcollagesheikhupura@gmail.com         # spelled as the owner gave it
 email_link: radiantcollagesheikhupura@gmail.com
-address: "Masjid Cowk Canal Bypass Link Road, Damuana Road, Sheikhupura"   # as in the owner's workbook of 27 October 2026 (MASJID COWK CANAL BYPASS LINK ROAD, DAMUANA ROAD SHEIKHUPURA)
+address: "Masjid Chowk, Canal Bypass Link Road, Damuana Road, Sheikhupura"   # owner's workbook of 27 October 2026; "Chowk" confirmed by the owner on 3 November 2026
 office_hours: "8:00 AM to 5:00 PM"                 # from the owner's workbook of 27 October 2026 (08:00AM to 05:00PM)
 map_link: https://share.google/9zHAz5ebhSFbfrlxe
-# The four numbers under "WhatsApp Contact" in the owner's workbook of 27 October 2026. Which one the WhatsApp
-# button should open is still to be decided, so phone and whatsapp above stay as they were.
+# The four numbers under "WhatsApp Contact" in the owner's workbook of 27 October 2026. The owner said on
+# 3 November 2026 that all four work for calls and WhatsApp; the WhatsApp buttons open the first.
 office_numbers:
-  - { label: "0339-8181850", link: "+923398181850" }
-  - { label: "0339-8181851", link: "+923398181851" }
-  - { label: "0339-4464646", link: "+923394464646" }
-  - { label: "0303-7655906", link: "+923037655906" }
+  - { label: "0339-8181850", link: "+923398181850", wa: "923398181850" }
+  - { label: "0339-8181851", link: "+923398181851", wa: "923398181851" }
+  - { label: "0339-4464646", link: "+923394464646", wa: "923394464646" }
+  - { label: "0303-7655906", link: "+923037655906", wa: "923037655906" }
 draft_fields: [phone]
 
 social: []                                         # e.g. { label: Facebook, url: https://… } once accounts are confirmed

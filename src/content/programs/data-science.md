@@ -12,7 +12,7 @@ duration: "4 years"
 eligibility: "Intermediate with mathematics (FSc Pre-Engineering or ICS) or equivalent."
 fee_per_year_pkr: null
 affiliation: "GC University Faisalabad"
-status: Active
+status: Withdrawn                # no longer offered (owner, 3 November 2026)
 order: 16
 image: null
 last_updated: 2026-10-18
